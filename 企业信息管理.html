@@ -19,6 +19,8 @@
         /* 自定义滚动条 */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+        
     </style>
 </head>
 <body class="flex h-screen overflow-hidden">
@@ -217,7 +219,9 @@
                 <div class="mt-8 glass-card p-6 shadow-sm">
                     <div class="flex justify-between items-center mb-6">
                         <h4 class="font-bold flex items-center gap-2"><i class="fas fa-tags text-teal-500"></i> 高频场景能力分布</h4>
-                        <span class="text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded">标签体系管理</span>
+                        <div onclick="switchToTagManager()" class="cursor-pointer hover:bg-blue-50 ...">
+  <span>标签体系管理</span>
+</div>
                     </div>
                     <div class="flex flex-wrap gap-3">
                         <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-xs font-semibold border border-emerald-100"># 绿色节能</span>
@@ -231,6 +235,136 @@
                     </div>
                 </div>
             </section>
+
+            <section id="tag-management-page" class="hidden min-h-screen bg-[#F4F7FC] p-6 animate-in fade-in duration-300">
+    
+    <div class="flex items-center justify-between mb-6 bg-white p-4 rounded-xl shadow-sm">
+        <div class="flex items-center gap-4">
+            <button onclick="backToHome()" class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 transition-all border border-slate-200">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div>
+                <h2 class="text-xl font-bold text-slate-800">政策标签体系管理</h2>
+                <p class="text-xs text-slate-400">管理全区政策匹配维度、权重比例及标签生命周期</p>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="relative">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input type="text" placeholder="搜索标签或分类..." class="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none w-64">
+            </div>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 shadow-lg shadow-blue-100 transition">
+                + 新增标准标签
+            </button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="bg-blue-50 border border-blue-100 p-3 rounded-lg flex items-start gap-3">
+            <i class="fas fa-info-circle text-blue-500 mt-1"></i>
+            <div>
+                <div class="text-sm font-bold text-blue-800">命名统一</div>
+                <p class="text-[11px] text-blue-600/80">固定写法如: MaaS, LLM, RAG</p>
+            </div>
+        </div>
+        <div class="bg-purple-50 border border-purple-100 p-3 rounded-lg flex items-start gap-3">
+            <i class="fas fa-layer-group text-purple-500 mt-1"></i>
+            <div>
+                <div class="text-sm font-bold text-purple-800">层级结构</div>
+                <p class="text-[11px] text-purple-600/80">一级“分类”+ 二级“具体标签”</p>
+            </div>
+        </div>
+        <div class="bg-amber-50 border border-amber-100 p-3 rounded-lg flex items-start gap-3">
+            <i class="fas fa-balance-scale text-amber-500 mt-1"></i>
+            <div>
+                <div class="text-sm font-bold text-amber-800">权重逻辑</div>
+                <p class="text-[11px] text-amber-600/80">技术能力类权重更高</p>
+            </div>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-lg flex items-start gap-3">
+            <i class="fas fa-shield-alt text-emerald-500 mt-1"></i>
+            <div>
+                <div class="text-sm font-bold text-emerald-800">数商专有池</div>
+                <p class="text-[11px] text-emerald-600/80">专有标签分类独立管理</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-3 space-y-2">
+            <div class="bg-white rounded-xl shadow-sm p-4">
+                <p class="text-xs font-bold text-slate-400 mb-4 uppercase tracking-wider">标签大类</p>
+                <nav class="space-y-1">
+                    <a href="#" class="flex items-center justify-between p-3 rounded-lg bg-blue-50 text-blue-600 font-bold group">
+                        <span>AI 技术方向</span>
+                        <span class="text-xs bg-blue-200 px-2 py-0.5 rounded-full">14</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-3 rounded-lg text-slate-600 hover:bg-slate-50 transition">
+                        <span>工商属性</span>
+                        <span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full">7</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-3 rounded-lg text-orange-600 font-medium hover:bg-orange-50 transition">
+                        <span>数商专有标签</span>
+                        <span class="text-xs bg-orange-100 px-2 py-0.5 rounded-full">9</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-3 rounded-lg text-slate-600 hover:bg-slate-50 transition">
+                        <span>行业与赛道</span>
+                        <span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full">9</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="col-span-9 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-slate-50 border-b border-slate-100">
+                    <tr class="text-[11px] text-slate-500 uppercase tracking-widest">
+                        <th class="px-6 py-4 font-bold">标签名称</th>
+                        <th class="px-6 py-4 font-bold">权重比例</th>
+                        <th class="px-6 py-4 font-bold">添加时间</th>
+                        <th class="px-6 py-4 font-bold">有效时间</th>
+                        <th class="px-6 py-4 font-bold text-center">当前状态</th>
+                        <th class="px-6 py-4 font-bold text-right">操作管理</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50 text-sm text-slate-700">
+                    <tr class="hover:bg-slate-50/50 transition">
+                        <td class="px-6 py-4 font-medium">大模型 (LLM)</td>
+                        <td class="px-6 py-4 text-blue-600 font-mono font-bold">
+                            <input type="number" value="0.95" class="w-12 bg-transparent focus:outline-none border-b border-transparent focus:border-blue-400">
+                        </td>
+                        <td class="px-6 py-4 text-slate-400 text-xs">2026-01-10</td>
+                        <td class="px-6 py-4 text-slate-400 text-xs">2027-01-10</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center justify-center gap-2 text-green-600 bg-green-50 px-2 py-1 rounded-full text-[10px] font-bold">
+                                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right space-x-3">
+                            <button class="text-blue-500 hover:text-blue-700 font-bold text-xs">延长时间</button>
+                            <button class="text-red-400 hover:text-red-600 font-bold text-xs">设为失效</button>
+                        </td>
+                    </tr>
+                    
+                    <tr class="bg-slate-50/30">
+                        <td class="px-6 py-4 font-medium text-slate-400 italic">传统软件外包</td>
+                        <td class="px-6 py-4 text-slate-300 font-mono font-bold">0.15</td>
+                        <td class="px-6 py-4 text-slate-300 text-xs">2024-05-20</td>
+                        <td class="px-6 py-4 text-red-300 text-xs font-medium">2025-05-20 (逾期)</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center justify-center gap-2 text-slate-400 bg-slate-100 px-2 py-1 rounded-full text-[10px]">
+                                <span class="w-1 h-1 bg-slate-300 rounded-full"></span> 已失效
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="text-blue-500 hover:text-blue-700 font-bold text-xs">重新生效</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
             <section id="page-policy" class="hidden-page">
                 <div class="flex justify-between items-center mb-8">
@@ -918,6 +1052,43 @@
         window.onload = () => {
             // 默认显示首页
         };
+        const Router = {
+    // 1. 进入标签管理二级页
+    toTagManager() {
+        const homePage = document.getElementById('page-dashboard');
+        const tagPage = document.getElementById('tag-management-page');
+        
+        if (homePage && tagPage) {
+            homePage.classList.add('hidden'); // 隐藏首页
+            tagPage.classList.remove('hidden'); // 显示标签页
+            
+            // 可选：平滑滚动到顶部
+            document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            console.error("未找到对应的页面 ID，请检查 HTML 结构");
+        }
+    },
+
+    // 2. 返回首页
+    backToHome() {
+        const homePage = document.getElementById('page-dashboard');
+        const tagPage = document.getElementById('tag-management-page');
+        
+        if (homePage && tagPage) {
+            tagPage.classList.add('hidden'); // 隐藏标签页
+            homePage.classList.remove('hidden'); // 显示首页
+        }
+    }
+};
+
+// 全局函数，兼容您 HTML 中的 onclick="switchToTagManager()"
+window.switchToTagManager = function() {
+    Router.toTagManager();
+};
+
+window.backToHome = function() {
+    Router.backToHome();
+};
     </script>
 </body>
 </html>
