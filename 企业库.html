@@ -1,458 +1,245 @@
-<div style="align-self: stretch; height: 1200px; overflow: hidden; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-  <div style="width: 288px; align-self: stretch; background: #0F172A; box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25); overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-    <div style="align-self: stretch; padding: 32px; border-bottom: 1px #1E293B solid; justify-content: flex-start; align-items: center; display: inline-flex">
-      <div style="width: 40px; height: 40px; background: #2563EB; box-shadow: 0px 4px 6px -4px rgba(30, 58, 138, 0.50), 0px 10px 15px -3px rgba(30, 58, 138, 0.50); overflow: hidden; border-radius: 12px; justify-content: center; align-items: center; display: flex">
-        <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-          <div style="justify-content: center; display: flex; flex-direction: column; color: white; font-size: 20px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 28px; word-wrap: break-word"></div>
-        </div>
-      </div>
-      <div style="padding-left: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-        <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: white; font-size: 20px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 28px; word-wrap: break-word">智策中台</div>
-          </div>
-          <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 400; text-transform: uppercase; line-height: 12.50px; letter-spacing: 1px; word-wrap: break-word">Intelligent Policy OS</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="align-self: stretch; flex: 1 1 0; padding-top: 23px; padding-bottom: 569.50px; padding-left: 24px; padding-right: 24px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 31px; display: flex">
-      <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-        <div style="align-self: stretch; padding-left: 16px; padding-right: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 11px; font-family: Plus Jakarta Sans; font-weight: 700; text-transform: uppercase; line-height: 16.50px; letter-spacing: 0.55px; word-wrap: break-word">核心业务模块</div>
-        </div>
-        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
-          <div style="align-self: stretch; padding: 14px; background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%); box-shadow: 0px 4px 12px rgba(37, 99, 235, 0.30); border-radius: 12px; justify-content: flex-start; align-items: center; display: inline-flex">
-            <div style="width: 20px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 16px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 16px; word-wrap: break-word"></div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智策中台 - 综合管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; background-color: #F4F7FE; color: #1e293b; transition: all 0.3s; }
+        .sidebar-gradient { background: #131B2E; }
+        .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+        .nav-item { cursor: pointer; transition: all 0.2s; border-radius: 12px; }
+        .nav-item.active { background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%); color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        .nav-item:not(.active):hover { color: white; background: rgba(255,255,255,0.05); }
+        .view-section { display: none; animation: fadeIn 0.4s ease-out forwards; }
+        .view-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .drop-zone { border: 2px dashed #e2e8f0; }
+        .tag-pill { border: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+
+    <aside class="sidebar w-64 sidebar-gradient flex flex-col p-6 shrink-0 z-50">
+        <div class="flex items-center gap-3 mb-10 px-2">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg"><i class="fas fa-layer-group"></i></div>
+            <div>
+                <h1 class="text-white font-black text-lg tracking-tight">智策中台</h1>
+                <p class="text-[8px] text-slate-500 uppercase tracking-widest leading-none">Intelligent Policy OS</p>
             </div>
-            <div style="padding-left: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: white; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 600; line-height: 24px; word-wrap: break-word">控制台首页</div>
+        </div>
+
+        <nav id="main-nav" class="flex flex-col gap-1 text-slate-400">
+            <p class="text-[10px] font-black uppercase tracking-widest mb-4 px-2 opacity-40">核心业务模块</p>
+            <div data-target="dashboard" class="nav-item active flex items-center gap-4 py-3 px-4">
+                <i class="fas fa-th-large w-5"></i><span class="text-sm font-bold italic">控制台首页</span>
             </div>
-          </div>
-          <div style="align-self: stretch; padding-top: 14px; padding-bottom: 14px; border-radius: 12px; justify-content: flex-start; align-items: center; display: inline-flex">
-            <div style="width: 20px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 16px; word-wrap: break-word"></div>
+            <div data-target="policy-import" class="nav-item flex items-center gap-4 py-3 px-4">
+                <i class="fas fa-file-import w-5"></i><span class="text-sm font-bold italic">政策导入与管理</span>
             </div>
-            <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 18px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 28px; word-wrap: break-word"></div>
+            
+            <p class="text-[10px] font-black uppercase tracking-widest mt-8 mb-4 px-2 opacity-40">数据与匹配</p>
+            <div data-target="enterprise-db" class="nav-item flex items-center gap-4 py-3 px-4">
+                <i class="fas fa-id-badge w-5"></i><span class="text-sm font-bold italic">企业信息管理</span>
             </div>
-            <div style="padding-left: 19px; flex-direction: column; justify-content: center; align-items: flex-end; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 24px; word-wrap: break-word">政策导入与管理</div>
+            <div data-target="performance-config" class="nav-item flex items-center gap-4 py-3 px-4">
+                <i class="fas fa-project-diagram w-5"></i><span class="text-sm font-bold italic">效能配置与对接</span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-        <div style="align-self: stretch; padding-left: 16px; padding-right: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 11px; font-family: Plus Jakarta Sans; font-weight: 700; text-transform: uppercase; line-height: 16.50px; letter-spacing: 0.55px; word-wrap: break-word">数据与匹配</div>
-        </div>
-        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
-          <div style="align-self: stretch; padding: 14px; border-radius: 12px; justify-content: flex-start; align-items: center; display: inline-flex">
-            <div style="width: 20px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 16px; word-wrap: break-word"></div>
+        </nav>
+
+        <div class="mt-auto space-y-4 pt-10">
+            <div class="bg-white/5 rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-3 mb-2 text-white"><i class="fas fa-calculator text-blue-400"></i><span class="text-xs font-bold">匹配模拟器</span></div>
+                <p class="text-[10px] text-slate-500">实时算法输出政策结果</p>
             </div>
-            <div style="padding-left: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 24px; word-wrap: break-word">企业信息管理</div>
+            <div class="bg-white text-slate-900 rounded-2xl p-4 text-center cursor-pointer hover:bg-slate-100 transition shadow-lg">
+                <span class="text-xs font-black uppercase tracking-widest">进入企业端</span>
             </div>
-          </div>
-          <div style="align-self: stretch; padding: 14px; border-radius: 12px; justify-content: flex-start; align-items: center; display: inline-flex">
-            <div style="width: 20px; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 16px; word-wrap: break-word"></div>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <header class="h-20 bg-white border-b border-slate-100 flex items-center justify-between px-8 shrink-0 z-40">
+            <div class="relative w-96">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-300"></i>
+                <input type="text" id="global-search" placeholder="搜索政策、企业画像..." class="w-full bg-slate-50 border border-slate-100 rounded-full py-2.5 pl-12 pr-4 text-xs font-bold outline-none focus:ring-2 ring-blue-100 transition">
             </div>
-            <div style="padding-left: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 24px; word-wrap: break-word">效能配置与对接</div>
-            </div>
-          </div>
-          <div style="align-self: stretch; padding-top: 14px; padding-bottom: 14px; padding-left: 17px; padding-right: 14px; border-radius: 12px; justify-content: flex-start; align-items: center; gap: 4px; display: inline-flex">
-            <img style="width: 14px; height: 14px" src="https://placehold.co/14x14" />
-            <div style="width: 29.40px; height: 31.50px; background: #94A3B8"></div>
-            <div style="padding-left: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 24px; word-wrap: break-word">设置</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; padding-left: 16px; padding-right: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-        <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 11px; font-family: Plus Jakarta Sans; font-weight: 700; text-transform: uppercase; line-height: 16.50px; letter-spacing: 0.55px; word-wrap: break-word">快捷入口</div>
-      </div>
-      <div style="align-self: stretch; height: 184px; position: relative; background: white; border-radius: 32px; outline: 1px #F1F5F9 solid; outline-offset: -1px">
-        <div style="width: 56px; height: 56px; left: 33px; top: 33px; position: absolute; background: #EFF6FF; border-radius: 16px; justify-content: center; align-items: center; display: inline-flex">
-          <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #2563EB; font-size: 24px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 24px; word-wrap: break-word"></div>
-          </div>
-        </div>
-        <div style="width: 174.33px; left: 106px; top: 49px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-          <div style="justify-content: center; display: flex; flex-direction: column; color: #1E293B; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">匹配模拟器</div>
-        </div>
-        <div style="width: 181px; left: 33px; top: 112px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: center; display: inline-flex">
-          <div style="width: 165px; justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 19.50px; word-wrap: break-word">输入项目参数，实时模拟算法输出匹配政策列表。</div>
-        </div>
-      </div>
-      <div style="width: 240px; height: 184px; position: relative; background: white; border-radius: 32px; outline: 1px #F1F5F9 solid; outline-offset: -1px">
-        <div style="width: 56px; height: 56px; left: 33px; top: 33px; position: absolute; background: #ECFDF5; border-radius: 16px; justify-content: center; align-items: center; display: inline-flex">
-          <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #059669; font-size: 24px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 24px; word-wrap: break-word"></div>
-          </div>
-        </div>
-        <div style="width: 174.33px; left: 103px; top: 49px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-          <div style="justify-content: center; display: flex; flex-direction: column; color: #1E293B; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">供需清单拆解</div>
-        </div>
-        <div style="width: 174.33px; left: 33px; top: 119px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-          <div style="width: 157px; justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 19.50px; word-wrap: break-word">将企业痛点转化为系统可识别的标准能力标签。</div>
-        </div>
-      </div>
-      <div style="width: 128px; height: 48px; position: relative">
-        <div style="width: 128px; height: 48px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 15px"></div>
-        <div style="width: 73px; height: 22px; left: 31px; top: 14px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #4F46E5; font-size: 21px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 16.50px; word-wrap: break-word">企业端</div>
-      </div>
-    </div>
-  </div>
-  <div style="flex: 1 1 0; align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-    <div style="align-self: stretch; height: 80px; padding-left: 40px; padding-right: 40px; background: rgba(255, 255, 255, 0.80); border-bottom: 1px #E2E8F0 solid; backdrop-filter: blur(6px); justify-content: space-between; align-items: center; display: inline-flex">
-      <div style="flex: 1 1 0; max-width: 672px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-        <div style="align-self: stretch; padding-top: 10px; padding-bottom: 10px; padding-left: 48px; padding-right: 16px; background: #F1F5F9; overflow: hidden; border-radius: 16px; justify-content: center; align-items: flex-start; display: inline-flex">
-          <div style="flex: 1 1 0; padding-bottom: 2px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: #9CA3AF; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 400; word-wrap: break-word">搜索政策原文、企业画像或输入问答关键词...</div>
-          </div>
-        </div>
-        <div style="height: 16px; left: 16px; top: 12px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 16px; word-wrap: break-word"></div>
-        </div>
-      </div>
-      <div style="padding-left: 40px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-        <div style="width: 358.25px; height: 40px; position: relative">
-          <div style="padding-left: 16px; padding-right: 16px; padding-top: 6px; padding-bottom: 6px; left: 0px; top: 5px; position: absolute; background: #ECFDF5; border-radius: 9999px; outline: 1px #D1FAE5 solid; outline-offset: -1px; justify-content: flex-start; align-items: center; display: inline-flex">
-            <div style="width: 8px; height: 8px; background: #10B981; border-radius: 9999px"></div>
-            <div style="padding-left: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #047857; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word">SSO & API 同步中</div>
-            </div>
-          </div>
-          <div style="padding-left: 24px; left: 193.17px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="padding-left: 16px; border-left: 1px #E2E8F0 solid; justify-content: flex-start; align-items: center; display: inline-flex">
-              <img style="width: 40px; height: 40px; position: relative; box-shadow: 0px 0px 0px 2px #F1F5F9; border-radius: 9999px" src="https://placehold.co/40x40" />
-              <div style="padding-left: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                  <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                    <div style="justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">运营主管</div>
-                  </div>
-                  <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                    <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 400; text-transform: uppercase; line-height: 15px; word-wrap: break-word">System Admin</div>
-                  </div>
+            <div class="flex items-center gap-6">
+                <div class="hidden lg:flex items-center gap-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] font-black text-emerald-600 uppercase italic">SSO & API 同步中</span>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div style="padding-left: 24px; left: 151.67px; top: 6px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 20px; font-family: Font Awesome 5 Free; font-weight: 400; line-height: 28px; word-wrap: break-word"></div>
-              <div style="width: 16px; height: 19px; left: 6px; top: -6px; position: absolute; background: #F97316; border-radius: 9999px; outline: 2px white solid; outline-offset: -2px; justify-content: center; align-items: center; display: inline-flex">
-                <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">3</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="align-self: stretch; flex: 1 1 0; padding: 40px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 40px; display: flex">
-      <div style="align-self: stretch; justify-content: center; align-items: flex-start; gap: 32px; display: inline-flex">
-        <div style="flex: 1 1 0; align-self: stretch; padding: 24px; position: relative; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 32px; outline: 1px #F1F5F9 solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
-          <div style="width: 314px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 600; line-height: 20px; word-wrap: break-word">今日匹配成功</div>
-          </div>
-          <div style="width: 314px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 30px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 36px; word-wrap: break-word">1,284</div>
-          </div>
-          <div style="width: 314px; justify-content: flex-start; align-items: center; gap: 4px; display: inline-flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #059669; font-size: 12px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 12px; word-wrap: break-word"></div>
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #059669; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"> 12.5% </div>
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 16px; word-wrap: break-word">较昨日</div>
-          </div>
-          <div style="width: 48px; height: 48px; left: 291px; top: 25px; position: absolute; background: #EFF6FF; border-radius: 16px; justify-content: center; align-items: center; display: inline-flex">
-            <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #2563EB; font-size: 20px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 20px; word-wrap: break-word"></div>
-            </div>
-          </div>
-        </div>
-        <div style="flex: 1 1 0; align-self: stretch; padding: 24px; position: relative; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 32px; outline: 1px #F1F5F9 solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
-          <div style="width: 314px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 600; line-height: 20px; word-wrap: break-word">AI 拆解准确率</div>
-          </div>
-          <div style="width: 314px; padding-bottom: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 30px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 36px; word-wrap: break-word">94.2%</div>
-          </div>
-          <div style="width: 314px; height: 6px; position: relative; background: #F1F5F9; overflow: hidden; border-radius: 9999px">
-            <div style="width: 295.16px; height: 6px; left: 0px; top: 0px; position: absolute; background: #A855F7"></div>
-          </div>
-          <div style="width: 48px; height: 48px; left: 291px; top: 25px; position: absolute; background: #FAF5FF; border-radius: 16px; justify-content: center; align-items: center; display: inline-flex">
-            <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #9333EA; font-size: 20px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 20px; word-wrap: break-word"></div>
-            </div>
-          </div>
-        </div>
-        <div style="flex: 1 1 0; align-self: stretch; padding: 24px; position: relative; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 32px; outline: 1px #F1F5F9 solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
-          <div style="width: 314px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 600; line-height: 20px; word-wrap: break-word">数据同步延迟</div>
-          </div>
-          <div style="width: 314px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 30px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 36px; word-wrap: break-word">1.2s</div>
-          </div>
-          <div style="width: 314px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: #D97706; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word">API 实时状态良好</div>
-          </div>
-          <div style="width: 48px; height: 48px; left: 291px; top: 25px; position: absolute; background: #FFFBEB; border-radius: 16px; justify-content: center; align-items: center; display: inline-flex">
-            <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #D97706; font-size: 20px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 20px; word-wrap: break-word"></div>
-            </div>
-          </div>
-        </div>
-        <div style="flex: 1 1 0; align-self: stretch; padding: 24px; position: relative; background: linear-gradient(171deg, #2563EB 0%, #4338CA 100%); box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 15px -3px #BFDBFE; overflow: hidden; border-radius: 32px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
-          <div style="left: 308.50px; top: 24px; position: absolute; opacity: 0.20; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="justify-content: center; display: flex; flex-direction: column; color: white; font-size: 36px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 36px; word-wrap: break-word"></div>
-          </div>
-          <div style="align-self: stretch; opacity: 0.80; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 500; line-height: 20px; word-wrap: break-word">政策覆盖热度</div>
-          </div>
-          <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 36px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 40px; word-wrap: break-word">489</div>
-          </div>
-          <div style="align-self: stretch; padding-top: 4px; opacity: 0.70; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 16px; word-wrap: break-word">已向 85% 合规企业推送</div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; height: 369px; justify-content: center; align-items: flex-start; gap: 32px; display: inline-flex">
-        <div style="width: 1024px; height: 375px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 32px; display: inline-flex">
-          <div style="align-self: stretch; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); overflow: hidden; border-radius: 32px; outline: 1px #F1F5F9 solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            <div style="width: 1022px; padding: 32px; border-bottom: 1px #F8FAFC solid; justify-content: space-between; align-items: center; display: inline-flex">
-              <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
-                <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 18px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 28px; word-wrap: break-word">政策处理流</div>
+                <div class="relative text-slate-400 cursor-pointer"><i class="far fa-bell text-lg"></i><span class="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 text-white text-[8px] flex items-center justify-center rounded-full border-2 border-white">5</span></div>
+                <div class="flex items-center gap-3 border-l border-slate-100 pl-6">
+                    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-black">AD</div>
+                    <div class="text-left"><p class="text-xs font-black text-slate-800">管理员</p><p class="text-[9px] text-slate-400 font-bold uppercase italic tracking-widest">Admin Mode</p></div>
                 </div>
-                <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 16px; word-wrap: break-word">AI 已完成拆解，等待人工校对入库</div>
-                </div>
-              </div>
-              <div style="width: 132.23px; height: 20px; position: relative">
-                <div style="width: 119.87px; height: 20px; left: 0px; top: 0px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2563EB; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">查看所有 12 条任务 </div>
-                <div style="left: 123.48px; top: 4px; position: absolute; justify-content: center; align-items: flex-start; display: inline-flex">
-                  <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2563EB; font-size: 14px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 14px; word-wrap: break-word"></div>
-                </div>
-              </div>
             </div>
-            <div style="width: 1022px; padding: 32px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-              <div style="align-self: stretch; padding: 20px; background: #F8FAFC; border-radius: 24px; outline: 1px rgba(0, 0, 0, 0) solid; outline-offset: -1px; justify-content: space-between; align-items: center; display: inline-flex">
-                <div style="justify-content: flex-start; align-items: center; display: flex">
-                  <div style="width: 48px; height: 48px; padding-top: 11.50px; padding-bottom: 12.50px; background: #DBEAFE; border-radius: 12px; justify-content: center; align-items: center; display: flex">
-                    <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2563EB; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">政</div>
-                  </div>
-                  <div style="padding-left: 20px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex">
-                      <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                        <div style="justify-content: center; display: flex; flex-direction: column; color: #334155; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">《支持专精特新企业发展若干措施》</div>
-                      </div>
-                      <div style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 0px; display: inline-flex">
-                        <div style="align-self: stretch; padding-bottom: 1px; justify-content: flex-start; align-items: center; display: flex">
-                          <div style="padding-right: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                            <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 10px; font-family: Font Awesome 5 Free; font-weight: 400; text-transform: uppercase; line-height: 10px; letter-spacing: 0.50px; word-wrap: break-word"></div>
-                          </div>
-                          <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 600; text-transform: uppercase; line-height: 15px; letter-spacing: 0.50px; word-wrap: break-word">2小时前</div>
-                        </div>
-                        <div style="align-self: stretch; padding-left: 12px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">
-                          <div style="flex: 1 1 0; padding-bottom: 1px; justify-content: flex-start; align-items: center; display: inline-flex">
-                            <div style="padding-right: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                              <div style="justify-content: center; display: flex; flex-direction: column; color: #9333EA; font-size: 10px; font-family: Font Awesome 5 Free; font-weight: 900; text-transform: uppercase; line-height: 10px; letter-spacing: 0.50px; word-wrap: break-word"></div>
+        </header>
+
+        <div id="content-viewport" class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+            
+            <section id="dashboard" class="view-section active space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-[2rem] card-shadow flex justify-between items-center"><div class="space-y-1"><p class="text-[10px] font-black text-slate-400 uppercase italic">今日匹配成功</p><h2 class="text-2xl font-black italic">1,284</h2><p class="text-[10px] text-emerald-500 font-bold">+12.5%</p></div><i class="fas fa-handshake text-blue-100 text-3xl"></i></div>
+                    <div class="bg-white p-6 rounded-[2rem] card-shadow"><p class="text-[10px] font-black text-slate-400 uppercase italic">AI 拆解准确率</p><h2 class="text-2xl font-black italic">94.2%</h2><div class="w-full bg-slate-100 h-1.5 rounded-full mt-4"><div class="h-full bg-purple-500 w-[94%] rounded-full"></div></div></div>
+                    <div class="bg-white p-6 rounded-[2rem] card-shadow"><p class="text-[10px] font-black text-slate-400 uppercase italic">数据同步延迟</p><h2 class="text-2xl font-black italic">1.2s</h2><p class="text-[10px] text-orange-500 font-bold uppercase">API 正常</p></div>
+                    <div class="bg-indigo-600 p-6 rounded-[2rem] shadow-xl text-white"><p class="text-[10px] font-black opacity-60 uppercase italic">政策覆盖力度</p><h2 class="text-2xl font-black italic">489</h2><p class="text-[10px] opacity-80 mt-2">覆盖 85% 企业</p></div>
+                </div>
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-8 bg-white rounded-[2.5rem] p-8 card-shadow space-y-6">
+                        <h3 class="text-sm font-black italic uppercase">政策处理流 / 实时对标</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-5 bg-slate-50 rounded-3xl border border-slate-100 group hover:border-blue-200 transition">
+                                <div class="flex items-center gap-5"><div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-black">政</div><div><h4 class="text-xs font-black italic">《专精特新支持措施》</h4><p class="text-[9px] text-slate-400 font-bold">2小时前 • AI 生成 12 个标签</p></div></div>
+                                <button class="px-6 py-2 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest">去核准</button>
                             </div>
-                            <div style="justify-content: center; display: flex; flex-direction: column; color: #9333EA; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 600; text-transform: uppercase; line-height: 15px; letter-spacing: 0.50px; word-wrap: break-word">AI 生成 12 问答对</div>
-                          </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-                </div>
-                <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #2563EB; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 15px -3px #BFDBFE; overflow: hidden; border-radius: 12px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                  <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word">去核验</div>
-                </div>
-              </div>
-              <div style="align-self: stretch; padding: 20px; background: #F8FAFC; border-radius: 24px; outline: 1px rgba(0, 0, 0, 0) solid; outline-offset: -1px; justify-content: space-between; align-items: center; display: inline-flex">
-                <div style="justify-content: flex-start; align-items: center; display: flex">
-                  <div style="width: 48px; height: 48px; padding-top: 11.50px; padding-bottom: 12.50px; background: #FEF3C7; border-radius: 12px; justify-content: center; align-items: center; display: flex">
-                    <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: #D97706; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">控</div>
-                  </div>
-                  <div style="padding-left: 20px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex">
-                      <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                        <div style="justify-content: center; display: flex; flex-direction: column; color: #334155; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">标签冲突预警: ID #4092</div>
-                      </div>
-                      <div style="align-self: stretch; height: 16px"></div>
+                    <div class="col-span-4 bg-white rounded-[2.5rem] p-8 card-shadow">
+                        <h3 class="text-sm font-black italic uppercase mb-6">画像变动实时流</h3>
+                        <div class="relative space-y-8 border-l border-slate-100 ml-2 pl-6 pb-6 text-xs">
+                            <div class="relative"><span class="absolute -left-8 top-0 w-3 h-3 bg-blue-600 rounded-full border-2 border-white"></span><p class="text-slate-400 italic">10:24 AM</p><p class="font-black mt-1 italic">科创有限公司</p><p class="text-blue-500">标注: # 专精特新</p></div>
+                            <div class="relative"><span class="absolute -left-8 top-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white"></span><p class="text-slate-400 italic">09:15 AM</p><p class="font-black mt-1 italic">XX 制造厂</p><p class="text-emerald-500">匹配度: 92%</p></div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #F59E0B; box-shadow: 0px 4px 6px -4px #FDE68A, 0px 10px 15px -3px #FDE68A; overflow: hidden; border-radius: 12px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-                  <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word">处理冲突</div>
+            </section>
+
+            <section id="policy-import" class="view-section space-y-8">
+                <div class="bg-white rounded-[2.5rem] p-10 card-shadow space-y-8">
+                    <div class="drop-zone rounded-[2rem] p-12 text-center group hover:bg-slate-50 transition">
+                        <i class="fas fa-cloud-upload-alt text-4xl text-indigo-600 mb-4"></i>
+                        <h3 class="text-sm font-black italic uppercase">点击或拖拽文件至此处上传源政策原文</h3>
+                        <p class="text-[10px] text-slate-400 mt-2">支持 PDF / WORD / PNG / URL</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase italic">政策效力层级</label><select class="w-full bg-slate-50 border rounded-xl px-4 py-3 text-xs font-bold"><option>市级政策 (苏州)</option><option>省级政策</option></select></div>
+                        <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase italic">责任委办局</label><select class="w-full bg-slate-50 border rounded-xl px-4 py-3 text-xs font-bold"><option>市工信局</option><option>市发改委</option></select></div>
+                        <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase italic">体裁分类</label><div class="flex gap-2"><button class="flex-1 py-3 bg-indigo-600 text-white rounded-xl text-[10px] font-black">申报指南</button><button class="flex-1 py-3 bg-white border rounded-xl text-[10px] font-black text-slate-400">实施细则</button></div></div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
+                <div class="space-y-4">
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">最近导入资产池 / Asset Pool</h3>
+                    <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 space-y-6">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-4"><div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 text-xl"><i class="far fa-file-pdf"></i></div><div><h4 class="text-sm font-black italic uppercase tracking-tight">苏工信规〔2026〕2号文件.pdf</h4><p class="text-[10px] text-slate-400 mt-1 uppercase font-bold">12条匹配项 • 已提取硬性门槛 4 条</p></div></div>
+                            <button class="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase">审核标签并发布</button>
+                        </div>
+                        <div class="pt-4 border-t flex flex-wrap gap-2">
+                            <span class="tag-pill px-3 py-1 bg-slate-50 rounded-lg text-[9px] font-bold text-slate-500"># 智能制造 <i class="fas fa-times ml-1"></i></span>
+                            <span class="tag-pill px-3 py-1 bg-slate-50 rounded-lg text-[9px] font-bold text-slate-500"># 资金补贴 <i class="fas fa-times ml-1"></i></span>
+                            <span class="px-3 py-1 border border-dashed rounded-lg text-[9px] font-bold text-indigo-400">AI 提取置信度: 0.98</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="enterprise-db" class="view-section space-y-8">
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-[2rem] border border-slate-100"><p class="text-[10px] font-black text-slate-400 uppercase italic">库内企业总数</p><h2 class="text-2xl font-black italic">4,285</h2></div>
+                    <div class="bg-white p-6 rounded-[2rem] border border-slate-100"><p class="text-[10px] font-black text-slate-400 uppercase italic">高新技术企业</p><h2 class="text-2xl font-black italic text-indigo-600">812</h2></div>
+                    <div class="bg-white p-6 rounded-[2rem] border border-slate-100"><p class="text-[10px] font-black text-slate-400 uppercase italic">画像更新频率</p><h2 class="text-2xl font-black italic text-emerald-500">实时</h2></div>
+                    <div class="bg-slate-900 p-6 rounded-[2rem] text-white"><p class="text-[10px] font-black text-indigo-400 uppercase italic">异常画像预警</p><h2 class="text-2xl font-black italic">03</h2></div>
+                </div>
+                <div class="bg-white rounded-[2.5rem] border overflow-hidden shadow-sm">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-50 border-b text-slate-400 font-black uppercase italic tracking-widest"><tr class="px-8"><th class="px-8 py-5">企业名称</th><th class="px-8 py-5">画像标签</th><th class="px-8 py-5">能力分</th><th class="px-8 py-5">操作</th></tr></thead>
+                        <tbody class="divide-y">
+                            <tr class="hover:bg-slate-50 transition"><td class="px-8 py-5"><p class="font-black italic">苏州某机器人科技有限公司</p><p class="text-[9px] text-slate-400">91320500MA1XXXXXXX</p></td><td class="px-8 py-5"><div class="flex gap-2"><span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[9px] font-black uppercase"># 高新</span><span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded text-[9px] font-black uppercase"># 专精特新</span></div></td><td class="px-8 py-5 font-black italic text-indigo-600">88.5</td><td class="px-8 py-5"><button class="text-blue-600 font-black uppercase">深度画像</button></td></tr>
+                            <tr class="bg-amber-50/20"><td class="px-8 py-5"><p class="font-black italic">新维度生物能源苏州有限公司</p><p class="text-[9px] text-slate-400">91320500MA2XXXXXXX</p></td><td class="px-8 py-5"><span class="px-2 py-0.5 bg-amber-100 text-amber-600 rounded text-[9px] font-black uppercase"># 瞪羚计划潜力</span></td><td class="px-8 py-5 font-black italic text-slate-400">72.0</td><td class="px-8 py-5"><button class="bg-slate-900 text-white px-4 py-1.5 rounded-lg text-[9px] font-black uppercase">下达提醒</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="performance-config" class="view-section space-y-8">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-4 bg-white rounded-[2.5rem] p-8 card-shadow space-y-6">
+                        <h3 class="text-sm font-black italic uppercase">算法规则配置</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-slate-50 rounded-2xl">
+                                <p class="text-[10px] font-black text-slate-400 uppercase italic mb-2">匹配权重优先级</p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between text-xs font-bold"><span>技术指标</span><span class="text-indigo-600">45%</span></div>
+                                    <div class="w-full bg-slate-200 h-1 rounded-full"><div class="bg-indigo-600 h-full w-[45%]"></div></div>
+                                    <div class="flex justify-between text-xs font-bold"><span>财务营收</span><span class="text-indigo-600">30%</span></div>
+                                    <div class="w-full bg-slate-200 h-1 rounded-full"><div class="bg-indigo-600 h-full w-[30%]"></div></div>
+                                </div>
+                            </div>
+                            <button class="w-full py-4 bg-slate-900 text-white rounded-2xl text-xs font-black uppercase tracking-widest">保存算法修改</button>
+                        </div>
+                    </div>
+                    <div class="col-span-8 bg-slate-900 rounded-[2.5rem] p-10 text-white relative overflow-hidden shadow-2xl">
+                        <div class="relative z-10 space-y-8">
+                            <div><h3 class="text-lg font-black italic uppercase text-indigo-400">全区产业匹配效能分析</h3><p class="text-xs opacity-60 mt-2">基于 AI 模拟引擎，当前政策对本区产业的拉动效应预估为 +14.2%</p></div>
+                            <div class="flex gap-10">
+                                <div class="text-center">
+                                    <p class="text-[10px] font-black opacity-40 uppercase tracking-widest">预估触达企业</p>
+                                    <p class="text-4xl font-black italic mt-2">152 <span class="text-sm not-italic opacity-30">家</span></p>
+                                </div>
+                                <div class="text-center border-l border-white/10 pl-10">
+                                    <p class="text-[10px] font-black opacity-40 uppercase tracking-widest">预估资金流转</p>
+                                    <p class="text-4xl font-black italic mt-2">¥75M</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4"><button class="px-8 py-3 bg-white text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest">导出仿真报告</button><button class="px-8 py-3 bg-indigo-600 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-indigo-900/50">运行全量压力测试</button></div>
+                        </div>
+                        <div class="absolute right-0 bottom-0 text-[12rem] opacity-5 -mr-10 -mb-10 rotate-12"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                </div>
+            </section>
+
         </div>
-        <div style="width: 496px; align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-          <div style="align-self: stretch; padding: 32px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 32px; outline: 1px #F1F5F9 solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 42px; display: flex">
-            <div style="width: 430px; justify-content: flex-start; align-items: center; display: inline-flex">
-              <div style="padding-right: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                <div style="justify-content: center; display: flex; flex-direction: column; color: #6366F1; font-size: 20px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 28px; word-wrap: break-word"></div>
-              </div>
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">画像变动实时流</div>
-            </div>
-            <div style="width: 422px; padding-left: 32px; border-left: 2px #F1F5F9 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 40px; display: flex">
-              <div style="width: 388px; height: 59.50px; position: relative">
-                <div style="width: 388px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 700; text-transform: uppercase; line-height: 15px; letter-spacing: 1px; word-wrap: break-word">10:24 AM</div>
-                </div>
-                <div style="width: 388px; left: 0px; top: 19px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: #1E293B; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">科创有限公司</div>
-                </div>
-                <div style="width: 388px; left: 0px; top: 42px; position: absolute; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: #64748B; font-size: 11px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 16.50px; word-wrap: break-word">系统自动标注: </div>
-                  <div style="padding-left: 8px; padding-right: 8px; background: #EFF6FF; border-radius: 4px; justify-content: flex-start; align-items: flex-start; display: flex">
-                    <div style="justify-content: center; display: flex; flex-direction: column; color: #2563EB; font-size: 11px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16.50px; word-wrap: break-word">#专精特新</div>
-                  </div>
-                </div>
-                <div style="width: 16px; height: 16px; left: -41px; top: 4px; position: absolute; background: #3B82F6; box-shadow: 0px 1px 2px #60A5FA; border-radius: 9999px; border: 4px white solid"></div>
-              </div>
-              <div style="width: 388px; height: 59.50px; position: relative">
-                <div style="width: 388px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 700; text-transform: uppercase; line-height: 15px; letter-spacing: 1px; word-wrap: break-word">09:15 AM</div>
-                </div>
-                <div style="width: 388px; left: 0px; top: 19px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column; color: #1E293B; font-size: 14px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">XX制造厂</div>
-                </div>
-                <div style="width: 388px; left: 0px; top: 42px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                  <div style="justify-content: center; display: flex; flex-direction: column"><span style="color: #64748B; font-size: 11px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 16.50px; word-wrap: break-word">算法重新评估: 匹配度 </span><span style="color: #059669; font-size: 11px; font-family: Plus Jakarta Sans; font-weight: 700; text-decoration: underline; line-height: 16.50px; word-wrap: break-word">85% → 92%</span></div>
-                </div>
-                <div style="width: 16px; height: 16px; left: -41px; top: 4px; position: absolute; background: #E2E8F0; border-radius: 9999px; border: 4px white solid"></div>
-              </div>
-            </div>
-            <div style="width: 430px; padding-top: 37px; padding-bottom: 24px; padding-left: 24px; padding-right: 24px; position: relative; background: #0F172A; overflow: hidden; border-radius: 24px; flex-direction: column; justify-content: flex-end; align-items: flex-end; gap: 12px; display: flex">
-              <div style="left: 386px; top: 175px; position: absolute; opacity: 0.10; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div style="justify-content: center; display: flex; flex-direction: column; color: white; font-size: 60px; font-family: Font Awesome 5 Free; font-weight: 900; line-height: 60px; word-wrap: break-word"></div>
-              </div>
-              <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-                <div style="align-self: stretch; opacity: 0.60; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                  <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 700; text-transform: uppercase; line-height: 15px; letter-spacing: 1px; word-wrap: break-word">算法权重实时效能</div>
-                </div>
-                <div style="align-self: stretch; height: 96px; justify-content: space-between; align-items: flex-end; display: inline-flex">
-                  <div style="width: 70px; height: 38.39px; background: rgba(59, 130, 246, 0.30); border-radius: 8px; border: 1px rgba(96, 165, 250, 0.20) solid"></div>
-                  <div style="width: 78px; height: 57.59px; padding-left: 8px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">
-                    <div style="align-self: stretch; flex: 1 1 0; background: rgba(59, 130, 246, 0.50); border-radius: 8px; border: 1px rgba(96, 165, 250, 0.20) solid"></div>
-                  </div>
-                  <div style="width: 78px; height: 81.59px; padding-left: 8px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">
-                    <div style="align-self: stretch; flex: 1 1 0; background: rgba(59, 130, 246, 0.70); border-radius: 8px; border: 1px rgba(96, 165, 250, 0.20) solid"></div>
-                  </div>
-                  <div style="width: 78px; align-self: stretch; padding-left: 8px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">
-                    <div style="align-self: stretch; flex: 1 1 0; position: relative; background: #2563EB; box-shadow: 0px 4px 6px -4px rgba(59, 130, 246, 0.40), 0px 10px 15px -3px rgba(59, 130, 246, 0.40); border-radius: 8px; border: 1px rgba(96, 165, 250, 0.20) solid"></div>
-                  </div>
-                  <div style="width: 78px; height: 72px; padding-left: 8px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">
-                    <div style="align-self: stretch; flex: 1 1 0; background: rgba(59, 130, 246, 0.80); border-radius: 8px; border: 1px rgba(96, 165, 250, 0.20) solid"></div>
-                  </div>
-                </div>
-                <div style="align-self: stretch; opacity: 0.40; flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
-                  <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 10px; font-family: Plus Jakarta Sans; font-weight: 400; line-height: 15px; word-wrap: break-word">基于“标签重合度+历史倾向”计算</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="width: 800px; height: 188px; position: relative">
-        <div style="left: 0px; top: 0px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 18px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 28px; word-wrap: break-word">临期政策监控                                                                            效能/数据监控                                                                    报告监控</div>
-        <div style="left: 0px; top: 44px; position: absolute; justify-content: flex-start; align-items: center; gap: 100px; display: inline-flex">
-          <div style="width: 240px; height: 144px; position: relative; background: white; box-shadow: 7px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; outline: 1px #F1F5F9 solid; outline-offset: -1px">
-            <div style="width: 174.33px; left: 33px; top: 35px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #334155; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">数字化转型奖补</div>
-            </div>
-            <div style="width: 174.33px; height: 20px; left: 33px; top: 67px; position: absolute">
-              <div style="width: 157px; left: 0px; top: 0px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #FF0004; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 19.50px; word-wrap: break-word">倒计时2天</div>
-            </div>
-            <div style="width: 169px; height: 2px; left: 33px; top: 101px; position: absolute; background: #D9D9D9"></div>
-            <div style="width: 93px; height: 2px; left: 33px; top: 101px; position: absolute; background: #FF0000"></div>
-          </div>
-          <div style="width: 240px; height: 144px; position: relative; background: white; box-shadow: 7px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; outline: 1px #F1F5F9 solid; outline-offset: -1px">
-            <div style="width: 174.33px; left: 33px; top: 35px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-              <div style="justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">工商接口             数据可信度</div>
-            </div>
-            <div style="width: 112.41px; height: 2px; left: 119px; top: 17px; position: absolute; transform: rotate(90deg); transform-origin: top left; background: #D9D9D9"></div>
-            <div style="width: 29px; height: 29px; left: 33px; top: 72px; position: absolute; background: #75F998; border-radius: 9999px"></div>
-            <div style="left: 72px; top: 77px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #75F998; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 19.50px; word-wrap: break-word">正常</div>
-            <div style="left: 142px; top: 77px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #6366F1; font-size: 22px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 19.50px; word-wrap: break-word">98.2%</div>
-          </div>
-          <div style="width: 240px; height: 144px; position: relative; background: white; box-shadow: 7px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; outline: 1px #F1F5F9 solid; outline-offset: -1px">
-            <div style="left: 56px; top: 47px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column"><span style="color: white; font-size: 16px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">批量分发匹配报告<br/></span><span style="color: white; font-size: 13px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 24px; word-wrap: break-word">（28份待分发）</span></div>
-          </div>
-        </div>
-      </div>
-      <div style="width: 1519px; height: 194px; position: relative">
-        <div style="left: 0px; top: 0px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #0F172A; font-size: 18px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 28px; word-wrap: break-word">高频场景能力分布</div>
-        <div style="width: 1519px; height: 152px; left: 0px; top: 42px; position: absolute; background: rgba(189.29, 216.67, 255, 0.26); border-radius: 20px">
-          <div style="width: 1329px; left: 83px; top: 25px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 绿色储能</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 5G 通讯</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 工业互联网</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 生物医药</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># AI</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 智能算法</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 数字学生</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 网络技术服务</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #34D399; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #A7F3D0; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 内资企业</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #94A3B8; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #CBD8EB; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 多模态</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #94A3B8; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #CBD8EB; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 大型企业</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #94A3B8; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #CBD8EB; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 大模型（LLM）</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #F3AA56; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #FFF0D6; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 新材料</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #F3AA56; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #FFF0D6; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 集成电路</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #F3AA56; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #FFF0D6; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># AI节能降耗</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #F3AA56; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #FFF0D6; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 数据处理服务</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #F3AA56; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #FFF0D6; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 信息技术咨询</div>
-            </div>
-            <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; background: #F3AA56; box-shadow: 0px 4px 6px -4px #BFDBFE, 0px 10px 18px 5px #FFF0D6; overflow: hidden; border-radius: 33px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-              <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 12px; font-family: Plus Jakarta Sans; font-weight: 700; line-height: 16px; word-wrap: break-word"># 全资子公司</div>
-            </div>
-          </div>
-        </div>
-        <div style="left: 1436px; top: 9px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #94A3B8; font-size: 12px; font-family: Plus Jakarta Sans; font-style: italic; font-weight: 400; text-decoration: underline; line-height: 16px; word-wrap: break-word">标签体系管理</div>
-      </div>
+    </main>
+
+    <div class="fixed bottom-10 right-10 z-50">
+        <button id="ai-trigger" class="w-14 h-14 bg-slate-900 text-white rounded-full shadow-2xl flex items-center justify-center text-xl hover:bg-blue-600 transition group border-4 border-white">
+            <i class="fas fa-magic"></i>
+            <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white"></span>
+        </button>
     </div>
-  </div>
-</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.view-section');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetId = item.getAttribute('data-target');
+
+                    // 1. 更新菜单激活状态
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // 2. 切换内容区域
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+
+                    // 3. 模拟页面加载效果
+                    console.log(`已切换至界面: ${targetId}`);
+                });
+            });
+
+            // 搜索框模拟逻辑
+            const searchInput = document.getElementById('global-search');
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    alert('正在全库搜索: ' + searchInput.value);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
