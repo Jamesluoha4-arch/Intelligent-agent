@@ -327,40 +327,88 @@
                         <th class="px-6 py-4 font-bold text-right">操作管理</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-50 text-sm text-slate-700">
-                    <tr class="hover:bg-slate-50/50 transition">
-                        <td class="px-6 py-4 font-medium">大模型 (LLM)</td>
-                        <td class="px-6 py-4 text-blue-600 font-mono font-bold">
-                            <input type="number" value="0.95" class="w-12 bg-transparent focus:outline-none border-b border-transparent focus:border-blue-400">
-                        </td>
-                        <td class="px-6 py-4 text-slate-400 text-xs">2026-01-10</td>
-                        <td class="px-6 py-4 text-slate-400 text-xs">2027-01-10</td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center justify-center gap-2 text-green-600 bg-green-50 px-2 py-1 rounded-full text-[10px] font-bold">
-                                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-right space-x-3">
-                            <button class="text-blue-500 hover:text-blue-700 font-bold text-xs">延长时间</button>
-                            <button class="text-red-400 hover:text-red-600 font-bold text-xs">设为失效</button>
-                        </td>
-                    </tr>
-                    
-                    <tr class="bg-slate-50/30">
-                        <td class="px-6 py-4 font-medium text-slate-400 italic">传统软件外包</td>
-                        <td class="px-6 py-4 text-slate-300 font-mono font-bold">0.15</td>
-                        <td class="px-6 py-4 text-slate-300 text-xs">2024-05-20</td>
-                        <td class="px-6 py-4 text-red-300 text-xs font-medium">2025-05-20 (逾期)</td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center justify-center gap-2 text-slate-400 bg-slate-100 px-2 py-1 rounded-full text-[10px]">
-                                <span class="w-1 h-1 bg-slate-300 rounded-full"></span> 已失效
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <button class="text-blue-500 hover:text-blue-700 font-bold text-xs">重新生效</button>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="tag-table-body" class="divide-y divide-slate-50 text-sm text-slate-700">
+    <tr class="hover:bg-slate-50/50 transition">
+        <td class="px-6 py-4 font-medium text-blue-600">大模型 (LLM)</td>
+        <td class="px-6 py-4">
+            <input type="number" value="0.98" step="0.01" class="w-16 bg-blue-50/50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700">
+        </td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
+        <td class="px-6 py-4 text-center">
+            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
+                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
+            </span>
+        </td>
+        <td class="px-6 py-4 text-right space-x-3">
+            <button class="text-blue-500 hover:underline text-xs">延时</button>
+            <button class="text-red-400 hover:underline text-xs">失效</button>
+        </td>
+    </tr>
+
+    <tr class="hover:bg-slate-50/50 transition">
+        <td class="px-6 py-4 font-medium">RAG 机制/应用</td>
+        <td class="px-6 py-4">
+            <input type="number" value="0.95" step="0.01" class="w-16 bg-transparent border-b border-slate-100 focus:border-blue-400 outline-none font-mono">
+        </td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
+        <td class="px-6 py-4 text-center">
+            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">有效</span>
+        </td>
+        <td class="px-6 py-4 text-right space-x-3">
+            <button class="text-blue-500 hover:underline text-xs">延时</button>
+            <button class="text-red-400 hover:underline text-xs">失效</button>
+        </td>
+    </tr>
+
+    <tr class="hover:bg-slate-50/50 transition">
+        <td class="px-6 py-4 font-medium">AIGC (生成式AI)</td>
+        <td class="px-6 py-4"><input type="number" value="0.92" class="w-16 bg-transparent"></td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
+        <td class="px-6 py-4 text-center"><span class="text-green-600 text-[10px] font-bold">有效</span></td>
+        <td class="px-6 py-4 text-right space-x-3"><button class="text-blue-500 text-xs">延时</button><button class="text-red-400 text-xs">失效</button></td>
+    </tr>
+
+    <tr class="hover:bg-slate-50/50 transition">
+        <td class="px-6 py-4 font-medium">多模态模型部署</td>
+        <td class="px-6 py-4"><input type="number" value="0.90" class="w-16 bg-transparent"></td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
+        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
+        <td class="px-6 py-4 text-center"><span class="text-green-600 text-[10px] font-bold">有效</span></td>
+        <td class="px-6 py-4 text-right space-x-3"><button class="text-blue-500 text-xs">延时</button><button class="text-red-400 text-xs">失效</button></td>
+    </tr>
+
+    <tr class="bg-slate-50/50">
+        <td class="px-6 py-4 font-medium text-slate-400">认知智能</td>
+        <td class="px-6 py-4 text-slate-300">0.85</td>
+        <td class="px-6 py-4 text-slate-300 text-xs">2025-01-01</td>
+        <td class="px-6 py-4 text-red-400 text-xs font-bold">2026-01-01 (已失效)</td>
+        <td class="px-6 py-4 text-center">
+            <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
+        </td>
+        <td class="px-6 py-4 text-right">
+            <button class="text-blue-500 font-bold text-xs">重新生效</button>
+        </td>
+    </tr>
+
+    <script>
+        // 为了保持页面整洁，其余标签可以通过 JavaScript 动态渲染，或者按照上述格式手动复制
+        const otherTags = [
+            { name: "计算机视觉（识别）", weight: 0.88 },
+            { name: "多模态", weight: 0.90 },
+            { name: "预训练模型", weight: 0.93 },
+            { name: "数字孪生", weight: 0.85 },
+            { name: "智能算法", weight: 0.80 },
+            { name: "人工智能应用", weight: 0.75 },
+            { name: "人工智能软件开发", weight: 0.70 },
+            { name: "人工智能硬件", weight: 0.82 },
+            { name: "AI 节能降耗", weight: 0.88 }
+        ];
+        // 建议手动将这些按照上方 <tr> 格式写进 HTML，以保证 SEO 和首屏渲染速度
+    </script>
+</tbody>
             </table>
         </div>
     </div>
