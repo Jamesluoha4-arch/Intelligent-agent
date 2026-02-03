@@ -1,235 +1,26 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>政策导入与管理中心 - Digital Asset Pool</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', "Microsoft YaHei", sans-serif; background-color: #F8FAFC; }
-        .sidebar-gradient { background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%); border-right: 1px solid #E2E8F0; }
-        .nav-active { background: #EEF2FF; color: #4F46E5 !important; border-radius: 12px; }
-        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .dashed-border { border: 2px dashed #E2E8F0; border-radius: 24px; transition: all 0.3s; }
-        .dashed-border:hover { border-color: #4F46E5; background: #F5F7FF; }
-        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    </style>
-</head>
-<body class="flex h-screen overflow-hidden text-slate-700">
+.app {
+  display: flex;
+  height: 100vh;
+}
 
-    <aside class="w-20 sidebar-gradient flex flex-col items-center py-6 gap-8 shrink-0">
-        <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
-            <i data-lucide="layers" class="w-6 h-6"></i>
-        </div>
-        <nav class="flex flex-col gap-4">
-            <a href="控制台首页.html" class="nav-item w-12 h-12 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-colors">
-                <i data-lucide="layout-grid" class="w-6 h-6"></i>
-            </a>
-            <a href="政策导入与管理.html" class="nav-item nav-active w-12 h-12 flex items-center justify-center text-slate-400">
-                <i data-lucide="file-plus" class="w-6 h-6"></i>
-            </a>
-            <a href="企业信息管理.html" class="nav-item w-12 h-12 flex items-center justify-center text-slate-400 hover:text-blue-600">
-                <i data-lucide="database" class="w-6 h-6"></i>
-            </a>
-            <a href="效能配置与对接.html" class="nav-item w-12 h-12 flex items-center justify-center text-slate-400 hover:text-blue-600">
-                <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-            </a>
-            <div class="mt-10 pt-10 border-t border-slate-100">
-                <i data-lucide="settings" class="w-6 h-6 text-slate-300"></i>
-            </div>
-        </nav>
-        <div class="mt-auto">
-            <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 border border-slate-200">
-                <i data-lucide="user" class="w-5 h-5"></i>
-            </div>
-        </div>
-    </aside>
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
-    <main class="flex-1 flex flex-row overflow-hidden">
-        
-        <section class="flex-1 flex flex-col p-8 overflow-y-auto space-y-8">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h1 class="text-2xl font-bold text-slate-800 flex items-center gap-3">
-                        政策导入与管理中心
-                        <span class="text-[10px] bg-slate-800 text-white px-2 py-0.5 rounded uppercase tracking-widest font-normal">Digital Asset Pool</span>
-                    </h1>
-                    <p class="text-xs text-slate-400 mt-1">在线上传政策原文、截图或链接，AI 将实时进行精细化提取并与全量画像进行自动对标。</p>
-                </div>
-                <div class="flex gap-3">
-                    <button class="px-4 py-2 text-sm border rounded-xl hover:bg-white transition-all">查看历史记录</button>
-                    <button class="px-4 py-2 text-sm bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-200">批量发布</button>
-                </div>
-            </div>
+.header {
+  height: 56px;
+  background: #fff;
+  border-bottom: 1px solid #e5e6eb;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-            <div class="dashed-border bg-white/50 p-12 flex flex-col items-center justify-center text-center space-y-4">
-                <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center shadow-inner">
-                    <i data-lucide="upload-cloud" class="w-8 h-8"></i>
-                </div>
-                <div>
-                    <p class="text-lg font-medium text-slate-700">点击或拖拽文件至此处，或直接粘贴政策文本/链接</p>
-                    <p class="text-xs text-slate-400 mt-2 uppercase tracking-tighter">支持 PDF / WORD / PNG / URL</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-4 gap-4">
-                <div class="space-y-1">
-                    <label class="text-[10px] text-slate-400 ml-2 uppercase">政策发力层级</label>
-                    <div class="bg-white border border-slate-100 rounded-xl p-3 text-sm flex justify-between items-center">
-                        市级政策（苏州） <i data-lucide="chevron-down" class="w-4 h-4 text-slate-300"></i>
-                    </div>
-                </div>
-                <div class="space-y-1">
-                    <label class="text-[10px] text-slate-400 ml-2 uppercase">责任牵头部局</label>
-                    <div class="bg-white border border-slate-100 rounded-xl p-3 text-sm">市工信局</div>
-                </div>
-                <div class="col-span-2 flex items-end gap-3 pb-0.5">
-                    <button class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl text-sm font-bold border border-blue-100">开始解析</button>
-                    <button class="flex-1 bg-white border py-3 rounded-xl text-sm text-slate-400">辅助录入</button>
-                </div>
-            </div>
-
-            <div class="space-y-4 pt-4">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">最近导入资产 / ASSET POOL</h3>
-                </div>
-
-                <div class="bg-white p-6 rounded-[24px] shadow-sm border border-slate-50 flex items-center gap-6">
-                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-500">
-                        <i data-lucide="file-text" class="w-6 h-6"></i>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2">
-                            <h4 class="font-bold text-slate-700 text-lg">苏工信规〔2026〕2号文件.pdf</h4>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-600 px-2 py-0.5 rounded font-bold">AI 解析中</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-1">上传于 2026-01-30 10:42 · 责任部门：信息化推进处</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-xs font-bold text-slate-800">12 条政策维度</p>
-                        <p class="text-[10px] text-slate-400">已提取 8 部门/4 条</p>
-                    </div>
-                    <button class="bg-slate-800 text-white px-6 py-2 rounded-xl text-sm font-bold">查看详情</button>
-                </div>
-
-                <div class="bg-white p-6 rounded-[24px] shadow-sm border border-slate-50 flex items-center gap-6 opacity-60">
-                    <div class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-slate-300">
-                        <i data-lucide="image" class="w-6 h-6"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-bold text-slate-700 text-lg">微信截图_20260130.png</h4>
-                        <p class="text-xs text-slate-400 mt-1 italic">AI 正在进行 OCR 结构化处理并自动对标...</p>
-                    </div>
-                    <button class="text-slate-400"><i data-lucide="more-horizontal"></i></button>
-                </div>
-            </div>
-        </section>
-
-        <section class="w-[400px] border-l bg-white p-8 overflow-y-auto space-y-8">
-            <div class="bg-slate-900 rounded-[32px] p-8 text-white relative overflow-hidden">
-                <div class="relative z-10">
-                    <h3 class="text-xs font-bold opacity-50 uppercase tracking-widest mb-6">全区测算模拟评估 / SIMULATION</h3>
-                    <div class="flex justify-between items-end mb-8">
-                        <div>
-                            <p class="text-[10px] opacity-50 uppercase">潜在符合企业</p>
-                            <h2 class="text-4xl font-bold mt-1">152 <span class="text-sm font-normal opacity-50">家</span></h2>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[10px] opacity-50 uppercase">预估补奖总额</p>
-                            <h2 class="text-3xl font-bold mt-1 text-blue-400">¥ 75.0 <span class="text-sm font-normal opacity-50">M</span></h2>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white/5 rounded-2xl p-4 border border-white/10 mb-6">
-                        <div class="flex items-center gap-2 mb-2">
-                            <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
-                            <span class="text-xs font-bold text-blue-200">AI 策略建议</span>
-                        </div>
-                        <p class="text-[11px] leading-relaxed opacity-70">
-                            当前政策匹配在“专精特新”企业中响应度极高，建议在发布后的首周内通过“免申即享”模块优先推送到位。
-                        </p>
-                    </div>
-
-                    <button class="w-full bg-blue-600 py-4 rounded-2xl text-sm font-bold shadow-lg shadow-blue-900/50">运行详细匹配测试</button>
-                </div>
-                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/20 blur-[60px] rounded-full"></div>
-            </div>
-
-            <div class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">审批与联合状态 / WORKFLOW</h3>
-                </div>
-                <div class="space-y-4">
-                    <div class="relative pl-6 pb-6 border-l-2 border-emerald-500">
-                        <div class="absolute -left-[9px] top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white"></div>
-                        <div class="flex justify-between text-sm">
-                            <span class="font-bold">工信局初核</span>
-                            <span class="text-emerald-500 text-xs">已通过</span>
-                        </div>
-                        <div class="w-full h-1.5 bg-slate-100 rounded-full mt-3">
-                            <div class="h-full bg-emerald-500 rounded-full w-full"></div>
-                        </div>
-                    </div>
-                    <div class="relative pl-6 pb-6 border-l-2 border-orange-400">
-                        <div class="absolute -left-[9px] top-0 w-4 h-4 bg-orange-400 rounded-full border-4 border-white"></div>
-                        <div class="flex justify-between text-sm">
-                            <span class="font-bold">财政局联审</span>
-                            <span class="text-orange-500 text-xs font-bold">对接中</span>
-                        </div>
-                        <div class="w-full h-1.5 bg-slate-100 rounded-full mt-3 overflow-hidden">
-                            <div class="h-full bg-orange-400 rounded-full w-2/3 animate-pulse"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex justify-between pt-4 border-t border-slate-50">
-                    <span class="text-[10px] text-slate-300 uppercase">流程配置预案</span>
-                    <span class="text-[10px] text-blue-500 font-bold cursor-pointer underline">+ 更多自定义规则</span>
-                </div>
-            </div>
-
-            <div class="bg-white/80 backdrop-blur rounded-2xl p-3 border shadow-sm flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="status-dot bg-emerald-500"></span>
-                    <span class="text-[10px] font-bold">五位一体 API 链路就绪</span>
-                </div>
-                <div class="flex gap-4">
-                    <span class="text-[10px] text-blue-500 underline cursor-pointer">备份文件传输</span>
-                    <span class="text-[10px] text-slate-400">匹配库容量增长 <span class="text-emerald-500">+4.2%</span></span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        lucide.createIcons();
-
-        // 导航切换模拟逻辑
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const target = item.getAttribute('href');
-                if (target === "#" || target === "") {
-                    e.preventDefault();
-                    alert("该功能模块开发中...");
-                }
-                // 实际项目中这里通过 window.location.href 跳转，
-                // 在演示中，你可以将所有页面文件放在同一目录下即可实现点击跳转。
-            });
-        });
-
-        // 拖拽上传视觉交互
-        const uploadArea = document.querySelector('.dashed-border');
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = "#4F46E5";
-            uploadArea.style.background = "#F5F7FF";
-        });
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.borderColor = "#E2E8F0";
-            uploadArea.style.background = "transparent";
-        });
-    </script>
-</body>
-</html>
+.content {
+  flex: 1;
+  padding: 24px;
+  overflow: auto;
+}
