@@ -633,6 +633,145 @@
                 </div>
             </section>
 
+            <section id="page-enterprise" class="hidden-page">
+                <div class="grid grid-cols-4 gap-6 mb-8">
+                    <div class="glass-card p-4">
+                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">国内企业总数</p>
+                        <div class="flex items-baseline gap-2">
+                            <h3 class="text-2xl font-bold">4,285</h3>
+                            <span class="text-green-500 text-xs font-bold">↑ 12%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">覆盖重点企业</p>
+                        <div class="flex items-baseline gap-2">
+                            <h3 class="text-2xl font-bold text-indigo-600">812</h3>
+                            <span class="text-slate-400 text-[10px]">占比 18.9%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">专精特新“小巨人”</p>
+                        <h3 class="text-2xl font-bold">46</h3>
+                        <p class="text-[10px] text-blue-500 mt-1 font-medium">重点扶持对象</p>
+                    </div>
+                    <div class="glass-card p-4">
+                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">今日匹配更新</p>
+                        <h3 class="text-2xl font-bold text-slate-300">128</h3>
+                    </div>
+                </div>
+
+                <div class="glass-card shadow-sm mb-6 p-4">
+                    <div class="flex flex-wrap gap-4 mb-4 items-center">
+                        <span class="text-xs font-bold text-slate-400 uppercase">行业分类</span>
+                        <div class="flex gap-2">
+                            <button class="px-3 py-1 bg-slate-800 text-white rounded-full text-[11px] font-medium">全部行业</button>
+                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">智能制造</button>
+                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">生物医药</button>
+                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">新材料</button>
+                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">半导体</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <span class="text-xs font-bold text-slate-400 uppercase">企业资质</span>
+                        <div class="flex gap-2">
+                            <button class="px-3 py-1 bg-blue-50 text-blue-600 border border-blue-100 rounded-full text-[11px] font-medium">高新技术企业</button>
+                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium">科技型中小企业</button>
+                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium">省级专精特新</button>
+                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium">独角兽企业</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card shadow-sm overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/30">
+                        <div class="flex-1 max-w-md relative">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            <input type="text" placeholder="搜索企业名称、信用代码或标签..." class="w-full bg-white border border-slate-200 rounded-lg py-1.5 pl-10 pr-4 text-xs focus:ring-1 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-medium">重置筛选</button>
+                            <button class="px-4 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium">导出数据清单</button>
+                        </div>
+                    </div>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white text-[10px] text-slate-400 uppercase tracking-widest border-b border-slate-100">
+                                <th class="px-6 py-4 font-bold">企业名称与信用代码</th>
+                                <th class="px-6 py-4 font-bold">核心业务标签</th>
+                                <th class="px-6 py-4 font-bold">综合能力分</th>
+                                <th class="px-6 py-4 font-bold">匹配政策数</th>
+                                <th class="px-6 py-4 font-bold text-right">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50 text-slate-700">
+                            <tr class="hover:bg-blue-50/30 transition-colors group cursor-pointer" onclick="switchPage('matching')">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">S</div>
+                                        <div>
+                                            <p class="text-sm font-bold">苏州某机器人科技有限公司</p>
+                                            <p class="text-[10px] text-slate-400">91320500MA1X0XXX8 • 制造业</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex gap-1.5">
+                                        <span class="px-1.5 py-0.5 bg-green-50 text-green-700 border border-green-100 rounded text-[9px] font-bold"># 道路</span>
+                                        <span class="px-1.5 py-0.5 bg-blue-50 text-blue-700 border border-blue-100 rounded text-[9px] font-bold"># 自动驾驶</span>
+                                        <span class="px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded text-[9px] font-bold">+3</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-bold text-indigo-600 italic">88.5</td>
+                                <td class="px-6 py-4"><span class="font-bold">12</span> <span class="text-slate-400 text-[10px]">项符合</span></td>
+                                <td class="px-6 py-4 text-right">
+                                    <button class="p-2 text-slate-300 hover:text-blue-600 transition-colors"><i class="fas fa-external-link-alt"></i></button>
+                                    <button class="p-2 text-slate-300 hover:text-blue-600 transition-colors"><i class="fas fa-ellipsis-v"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-blue-50/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm">N</div>
+                                        <div>
+                                            <p class="text-sm font-bold">新维度生物能源有限公司</p>
+                                            <p class="text-[10px] text-slate-400">91123456MA2XXX9 • 新能源</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex gap-1.5">
+                                        <span class="px-1.5 py-0.5 bg-amber-50 text-amber-700 border border-amber-100 rounded text-[9px] font-bold"># 绿色替代潜力</span>
+                                        <span class="px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded text-[9px] font-bold"># 低碳</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-bold text-slate-400 italic">72.0</td>
+                                <td class="px-6 py-4"><span class="font-bold">8</span> <span class="text-slate-400 text-[10px]">项符合</span></td>
+                                <td class="px-6 py-4 text-right">
+                                    <button class="px-3 py-1 bg-slate-800 text-white text-[10px] rounded-lg font-bold">下载申报预研</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="p-4 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-500">
+                        <p>显示 1-10 / 共 4,285 家企业</p>
+                        <div class="flex gap-1">
+                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white"><i class="fas fa-chevron-left text-[8px]"></i></button>
+                            <button class="w-6 h-6 flex items-center justify-center rounded border border-blue-600 bg-blue-600 text-white">1</button>
+                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white">2</button>
+                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white">3</button>
+                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white"><i class="fas fa-chevron-right text-[8px]"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fixed bottom-8 right-8">
+                    <button class="bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 font-bold hover:scale-105 transition-transform">
+                        <i class="fas fa-wand-sparkles text-blue-400"></i>
+                        一键生成产业分析报告
+                    </button>
+                </div>
+            </section>
+
 <section id="page-matching" class="hidden-page">
     <div class="flex items-start justify-between mb-8">
         <div class="flex items-start gap-4">
