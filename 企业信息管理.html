@@ -633,340 +633,270 @@
                 </div>
             </section>
 
-            <section id="page-enterprise" class="hidden-page">
-                <div class="grid grid-cols-4 gap-6 mb-8">
-                    <div class="glass-card p-4">
-                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">国内企业总数</p>
-                        <div class="flex items-baseline gap-2">
-                            <h3 class="text-2xl font-bold">4,285</h3>
-                            <span class="text-green-500 text-xs font-bold">↑ 12%</span>
-                        </div>
+<section id="page-matching" class="hidden-page">
+    <div class="flex items-start justify-between mb-8">
+        <div class="flex items-start gap-4">
+            <button onclick="switchPage('enterprise')" class="text-slate-400 hover:text-slate-600 mt-1.5">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </button>
+            
+            <div class="flex-1">
+                <h2 class="text-2xl font-bold flex items-center gap-3">某机器人科技有限公司 <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-normal">最新标注企业</span></h2>
+                <p class="text-slate-400 text-xs font-mono mt-1">统一社会信用代码：91440101MAXXXXXX</p>
+                <div class="flex items-center gap-6 mt-3 text-xs text-slate-500">
+                    <div class="flex items-center">
+                        <span class="text-slate-400 mr-2">注册时间：</span>
+                        <span class="font-medium text-slate-600">2018-05-22</span>
                     </div>
-                    <div class="glass-card p-4">
-                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">覆盖重点企业</p>
-                        <div class="flex items-baseline gap-2">
-                            <h3 class="text-2xl font-bold text-indigo-600">812</h3>
-                            <span class="text-slate-400 text-[10px]">占比 18.9%</span>
-                        </div>
-                    </div>
-                    <div class="glass-card p-4">
-                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">专精特新“小巨人”</p>
-                        <h3 class="text-2xl font-bold">46</h3>
-                        <p class="text-[10px] text-blue-500 mt-1 font-medium">重点扶持对象</p>
-                    </div>
-                    <div class="glass-card p-4">
-                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1">今日匹配更新</p>
-                        <h3 class="text-2xl font-bold text-slate-300">128</h3>
+                    <div class="flex items-center border-l border-slate-200 pl-6">
+                        <span class="text-slate-400 mr-2">注册地：</span>
+                        <span class="font-medium text-slate-600">江苏省苏州市平江区中新路22号</span>
                     </div>
                 </div>
 
-                <div class="glass-card shadow-sm mb-6 p-4">
-                    <div class="flex flex-wrap gap-4 mb-4 items-center">
-                        <span class="text-xs font-bold text-slate-400 uppercase">行业分类</span>
-                        <div class="flex gap-2">
-                            <button class="px-3 py-1 bg-slate-800 text-white rounded-full text-[11px] font-medium">全部行业</button>
-                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">智能制造</button>
-                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">生物医药</button>
-                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">新材料</button>
-                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium hover:bg-slate-200">半导体</button>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-4 items-center">
-                        <span class="text-xs font-bold text-slate-400 uppercase">企业资质</span>
-                        <div class="flex gap-2">
-                            <button class="px-3 py-1 bg-blue-50 text-blue-600 border border-blue-100 rounded-full text-[11px] font-medium">高新技术企业</button>
-                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium">科技型中小企业</button>
-                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium">省级专精特新</button>
-                            <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[11px] font-medium">独角兽企业</button>
-                        </div>
+                <div class="mt-4 p-3 bg-slate-50 rounded-md border border-slate-100 max-w-3xl">
+                    <div class="flex items-start gap-2">
+                        <span class="text-xs font-bold text-slate-400 shrink-0 mt-0.5">企业介绍：</span>
+                        <p class="text-xs text-slate-500 leading-relaxed line-clamp-2 italic">
+                            公司深耕智能制造领域，拥有自主知识产权的伺服电机技术。作为工业协作机器人领域的先行者，致力于为制造业提供智能化解决方案，产品广泛应用于新能源及电子检测线。
+                        </p>
                     </div>
                 </div>
 
-                <div class="glass-card shadow-sm overflow-hidden">
-                    <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/30">
-                        <div class="flex-1 max-w-md relative">
-                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                            <input type="text" placeholder="搜索企业名称、信用代码或标签..." class="w-full bg-white border border-slate-200 rounded-lg py-1.5 pl-10 pr-4 text-xs focus:ring-1 focus:ring-blue-500 outline-none">
-                        </div>
-                        <div class="flex gap-3">
-                            <button class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-medium">重置筛选</button>
-                            <button class="px-4 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium">导出数据清单</button>
+                <div class="grid grid-cols-4 gap-4 mt-6">
+                    <div class="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+                        <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                            <i class="fas fa-certificate text-amber-500"></i> 资质荣誉详情
+                        </h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-start">
+                                <span class="text-xs font-bold text-slate-700">省级专精特新小巨人</span>
+                                <span class="text-[9px] text-slate-400 italic">2026-01获批</span>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <span class="text-xs font-bold text-slate-700">高新技术企业</span>
+                                <span class="text-[9px] text-slate-400 italic">有效期内</span>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <span class="text-xs font-bold text-slate-700">省级研发机构认证</span>
+                                <span class="text-[9px] text-emerald-500 font-bold">免申即享</span>
+                            </div>
                         </div>
                     </div>
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-white text-[10px] text-slate-400 uppercase tracking-widest border-b border-slate-100">
-                                <th class="px-6 py-4 font-bold">企业名称与信用代码</th>
-                                <th class="px-6 py-4 font-bold">核心业务标签</th>
-                                <th class="px-6 py-4 font-bold">综合能力分</th>
-                                <th class="px-6 py-4 font-bold">匹配政策数</th>
-                                <th class="px-6 py-4 font-bold text-right">操作</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-50 text-slate-700">
-                            <tr class="hover:bg-blue-50/30 transition-colors group cursor-pointer" onclick="switchPage('matching')">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">S</div>
-                                        <div>
-                                            <p class="text-sm font-bold">苏州某机器人科技有限公司</p>
-                                            <p class="text-[10px] text-slate-400">91320500MA1X0XXX8 • 制造业</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex gap-1.5">
-                                        <span class="px-1.5 py-0.5 bg-green-50 text-green-700 border border-green-100 rounded text-[9px] font-bold"># 道路</span>
-                                        <span class="px-1.5 py-0.5 bg-blue-50 text-blue-700 border border-blue-100 rounded text-[9px] font-bold"># 自动驾驶</span>
-                                        <span class="px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded text-[9px] font-bold">+3</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-bold text-indigo-600 italic">88.5</td>
-                                <td class="px-6 py-4"><span class="font-bold">12</span> <span class="text-slate-400 text-[10px]">项符合</span></td>
-                                <td class="px-6 py-4 text-right">
-                                    <button class="p-2 text-slate-300 hover:text-blue-600 transition-colors"><i class="fas fa-external-link-alt"></i></button>
-                                    <button class="p-2 text-slate-300 hover:text-blue-600 transition-colors"><i class="fas fa-ellipsis-v"></i></button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-blue-50/30 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm">N</div>
-                                        <div>
-                                            <p class="text-sm font-bold">新维度生物能源有限公司</p>
-                                            <p class="text-[10px] text-slate-400">91123456MA2XXX9 • 新能源</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex gap-1.5">
-                                        <span class="px-1.5 py-0.5 bg-amber-50 text-amber-700 border border-amber-100 rounded text-[9px] font-bold"># 绿色替代潜力</span>
-                                        <span class="px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded text-[9px] font-bold"># 低碳</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-bold text-slate-400 italic">72.0</td>
-                                <td class="px-6 py-4"><span class="font-bold">8</span> <span class="text-slate-400 text-[10px]">项符合</span></td>
-                                <td class="px-6 py-4 text-right">
-                                    <button class="px-3 py-1 bg-slate-800 text-white text-[10px] rounded-lg font-bold">下载申报预研</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="p-4 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-500">
-                        <p>显示 1-10 / 共 4,285 家企业</p>
-                        <div class="flex gap-1">
-                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white"><i class="fas fa-chevron-left text-[8px]"></i></button>
-                            <button class="w-6 h-6 flex items-center justify-center rounded border border-blue-600 bg-blue-600 text-white">1</button>
-                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white">2</button>
-                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white">3</button>
-                            <button class="w-6 h-6 flex items-center justify-center rounded border border-slate-200 bg-white"><i class="fas fa-chevron-right text-[8px]"></i></button>
+
+                    <div class="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+                        <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                            <i class="fas fa-coins text-blue-500"></i> 财务与研发看板
+                        </h4>
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-2">
+                            <div>
+                                <p class="text-[9px] text-slate-400">上年营收</p>
+                                <p class="text-xs font-bold text-slate-700">1.28 亿</p>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-slate-400">研发投入</p>
+                                <p class="text-xs font-bold text-blue-600">1,560 万</p>
+                            </div>
+                            <div class="col-span-2 flex justify-between border-t border-slate-50 pt-2">
+                                <span class="text-[9px] text-slate-400">社保人数/专利数</span>
+                                <span class="text-xs font-bold text-slate-700">142人 / 46件</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900 rounded-xl shadow-lg relative overflow-hidden">
+                        <div class="absolute -right-2 -top-2 opacity-10 text-white text-4xl"><i class="fas fa-server"></i></div>
+                        <h4 class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                            <i class="fas fa-database"></i> 数商专用标签池
+                        </h4>
+                        <div class="space-y-2">
+                            <div class="flex gap-1.5">
+                                <span class="px-1.5 py-0.5 bg-cyan-500/20 text-cyan-300 rounded text-[9px] border border-cyan-500/30">DCMM 3级</span>
+                                <span class="px-1.5 py-0.5 bg-purple-500/20 text-purple-300 rounded text-[9px] border border-purple-500/30">国产化算力</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-tight">数据产品已登记：3项<br>基座：自研大模型(已备案)</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-rose-50 border border-rose-100 rounded-xl shadow-sm">
+                        <h4 class="text-[10px] font-bold text-rose-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+                            <i class="fas fa-bullseye"></i> 历史与缺口
+                        </h4>
+                        <div class="text-[10px] space-y-2">
+                            <p class="text-rose-700"><span class="font-bold">匹配缺口：</span>研发占比达标，但核心专利数略低于“国家级小巨人”门槛。</p>
+                            <p class="text-slate-400 border-t border-rose-100 pt-1 italic">已获补贴：2025工业互联网专项</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="fixed bottom-8 right-8">
-                    <button class="bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 font-bold hover:scale-105 transition-transform">
-                        <i class="fas fa-wand-sparkles text-blue-400"></i>
-                        一键生成产业分析报告
-                    </button>
-                </div>
-            </section>
-
-            <section id="page-matching" class="hidden-page">
-                <div class="flex items-center justify-between mb-8">
-                    <div class="flex items-center gap-4">
-                        <button onclick="switchPage('enterprise')" class="text-slate-400 hover:text-slate-600"><i class="fas fa-arrow-left"></i></button>
-                        <div>
-                            <h2 class="text-2xl font-bold flex items-center gap-3">某机器人科技有限公司 <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-normal">最新标注企业</span></h2>
-                            <p class="text-slate-400 text-xs font-mono mt-1">统一社会信用代码：91440101MAXXXXXX</p>
-                            <div class="flex items-center gap-6 mt-3 text-xs text-slate-500">
-    <div class="flex items-center">
-        <span class="text-slate-400 mr-2">注册时间：</span>
-        <span class="font-medium text-slate-600">2018-05-22</span>
+            </div>
+        </div>
+        <button class="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-blue-200 shrink-0">新建匹配任务</button>
     </div>
-    <div class="flex items-center border-l border-slate-200 pl-6">
-        <span class="text-slate-400 mr-2">注册地：</span>
-        <span class="font-medium text-slate-600">江苏省苏州市平江区中新路22号</span>
-    </div>
-</div>
 
-<div class="mt-4 p-3 bg-slate-50 rounded-md border border-slate-100 max-w-3xl">
-    <div class="flex items-start gap-2">
-        <span class="text-xs font-bold text-slate-400 shrink-0 mt-0.5">企业介绍：</span>
-        <p class="text-xs text-slate-500 leading-relaxed line-clamp-2 italic">
-            公司深耕智能制造领域，拥有自主知识产权的伺服电机技术。作为工业协作机器人领域的先行者，致力于为制造业提供智能化解决方案，产品广泛应用于新能源及电子检测线。
-        </p>
-    </div>
-</div>
-                        </div>
+    <div class="grid grid-cols-4 gap-8">
+        <div class="col-span-1 space-y-6">
+            <div class="glass-card p-6 shadow-sm">
+                <div id="radarChart" class="radar-chart"></div>
+                <div class="grid grid-cols-3 gap-2 mt-4 text-center border-t border-slate-50 pt-4">
+                    <div>
+                        <p class="text-[10px] text-slate-400 mb-1">风险评分</p>
+                        <p class="text-lg font-bold text-rose-500">98</p>
                     </div>
-                    <button class="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-blue-200">新建匹配任务</button>
+                    <div>
+                        <p class="text-[10px] text-slate-400 mb-1">资质指数</p>
+                        <p class="text-lg font-bold text-blue-600">A+</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-slate-400 mb-1">成长潜力</p>
+                        <p class="text-lg font-bold text-indigo-600">高</p>
+                    </div>
                 </div>
+            </div>
 
-                <div class="grid grid-cols-4 gap-8">
-                    <div class="col-span-1 space-y-6">
-                        <div class="glass-card p-6 shadow-sm">
-                            <div id="radarChart" class="radar-chart"></div>
-                            <div class="grid grid-cols-3 gap-2 mt-4 text-center border-t border-slate-50 pt-4">
-                                <div>
-                                    <p class="text-[10px] text-slate-400 mb-1">风险评分</p>
-                                    <p class="text-lg font-bold text-rose-500">98</p>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-slate-400 mb-1">资质指数</p>
-                                    <p class="text-lg font-bold text-blue-600">A+</p>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-slate-400 mb-1">成长潜力</p>
-                                    <p class="text-lg font-bold text-indigo-600">高</p>
-                                </div>
-                            </div>
+            <div class="glass-card p-6 shadow-sm">
+                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                    <i class="fas fa-history"></i> 生命周期档案
+                </h4>
+                <div class="space-y-6 relative before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100">
+                    <div class="relative pl-6">
+                        <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-blue-500 z-10"></div>
+                        <p class="text-[9px] text-slate-400 uppercase">2026-01-20</p>
+                        <p class="text-xs font-bold mt-0.5">获得省级“专精特新”认定</p>
+                    </div>
+                    <div class="relative pl-6">
+                        <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-slate-300 z-10"></div>
+                        <p class="text-[9px] text-slate-400 uppercase">2024-05-12</p>
+                        <p class="text-xs font-bold mt-0.5">完成 B 轮融资 5000 万</p>
+                    </div>
+                    <div class="relative pl-6">
+                        <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-rose-500 z-10 animate-ping"></div>
+                        <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-rose-500 z-10"></div>
+                        <p class="text-[9px] text-rose-400 uppercase">2023-11-05</p>
+                        <p class="text-xs font-bold text-rose-600 mt-0.5">发现标签冲突：营收自填数据存疑 (需求S)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-2 space-y-6">
+            <div class="glass-card p-6 shadow-sm">
+                <div class="flex justify-between items-center mb-6">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2"><i class="fas fa-magic text-purple-500"></i> 供需清单提取 (AI 自动转化)</h4>
+                    <button class="text-blue-600 text-[10px] font-bold">+ 导入原始清单</button>
+                </div>
+                <div class="bg-emerald-50/50 border border-emerald-100 p-4 rounded-xl mb-4 italic text-xs leading-relaxed text-emerald-800">
+                    “企业计划在明年扩大研发投入，主要集中在新能源电池的低温应用技术，但目前缺乏相关的核心技术人才和研发设备补贴。”
+                </div>
+                <div class="flex justify-center my-4 opacity-30"><i class="fas fa-arrow-down"></i></div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 新能源电池</span>
+                    <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 低温环境研发</span>
+                    <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 人才引进补贴</span>
+                    <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 设备购置奖补</span>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 shadow-sm">
+                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2"><i class="fas fa-sliders-h text-blue-500"></i> 双向匹配权重调优</h4>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-700">标签重合度 (Tag Relevance)</span>
+                            <span class="text-xs font-bold text-blue-600">85%</span>
                         </div>
-
-                        <div class="glass-card p-6 shadow-sm">
-                            <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                                <i class="fas fa-history"></i> 生命周期档案
-                            </h4>
-                            <div class="space-y-6 relative before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100">
-                                <div class="relative pl-6">
-                                    <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-blue-500 z-10"></div>
-                                    <p class="text-[9px] text-slate-400 uppercase">2026-01-20</p>
-                                    <p class="text-xs font-bold mt-0.5">获得省级“专精特新”认定</p>
-                                </div>
-                                <div class="relative pl-6">
-                                    <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-slate-300 z-10"></div>
-                                    <p class="text-[9px] text-slate-400 uppercase">2024-05-12</p>
-                                    <p class="text-xs font-bold mt-0.5">完成 B 轮融资 5000 万</p>
-                                </div>
-                                <div class="relative pl-6">
-                                    <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-rose-500 z-10 animate-ping"></div>
-                                    <div class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-rose-500 z-10"></div>
-                                    <p class="text-[9px] text-rose-400 uppercase">2023-11-05</p>
-                                    <p class="text-xs font-bold text-rose-600 mt-0.5">发现标签冲突：营收自填数据存疑 (需求S)</p>
-                                </div>
-                            </div>
+                        <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-500 w-[85%]"></div>
                         </div>
                     </div>
-
-                    <div class="col-span-2 space-y-6">
-                        <div class="glass-card p-6 shadow-sm">
-                            <div class="flex justify-between items-center mb-6">
-                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2"><i class="fas fa-magic text-purple-500"></i> 供需清单提取 (AI 自动转化)</h4>
-                                <button class="text-blue-600 text-[10px] font-bold">+ 导入原始清单</button>
-                            </div>
-                            <div class="bg-emerald-50/50 border border-emerald-100 p-4 rounded-xl mb-4 italic text-xs leading-relaxed text-emerald-800">
-                                “企业计划在明年扩大研发投入，主要集中在新能源电池的低温应用技术，但目前缺乏相关的核心技术人才和研发设备补贴。”
-                            </div>
-                            <div class="flex justify-center my-4 opacity-30"><i class="fas fa-arrow-down"></i></div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 新能源电池</span>
-                                <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 低温环境研发</span>
-                                <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 人才引进补贴</span>
-                                <span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[10px] font-bold border border-blue-100"># 设备购置奖补</span>
-                            </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-700">历史成交倾向 (Historical Bias)</span>
+                            <span class="text-xs font-bold text-blue-600">40%</span>
                         </div>
-
-                        <div class="glass-card p-6 shadow-sm">
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2"><i class="fas fa-sliders-h text-blue-500"></i> 双向匹配权重调优</h4>
-                            <div class="space-y-6">
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-xs font-bold text-slate-700">标签重合度 (Tag Relevance)</span>
-                                        <span class="text-xs font-bold text-blue-600">85%</span>
-                                    </div>
-                                    <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                        <div class="h-full bg-blue-500 w-[85%]"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-xs font-bold text-slate-700">历史成交倾向 (Historical Bias)</span>
-                                        <span class="text-xs font-bold text-blue-600">40%</span>
-                                    </div>
-                                    <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                        <div class="h-full bg-blue-400 w-[40%]"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-xs font-bold text-slate-700">政策时效权重 (Timeline Weight)</span>
-                                        <span class="text-xs font-bold text-blue-600">65%</span>
-                                    </div>
-                                    <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                        <div class="h-full bg-blue-300 w-[65%]"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-8 flex gap-4">
-                                <button class="flex-1 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm shadow-xl">执行双向匹配计算</button>
-                                <button class="px-6 py-3 border border-slate-200 rounded-xl text-slate-400 hover:bg-slate-50 transition-colors"><i class="fas fa-undo"></i></button>
-                            </div>
+                        <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-400 w-[40%]"></div>
                         </div>
                     </div>
-
-                    <div class="col-span-1 space-y-6">
-                        <div class="glass-card p-6 shadow-sm">
-                            <div class="flex justify-between items-center mb-6">
-                                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">匹配报告摘要</h4>
-                                <span class="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold">TOP 3 推荐</span>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="p-3 bg-slate-50 border-l-4 border-blue-500 rounded-r-xl relative overflow-hidden">
-                                    <div class="absolute right-0 top-0 w-12 h-12 bg-blue-500/5 rounded-full -mr-6 -mt-6"></div>
-                                    <div class="flex justify-between items-start mb-1">
-                                        <p class="text-xs font-bold">新能源产业设备补助管理</p>
-                                        <span class="text-[10px] text-blue-600 font-bold">96%</span>
-                                    </div>
-                                    <p class="text-[9px] text-slate-400">适配标签：研发、设备、专精特新</p>
-                                    <p class="text-[10px] text-emerald-600 font-bold mt-2">建议分发</p>
-                                </div>
-                                <div class="p-3 bg-white border border-slate-100 rounded-xl opacity-60">
-                                    <div class="flex justify-between items-start mb-1">
-                                        <p class="text-xs font-bold">高端人才引进落户奖励</p>
-                                        <span class="text-[10px] text-slate-400 font-bold">78%</span>
-                                    </div>
-                                    <p class="text-[9px] text-slate-400">适配标签：人才引进、博士后</p>
-                                    <p class="text-[10px] text-slate-400 font-bold mt-2">匹配中等</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-8">
-                                <p class="text-[10px] text-center text-slate-400 uppercase mb-4 font-bold tracking-widest">分发渠道选择</p>
-                                <div class="grid grid-cols-3 gap-2">
-                                    <button class="flex flex-col items-center py-2 bg-slate-50 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                        <i class="far fa-envelope mb-1"></i>
-                                        <span class="text-[9px] font-bold">邮件</span>
-                                    </button>
-                                    <button class="flex flex-col items-center py-2 bg-slate-50 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                        <i class="fab fa-weixin mb-1"></i>
-                                        <span class="text-[9px] font-bold">微信</span>
-                                    </button>
-                                    <button class="flex flex-col items-center py-2 bg-blue-600 text-white rounded-lg shadow-lg shadow-blue-200">
-                                        <i class="fas fa-paper-plane mb-1"></i>
-                                        <span class="text-[9px] font-bold">站内信</span>
-                                    </button>
-                                </div>
-                                <button class="w-full mt-4 py-2 bg-blue-600/10 text-blue-700 text-xs font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-all">一键发送 #匹配报告#</button>
-                            </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-700">政策时效权重 (Timeline Weight)</span>
+                            <span class="text-xs font-bold text-blue-600">65%</span>
                         </div>
-
-                        <div class="glass-card p-6 shadow-sm overflow-hidden">
-                            <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex justify-between">
-                                企业标签 <span>展开全部</span>
-                            </h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-emerald-50 text-emerald-700 rounded text-[10px] font-bold"># 绿色节能</span>
-                                <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded text-[10px] font-bold"># 5G 通讯</span>
-                                <span class="px-2 py-1 bg-cyan-50 text-cyan-700 rounded text-[10px] font-bold"># 工业互联网</span>
-                                <span class="px-2 py-1 bg-purple-50 text-purple-700 rounded text-[10px] font-bold"># 生物医药</span>
-                                <span class="px-2 py-1 bg-amber-50 text-amber-700 rounded text-[10px] font-bold"># AI</span>
-                                <span class="px-2 py-1 bg-slate-100 text-slate-400 rounded text-[10px] font-bold"># 数字孪生</span>
-                                <span class="px-2 py-1 bg-slate-800 text-white rounded text-[10px] font-bold"># 大模型 (LLM)</span>
-                            </div>
+                        <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-300 w-[65%]"></div>
                         </div>
                     </div>
                 </div>
-            </section>
+                <div class="mt-8 flex gap-4">
+                    <button class="flex-1 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm shadow-xl">执行双向匹配计算</button>
+                    <button class="px-6 py-3 border border-slate-200 rounded-xl text-slate-400 hover:bg-slate-50 transition-colors"><i class="fas fa-undo"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-1 space-y-6">
+            <div class="glass-card p-6 shadow-sm">
+                <div class="flex justify-between items-center mb-6">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">匹配报告摘要</h4>
+                    <span class="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold">TOP 3 推荐</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-3 bg-slate-50 border-l-4 border-blue-500 rounded-r-xl relative overflow-hidden">
+                        <div class="absolute right-0 top-0 w-12 h-12 bg-blue-500/5 rounded-full -mr-6 -mt-6"></div>
+                        <div class="flex justify-between items-start mb-1">
+                            <p class="text-xs font-bold">新能源产业设备补助管理</p>
+                            <span class="text-[10px] text-blue-600 font-bold">96%</span>
+                        </div>
+                        <p class="text-[9px] text-slate-400">适配标签：研发、设备、专精特新</p>
+                        <p class="text-[10px] text-emerald-600 font-bold mt-2">建议分发</p>
+                    </div>
+                    <div class="p-3 bg-white border border-slate-100 rounded-xl opacity-60">
+                        <div class="flex justify-between items-start mb-1">
+                            <p class="text-xs font-bold">高端人才引进落户奖励</p>
+                            <span class="text-[10px] text-slate-400 font-bold">78%</span>
+                        </div>
+                        <p class="text-[9px] text-slate-400">适配标签：人才引进、博士后</p>
+                        <p class="text-[10px] text-slate-400 font-bold mt-2">匹配中等</p>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <p class="text-[10px] text-center text-slate-400 uppercase mb-4 font-bold tracking-widest">分发渠道选择</p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button class="flex flex-col items-center py-2 bg-slate-50 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="far fa-envelope mb-1"></i>
+                            <span class="text-[9px] font-bold">邮件</span>
+                        </button>
+                        <button class="flex flex-col items-center py-2 bg-slate-50 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-weixin mb-1"></i>
+                            <span class="text-[9px] font-bold">微信</span>
+                        </button>
+                        <button class="flex flex-col items-center py-2 bg-blue-600 text-white rounded-lg shadow-lg shadow-blue-200">
+                            <i class="fas fa-paper-plane mb-1"></i>
+                            <span class="text-[9px] font-bold">站内信</span>
+                        </button>
+                    </div>
+                    <button class="w-full mt-4 py-2 bg-blue-600/10 text-blue-700 text-xs font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-all">一键发送 #匹配报告#</button>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 shadow-sm overflow-hidden">
+                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex justify-between">
+                    企业标签 <span>展开全部</span>
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-emerald-50 text-emerald-700 rounded text-[10px] font-bold"># 绿色节能</span>
+                    <span class="px-2 py-1 bg-blue-50 text-blue-700 rounded text-[10px] font-bold"># 5G 通讯</span>
+                    <span class="px-2 py-1 bg-cyan-50 text-cyan-700 rounded text-[10px] font-bold"># 工业互联网</span>
+                    <span class="px-2 py-1 bg-purple-50 text-purple-700 rounded text-[10px] font-bold"># 生物医药</span>
+                    <span class="px-2 py-1 bg-amber-50 text-amber-700 rounded text-[10px] font-bold"># AI</span>
+                    <span class="px-2 py-1 bg-slate-100 text-slate-400 rounded text-[10px] font-bold"># 数字孪生</span>
+                    <span class="px-2 py-1 bg-slate-800 text-white rounded text-[10px] font-bold"># 大模型 (LLM)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
             <section id="page-settings" class="hidden-page">
                 <div class="flex items-center justify-between mb-8">
