@@ -1,46 +1,148 @@
-.stats {
+.dashboard {
+  padding: 24px;
+}
+
+.metrics {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 24px;
 }
 
+.metric-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.metric-card.highlight {
+  background: linear-gradient(135deg, #3b82f6, #4f46e5);
+  color: #fff;
+}
+
+.metric-card .title {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.metric-card.highlight .title {
+  color: #e0e7ff;
+}
+
+.metric-card .value {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.trend.up {
+  color: #22c55e;
+}
+
+.progress {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+}
+
+.progress span {
+  display: block;
+  width: 94%;
+  height: 100%;
+  background: #8b5cf6;
+}
+
+.middle {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
 .card {
   background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.card .label {
-  color: #6b7280;
-  font-size: 14px;
-}
-
-.card .value {
-  margin-top: 8px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #111827;
-}
-
-.panel {
-  background: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 20px;
 }
 
-.panel h2 {
-  font-size: 16px;
+.card.large {
+  min-height: 260px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 16px;
 }
 
-.placeholder {
-  height: 160px;
-  background: #f3f4f6;
-  border-radius: 6px;
+.policy-item {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #9ca3af;
+  margin-right: 12px;
 }
 
+.badge.blue { background: #e0edff; color: #2563eb; }
+.badge.yellow { background: #fff3cd; color: #f59e0b; }
+
+.btn {
+  margin-left: auto;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn.warn {
+  background: #f59e0b;
+}
+
+.timeline {
+  list-style: none;
+  margin: 16px 0;
+}
+
+.timeline li {
+  margin-bottom: 12px;
+}
+
+.chart-placeholder {
+  height: 140px;
+  background: linear-gradient(180deg, #111827, #1f2937);
+  border-radius: 8px;
+}
+
+.tags {
+  margin-top: 24px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-right: 8px;
+  font-size: 13px;
+}
+
+.tag.green {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.tag.orange {
+  background: #ffedd5;
+  color: #c2410c;
+}
