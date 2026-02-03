@@ -1,181 +1,270 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>控制台首页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智策中台 - 控制台首页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- 全局样式定义 --- */
+        :root {
+            --sidebar-bg: #0F172A;
+            --page-bg: #F3F4F6;
+            --primary-blue: #2E5BFF;
+            --text-main: #1F2937;
+            --text-secondary: #6B7280;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
 
-  <link rel="stylesheet" href="./reset.css">
-  <link rel="stylesheet" href="./layout.css">
-  <link rel="stylesheet" href="./sidebar.css">
-  <link rel="stylesheet" href="./dashboard.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--page-bg); display: flex; height: 100vh; overflow: hidden; }
+
+        /* --- 1. 左侧导航栏 --- */
+        .sidebar { width: 250px; background: var(--sidebar-bg); color: white; display: flex; flex-direction: column; flex-shrink: 0; }
+        .logo-box { padding: 30px 24px; display: flex; align-items: center; gap: 10px; }
+        .logo-icon { width: 32px; height: 32px; background: var(--primary-blue); border-radius: 6px; display: grid; place-items: center; }
+        .logo-text h1 { font-size: 18px; letter-spacing: 1px; }
+        .logo-text p { font-size: 8px; opacity: 0.5; }
+
+        .nav-group { padding: 0 12px; flex: 1; }
+        .group-label { padding: 20px 12px 10px; font-size: 11px; color: #4B5563; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; cursor: pointer; color: #9CA3AF; transition: 0.3s; margin-bottom: 2px; }
+        .nav-item.active { background: var(--primary-blue); color: white; }
+        .nav-item:hover:not(.active) { background: rgba(255,255,255,0.05); color: white; }
+
+        .sidebar-footer { padding: 20px; }
+        .quick-card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 12px; color: #333; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .quick-card strong { font-size: 13px; display: block; margin-bottom: 5px; }
+        .quick-card p { font-size: 10px; color: #666; line-height: 1.4; }
+        .btn-entry { width: 100%; padding: 10px; background: white; border: none; border-radius: 8px; font-weight: bold; color: var(--primary-blue); cursor: pointer; border: 1px solid #E5E7EB; }
+
+        /* --- 2. 主体区域 --- */
+        .main-container { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+        
+        /* 顶部条 */
+        .top-bar { height: 70px; background: white; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E5E7EB; }
+        .search-wrap { background: #F3F4F6; width: 450px; padding: 10px 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px; }
+        .search-wrap input { border: none; background: transparent; outline: none; width: 100%; font-size: 13px; }
+        .user-zone { display: flex; align-items: center; gap: 20px; }
+        .status-pill { font-size: 12px; color: #10B981; display: flex; align-items: center; gap: 6px; }
+        .status-pill::before { content: ""; width: 6px; height: 6px; background: #10B981; border-radius: 50%; }
+
+        /* 内容网格 */
+        .content-padding { padding: 25px 30px; }
+        
+        /* 统计卡片 */
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 25px; }
+        .stat-card { background: white; padding: 20px; border-radius: 16px; position: relative; box-shadow: var(--card-shadow); }
+        .stat-card.blue-theme { background: var(--primary-blue); color: white; }
+        .stat-card h3 { font-size: 28px; margin: 10px 0 5px; }
+        .stat-card .label { font-size: 12px; color: var(--text-secondary); }
+        .stat-card.blue-theme .label { color: rgba(255,255,255,0.7); }
+        .progress-bar { height: 4px; background: #E5E7EB; border-radius: 2px; margin-top: 15px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #A855F7; border-radius: 2px; }
+        .stat-icon-bg { position: absolute; top: 20px; right: 20px; font-size: 24px; opacity: 0.15; }
+
+        /* 中部双栏 */
+        .middle-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .panel { background: white; padding: 24px; border-radius: 20px; box-shadow: var(--card-shadow); }
+        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-weight: bold; }
+        .flow-item { background: #F9FAFB; padding: 16px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .tag-box { width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; font-weight: bold; font-size: 14px; margin-right: 15px; }
+        .btn-action { padding: 8px 18px; border-radius: 8px; border: none; color: white; cursor: pointer; font-size: 13px; }
+
+        /* 实时流时间轴 */
+        .timeline { border-left: 2px solid #F3F4F6; padding-left: 20px; margin-left: 10px; }
+        .time-node { position: relative; margin-bottom: 25px; }
+        .time-node::before { content: ""; position: absolute; left: -26px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: #D1D5DB; border: 2px solid white; box-shadow: 0 0 0 2px #F3F4F6; }
+        .time-node.active::before { background: var(--primary-blue); }
+
+        /* 底部监控 */
+        .monitor-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 25px; }
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; background: #F9FAFB; padding: 25px; border-radius: 20px; }
+        .tag { padding: 6px 14px; border-radius: 20px; color: white; font-size: 12px; display: flex; align-items: center; gap: 5px; }
+    </style>
 </head>
 <body>
 
-<div class="app">
-  <!-- 左侧导航 -->
-  <aside class="sidebar">
-  <!-- 品牌区 -->
-  <div class="brand">
-    <div class="brand-icon"></div>
-    <div class="brand-text">
-      <div class="brand-name">智策中台</div>
-      <div class="brand-sub">INTELLIGENT POLICY OS</div>
-    </div>
-  </div>
-
-  <!-- 菜单区 -->
-  <div class="menu-group">
-    <div class="menu-title">核心业务模块</div>
-    <ul class="menu">
-      <li class="active">
-        <span class="dot"></span>
-        控制台首页
-      </li>
-      <li>政策导入与管理</li>
-    </ul>
-  </div>
-
-  <div class="menu-group">
-    <div class="menu-title">数据匹配</div>
-    <ul class="menu">
-      <li>企业信息管理</li>
-      <li>效能配置与对接</li>
-    </ul>
-  </div>
-
-  <div class="menu-group">
-    <ul class="menu">
-      <li>企业画像与匹配</li>
-      <li>设置</li>
-    </ul>
-  </div>
-
-  <!-- 底部快捷入口 -->
-  <div class="sidebar-bottom">
-    <div class="quick-card">
-      <div class="qc-icon blue"></div>
-      <div class="qc-text">
-        <strong>匹配模拟器</strong>
-        <span>输入条件，实时模拟算法</span>
-      </div>
-    </div>
-
-    <div class="quick-card">
-      <div class="qc-icon green"></div>
-      <div class="qc-text">
-        <strong>供需清单拆解</strong>
-        <span>识别企业真实能力</span>
-      </div>
-    </div>
-
-    <div class="client-tag">企业端</div>
-  </div>
-</aside>
-
-
-  <!-- 主区域 -->
-  <main class="main">
-    <!-- 顶部 -->
-    <header class="topbar">
-      <div class="search">
-        搜索政策原文、企业画像或输入关键词…
-      </div>
-      <div class="top-actions">
-        <span class="status">SSO & API 同步中</span>
-        <div class="avatar">AD</div>
-      </div>
-    </header>
-
-    <!-- 内容 -->
-    <section class="dashboard">
-
-      <!-- 顶部指标卡 -->
-      <div class="metrics">
-        <div class="metric-card">
-          <p class="title">今日匹配成功</p>
-          <p class="value">1,284</p>
-          <p class="trend up">↑ 12.5%</p>
-        </div>
-
-        <div class="metric-card">
-          <p class="title">AI 识别准确率</p>
-          <p class="value">94.2%</p>
-          <div class="progress"><span></span></div>
-        </div>
-
-        <div class="metric-card">
-          <p class="title">数据同步延迟</p>
-          <p class="value">1.2s</p>
-          <p class="desc">API 实时状态良好</p>
-        </div>
-
-        <div class="metric-card highlight">
-          <p class="title">政策覆盖热度</p>
-          <p class="value">489</p>
-          <p class="desc">已向 85% 企业推送</p>
-        </div>
-      </div>
-
-      <!-- 中部内容 -->
-      <div class="middle">
-        <!-- 政策处理流 -->
-        <div class="card large">
-          <div class="card-header">
-            <h3>政策处理流</h3>
-            <a href="#">查看所有 12 条任务</a>
-          </div>
-
-          <div class="policy-item">
-            <div class="badge blue">政</div>
-            <div class="info">
-              <p class="name">《支持专精特新企业发展若干措施》</p>
-              <p class="meta">2小时前 · AI 生成 12 条标签</p>
+    <aside class="sidebar">
+        <div class="logo-box">
+            <div class="logo-icon"><i class="fas fa-cubes"></i></div>
+            <div class="logo-text">
+                <h1>智策中台</h1>
+                <p>INTELLIGENT POLICY OS</p>
             </div>
-            <button class="btn">去核验</button>
-          </div>
-
-          <div class="policy-item">
-            <div class="badge yellow">控</div>
-            <div class="info">
-              <p class="name">标签冲突预警：ID #4092</p>
+        </div>
+        <div class="nav-group">
+            <div class="group-label">核心业务模块</div>
+            <div class="nav-item active"><i class="fas fa-th-large"></i> 控制台首页</div>
+            <div class="nav-item"><i class="fas fa-file-invoice"></i> 政策导入与管理</div>
+            <div class="group-label">数据与匹配</div>
+            <div class="nav-item"><i class="fas fa-city"></i> 企业信息管理</div>
+            <div class="nav-item"><i class="fas fa-chart-network"></i> 效能配置与对接</div>
+            <div class="nav-item"><i class="fas fa-cog"></i> 设置</div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="quick-card">
+                <i class="fas fa-calculator" style="color:#3B82F6"></i>
+                <strong>匹配模拟器</strong>
+                <p>输入要素参数，实时模拟算法输出与匹配结果预测。</p>
             </div>
-            <button class="btn warn">处理冲突</button>
-          </div>
+            <div class="quick-card">
+                <i class="fas fa-microchip" style="color:#10B981"></i>
+                <strong>供需清单拆解</strong>
+                <p>将企业痛点转化为系统可识别的标准能力标签。</p>
+            </div>
+            <button class="btn-entry">企业端</button>
         </div>
+    </aside>
 
-        <!-- 右侧实时流 -->
-        <div class="card">
-          <h3>画像变动实时流</h3>
+    <main class="main-container">
+        <header class="top-bar">
+            <div class="search-wrap">
+                <i class="fas fa-search" style="color:#9CA3AF"></i>
+                <input type="text" placeholder="搜索政策原文、企业画像或输入问答关键词...">
+            </div>
+            <div class="user-zone">
+                <div class="status-pill">SSO & API 同步中</div>
+                <i class="far fa-bell" style="font-size: 18px; color: #6B7280; position: relative;">
+                    <span style="position:absolute; top:-5px; right:-5px; width:8px; height:8px; background:#EF4444; border-radius:50%; border:2px solid white;"></span>
+                </i>
+                <div style="display:flex; align-items:center; gap:10px">
+                    <div style="width:35px; height:35px; background:var(--primary-blue); border-radius:50%; color:white; display:grid; place-items:center; font-size:12px; font-weight:bold">AD</div>
+                    <span style="font-weight:bold; font-size:14px">名字</span>
+                </div>
+            </div>
+        </header>
 
-          <ul class="timeline">
-            <li>
-              <span class="time">10:24</span>
-              <p><strong>科创有限公司</strong></p>
-              <small>系统自动标注：专精特新</small>
-            </li>
-            <li>
-              <span class="time">09:15</span>
-              <p><strong>XX 制造厂</strong></p>
-              <small>匹配率：85% → 92%</small>
-            </li>
-          </ul>
+        <div class="content-padding">
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="label">今日匹配成功</span>
+                    <h3>1,284</h3>
+                    <div style="font-size:12px; color:#10B981">↑ 12.5% <span style="color:#9CA3AF">较昨日</span></div>
+                    <i class="fas fa-handshake stat-icon-bg"></i>
+                </div>
+                <div class="stat-card">
+                    <span class="label">AI 拆解准确率</span>
+                    <h3>94.2%</h3>
+                    <div class="progress-bar"><div class="progress-fill" style="width:94.2%"></div></div>
+                    <i class="fas fa-brain stat-icon-bg"></i>
+                </div>
+                <div class="stat-card">
+                    <span class="label">数据同步延迟</span>
+                    <h3>1.2s</h3>
+                    <div style="font-size:12px; color:#F59E0B">API 实时状态良好</div>
+                    <i class="fas fa-database stat-icon-bg"></i>
+                </div>
+                <div class="stat-card blue-theme">
+                    <span class="label">政策覆盖度</span>
+                    <h3>489</h3>
+                    <div style="font-size:12px">已有 85% 合规企业推送</div>
+                    <i class="fas fa-fire stat-icon-bg"></i>
+                </div>
+            </div>
 
-          <div class="chart-placeholder"></div>
+            <div class="middle-row">
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>政策处理流</span>
+                        <a href="#" style="color:var(--primary-blue); font-size:12px; font-weight:normal; text-decoration:none">查看所有 12 条任务 ></a>
+                    </div>
+                    <p style="font-size:11px; color:#999; margin-bottom:15px">AI 已完成预拆解，等待人工核对入库</p>
+                    <div class="flow-item">
+                        <div style="display:flex; align-items:center">
+                            <div class="tag-box" style="background:#EBF5FF; color:#2E5BFF">政</div>
+                            <div>
+                                <div style="font-size:14px; font-weight:bold">《支持专精特新企业发展若干措施》</div>
+                                <div style="font-size:11px; color:#999; margin-top:4px"><i class="far fa-clock"></i> 2小时前 · <span style="color:purple">● AI 生成 12 标签</span></div>
+                            </div>
+                        </div>
+                        <button class="btn-action" style="background:var(--primary-blue)">去核对</button>
+                    </div>
+                    <div class="flow-item">
+                        <div style="display:flex; align-items:center">
+                            <div class="tag-box" style="background:#FFFBEB; color:#D97706">核</div>
+                            <div style="font-size:14px; font-weight:bold">标签冲突预警：ID #4092</div>
+                        </div>
+                        <button class="btn-action" style="background:#F59E0B">处理冲突</button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">画像变动实时流</div>
+                    <div class="timeline">
+                        <div class="time-node active">
+                            <div style="font-size:10px; color:#999">10:24 AM</div>
+                            <div style="font-size:13px; font-weight:bold">科创有限公司</div>
+                            <div style="font-size:12px; color:var(--primary-blue)">画像自动修正：#专利研发</div>
+                        </div>
+                        <div class="time-node">
+                            <div style="font-size:10px; color:#999">09:15 AM</div>
+                            <div style="font-size:13px; font-weight:bold">XX 制造厂</div>
+                            <div style="font-size:12px">评估重新分值：匹配度 <span style="color:#10B981">85% → 92%</span></div>
+                        </div>
+                    </div>
+                    <div style="background:#0F172A; border-radius:12px; padding:15px; height:100px; display:flex; align-items:flex-end; gap:8px">
+                        <div style="flex:1; height:40%; background:rgba(255,255,255,0.1)"></div>
+                        <div style="flex:1; height:60%; background:rgba(255,255,255,0.1)"></div>
+                        <div style="flex:1; height:85%; background:var(--primary-blue)"></div>
+                        <div style="flex:1; height:50%; background:var(--primary-blue)"></div>
+                        <div style="flex:1; height:70%; background:rgba(255,255,255,0.1)"></div>
+                    </div>
+                    <p style="font-size:9px; color:#999; text-align:center; margin-top:8px">基于「专精特新」匹配逻辑实时计算</p>
+                </div>
+            </div>
+
+            <div class="monitor-row">
+                <div class="panel" style="padding:20px">
+                    <div style="color:#999; font-size:12px; margin-bottom:10px">临期政策监控</div>
+                    <div style="font-weight:bold">数字化转型奖补</div>
+                    <div style="color:#EF4444; font-size:12px; margin-top:5px; font-weight:bold">仅剩 2 天</div>
+                </div>
+                <div class="panel" style="padding:20px; display:flex; justify-content:space-between; align-items:center">
+                    <div>
+                        <div style="color:#999; font-size:12px">效能/数据监控</div>
+                        <div style="display:flex; align-items:center; gap:10px; margin-top:10px">
+                            <span style="font-size:13px">工商接口</span> <span style="color:#10B981; font-size:12px">● 正常</span>
+                        </div>
+                    </div>
+                    <div style="text-align:right">
+                        <div style="color:#999; font-size:12px">数据可信度</div>
+                        <div style="font-size:20px; font-weight:bold; color:var(--primary-blue)">98.2%</div>
+                    </div>
+                </div>
+                <div class="panel" style="background:#1E293B; display:grid; place-items:center; color:white; cursor:pointer">
+                    <div style="text-align:center">
+                        <div style="font-size:14px; font-weight:bold">批量分发匹配报告</div>
+                        <div style="font-size:11px; opacity:0.6; margin-top:4px">(28 份待分发)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px">
+                <h4 style="font-size:14px">高频场景能力分布</h4>
+                <a href="#" style="font-size:12px; color:#999; text-decoration:none">标签体系管理</a>
+            </div>
+            <div class="tag-cloud">
+                <div class="tag" style="background:#10B981"># 绿色赋能</div>
+                <div class="tag" style="background:#10B981"># 5G 通讯</div>
+                <div class="tag" style="background:#10B981"># 工业互联网</div>
+                <div class="tag" style="background:#10B981"># 生物医药</div>
+                <div class="tag" style="background:#10B981"># AI</div>
+                <div class="tag" style="background:#10B981"># 智能算法</div>
+                <div class="tag" style="background:#10B981"># 数字孪生</div>
+                <div class="tag" style="background:#10B981"># 网络技术服务</div>
+                <div class="tag" style="background:#10B981"># 外资企业</div>
+                <div class="tag" style="background:#64748B"># 多模态</div>
+                <div class="tag" style="background:#64748B"># 大型企业</div>
+                <div class="tag" style="background:#64748B"># 大模型 (LLM)</div>
+                <div class="tag" style="background:#F59E0B"># 新材料</div>
+                <div class="tag" style="background:#F59E0B"># 集成电路</div>
+                <div class="tag" style="background:#F59E0B"># AI 节能降耗</div>
+                <div class="tag" style="background:#F59E0B"># 数据处理服务</div>
+                <div class="tag" style="background:#F59E0B"># 信息技术咨询</div>
+                <div class="tag" style="background:#F59E0B"># 全资子公司</div>
+            </div>
         </div>
-      </div>
-
-      <!-- 底部标签 -->
-      <div class="tags">
-        <span class="tag green"># AI</span>
-        <span class="tag green"># 工业互联网</span>
-        <span class="tag green"># 生物医药</span>
-        <span class="tag orange"># 数据服务</span>
-        <span class="tag orange"># AI 节能降耗</span>
-      </div>
-
-    </section>
-  </main>
-</div>
-
+    </main>
 </body>
 </html>
