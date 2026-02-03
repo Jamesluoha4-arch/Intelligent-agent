@@ -1,298 +1,157 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智策中台 - Intelligent Policy OS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', "Microsoft YaHei", sans-serif; background-color: #F0F4F8; }
-        .sidebar-gradient { background: linear-gradient(180deg, #0D1B3E 0%, #162447 100%); }
-        .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .nav-active { background: #3B82F6; color: white !important; border-radius: 8px; }
-        .status-pill { background: rgba(59, 130, 246, 0.1); color: #3B82F6; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>智慧中台 · 综合管理系统</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex h-screen overflow-hidden">
 
-    <aside class="w-64 sidebar-gradient text-gray-400 flex flex-col p-4 shrink-0">
-        <div class="flex items-center gap-2 mb-10 px-2">
-            <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
-                <i data-lucide="layers" class="w-5 h-5"></i>
-            </div>
-            <div>
-                <h1 class="text-white font-bold text-sm leading-tight">智策中台</h1>
-                <p class="text-[10px] opacity-50 uppercase">Intelligent Policy OS</p>
-            </div>
+<body class="bg-slate-950 text-white font-sans">
+
+<!-- ================= 顶部切换 ================= -->
+<header class="h-14 bg-slate-900 flex items-center justify-between px-6">
+  <h1 class="text-sm font-semibold">智慧中台 · 综合管理系统</h1>
+  <div class="space-x-2">
+    <button onclick="switchRole('gov')" class="px-3 py-1 text-xs rounded bg-blue-600">政府端</button>
+    <button onclick="switchRole('corp')" class="px-3 py-1 text-xs rounded bg-slate-700">企业端</button>
+  </div>
+</header>
+
+<!-- ================= 主体 ================= -->
+<div class="flex h-[calc(100vh-56px)]">
+
+  <!-- 左侧菜单 -->
+  <aside class="w-48 bg-slate-900 p-3 space-y-2 text-xs">
+    <div id="gov-menu">
+      <p class="text-white/40 mb-2">政府端</p>
+      <button onclick="showPage('gov-1')" class="menu-btn">总览</button>
+      <button onclick="showPage('gov-2')" class="menu-btn">监管分析</button>
+      <button onclick="showPage('gov-3')" class="menu-btn">风险预警</button>
+      <button onclick="showPage('gov-4')" class="menu-btn">政策匹配</button>
+      <button onclick="showPage('gov-5')" class="menu-btn">系统配置</button>
+    </div>
+
+    <div id="corp-menu" class="hidden">
+      <p class="text-white/40 mb-2">企业端</p>
+      <button onclick="showPage('corp-1')" class="menu-btn">企业首页</button>
+      <button onclick="showPage('corp-2')" class="menu-btn">数据看板</button>
+      <button onclick="showPage('corp-3')" class="menu-btn">项目管理</button>
+      <button onclick="showPage('corp-4')" class="menu-btn">模型分析</button>
+      <button onclick="showPage('corp-5')" class="menu-btn">资产管理</button>
+      <button onclick="showPage('corp-6')" class="menu-btn">报表中心</button>
+      <button onclick="showPage('corp-7')" class="menu-btn">账号设置</button>
+    </div>
+  </aside>
+
+  <!-- 内容区 -->
+  <main class="flex-1 p-6 overflow-auto">
+
+    <!-- ================= 政府端页面 ================= -->
+    <section id="gov-1" class="page">
+      <h2 class="page-title">政府端 · 总览</h2>
+
+      <div class="grid grid-cols-4 gap-4 mt-4">
+
+        <!-- 标准卡片 -->
+        <div class="card">
+          <div class="card-title">算法权重实时效能</div>
+          <div class="card-body">
+            <div class="h-16 w-4 bg-blue-500 rounded"></div>
+          </div>
+          <div class="card-desc">基于“标签重合度 + 历史倾向”计算</div>
         </div>
 
-        <nav class="flex-1 space-y-1 text-sm">
-            <p class="text-[10px] px-2 mb-2 uppercase opacity-40">核心业务模块</p>
-            <a href="控制台首页.html" class="nav-item nav-active flex items-center gap-3 p-3 transition-all hover:text-white">
-                <i data-lucide="layout-grid" class="w-4 h-4"></i> 控制台首页
-            </a>
-            <a href="政策导入与管理.html" class="nav-item flex items-center gap-3 p-3 transition-all hover:text-white">
-                <i data-lucide="file-text" class="w-4 h-4"></i> 政策导入与管理
-            </a>
-
-            <p class="text-[10px] px-2 mt-6 mb-2 uppercase opacity-40">数据与匹配</p>
-            <a href="企业信息管理.html" class="nav-item flex items-center gap-3 p-3 transition-all hover:text-white">
-                <i data-lucide="database" class="w-4 h-4"></i> 企业信息管理
-            </a>
-            <a href="效能配置与对接.html" class="nav-item flex items-center gap-3 p-3 transition-all hover:text-white">
-                <i data-lucide="bar-chart-3" class="w-4 h-4"></i> 效能配置与对接
-            </a>
-            <a href="#" class="flex items-center gap-3 p-3 opacity-50 cursor-not-allowed">
-                <i data-lucide="settings" class="w-4 h-4"></i> 设置
-            </a>
-        </nav>
-
-        <div class="mt-auto space-y-3">
-            <div class="bg-white/5 rounded-xl p-4 text-xs">
-                <div class="flex items-center gap-2 mb-2">
-                    <i data-lucide="calculator" class="w-4 h-4 text-blue-400"></i>
-                    <span class="text-white">匹配模拟器</span>
-                </div>
-                <p class="opacity-50 scale-90 origin-left">输入仿真参数，系统模拟算法输出匹配度结果。</p>
-            </div>
-            <div class="bg-white/5 rounded-xl p-4 text-xs">
-                <div class="flex items-center gap-2 mb-2">
-                    <i data-lucide="file-digit" class="w-4 h-4 text-green-400"></i>
-                    <span class="text-white">供需清单拆解</span>
-                </div>
-                <p class="opacity-50 scale-90 origin-left">将企业能力转化为系统可识别的标准能力标签。</p>
-            </div>
-            <button class="w-full bg-white text-blue-900 font-bold py-2 rounded-lg text-sm">企业端</button>
+        <div class="card">
+          <div class="card-title">模型调用稳定性</div>
+          <div class="card-body">
+            <div class="text-2xl font-bold text-green-400">99.2%</div>
+          </div>
+          <div class="card-desc">最近 24 小时运行情况</div>
         </div>
-    </aside>
 
-    <main class="flex-1 flex flex-col overflow-y-auto">
-        <header class="h-16 bg-white border-b flex items-center justify-between px-8 shrink-0">
-            <div class="relative w-1/3">
-                <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                <input type="text" placeholder="搜索政策原文、企业画像或输入业务关键词..." class="w-full bg-gray-100 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none">
-            </div>
-            <div class="flex items-center gap-6">
-                <div class="flex items-center gap-2 bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs border border-green-100">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> SSO & API 同步中
-                </div>
-                <i data-lucide="bell" class="w-5 h-5 text-gray-500 relative">
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full border-2 border-white">3</span>
-                </i>
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xs">AD</div>
-                    <div class="text-xs">
-                        <p class="font-bold">名字</p>
-                        <p class="text-gray-400 scale-90 origin-left uppercase">Name</p>
-                    </div>
-                </div>
-            </div>
-        </header>
+      </div>
+    </section>
 
-        <div id="content-area" class="p-8 space-y-6">
-            <div class="grid grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-2xl card-shadow flex justify-between">
-                    <div>
-                        <p class="text-xs text-gray-400 mb-1">今日匹配成功</p>
-                        <h3 class="text-2xl font-bold">1,284</h3>
-                        <p class="text-xs text-green-500 mt-2">↑ 12.5% <span class="text-gray-400">较昨日</span></p>
-                    </div>
-                    <i data-lucide="handshake" class="text-blue-500 w-8 h-8 opacity-20"></i>
-                </div>
-                <div class="bg-white p-6 rounded-2xl card-shadow flex justify-between">
-                    <div>
-                        <p class="text-xs text-gray-400 mb-1">AI 拆解准确率</p>
-                        <h3 class="text-2xl font-bold">94.2%</h3>
-                        <div class="w-32 h-1.5 bg-gray-100 rounded-full mt-4 overflow-hidden">
-                            <div class="bg-purple-500 h-full w-[94.2%]"></div>
-                        </div>
-                    </div>
-                    <i data-lucide="brain-circuit" class="text-purple-500 w-8 h-8 opacity-20"></i>
-                </div>
-                <div class="bg-white p-6 rounded-2xl card-shadow flex justify-between">
-                    <div>
-                        <p class="text-xs text-gray-400 mb-1">数据同步延迟</p>
-                        <h3 class="text-2xl font-bold">1.2s</h3>
-                        <p class="text-xs text-orange-500 mt-2">API 实时状态良好</p>
-                    </div>
-                    <i data-lucide="database" class="text-orange-500 w-8 h-8 opacity-20"></i>
-                </div>
-                <div class="bg-white p-6 rounded-2xl card-shadow text-white relative overflow-hidden" style="background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);">
-                    <div class="relative z-10">
-                        <p class="text-xs opacity-70 mb-1">政策覆盖热度</p>
-                        <h3 class="text-3xl font-bold">489</h3>
-                        <p class="text-[10px] mt-2 opacity-80">已向 85% 合规企业推送</p>
-                    </div>
-                    <i data-lucide="flame" class="absolute -right-2 -bottom-2 w-20 h-20 opacity-20"></i>
-                </div>
-            </div>
+    <section id="gov-2" class="page hidden"><h2 class="page-title">政府端 · 监管分析</h2></section>
+    <section id="gov-3" class="page hidden"><h2 class="page-title">政府端 · 风险预警</h2></section>
+    <section id="gov-4" class="page hidden"><h2 class="page-title">政府端 · 政策匹配</h2></section>
+    <section id="gov-5" class="page hidden"><h2 class="page-title">政府端 · 系统配置</h2></section>
 
-            <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-2 space-y-6">
-                    <div class="bg-white p-6 rounded-2xl card-shadow">
-                        <div class="flex justify-between items-center mb-6">
-                            <h4 class="font-bold text-sm">政策处理流</h4>
-                            <a href="#" class="text-blue-500 text-xs flex items-center">查看所有 12 条任务 <i data-lucide="chevron-right" class="w-3 h-3 ml-1"></i></a>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-                                <div class="flex items-center gap-4">
-                                    <span class="bg-blue-100 text-blue-600 w-8 h-8 flex items-center justify-center rounded font-bold text-xs">政</span>
-                                    <div>
-                                        <p class="text-sm font-medium">《支持专精特新企业发展若干措施》</p>
-                                        <p class="text-[10px] text-gray-400 mt-1">🕒 2 小时前 · <span class="text-purple-500">AI 生成 12 对映射</span></p>
-                                    </div>
-                                </div>
-                                <button class="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-xs shadow-lg shadow-blue-200">去核准</button>
-                            </div>
-                            <div class="flex items-center justify-between p-4 bg-orange-50/50 rounded-xl border border-orange-100">
-                                <div class="flex items-center gap-4">
-                                    <span class="bg-orange-100 text-orange-600 w-8 h-8 flex items-center justify-center rounded font-bold text-xs">结</span>
-                                    <div>
-                                        <p class="text-sm font-medium">标签冲突预警: ID #4092</p>
-                                    </div>
-                                </div>
-                                <button class="bg-orange-400 text-white px-4 py-1.5 rounded-lg text-xs">处理冲突</button>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ================= 企业端页面 ================= -->
+    <section id="corp-1" class="page hidden"><h2 class="page-title">企业端 · 首页</h2></section>
+    <section id="corp-2" class="page hidden"><h2 class="page-title">企业端 · 数据看板</h2></section>
+    <section id="corp-3" class="page hidden"><h2 class="page-title">企业端 · 项目管理</h2></section>
+    <section id="corp-4" class="page hidden"><h2 class="page-title">企业端 · 模型分析</h2></section>
+    <section id="corp-5" class="page hidden"><h2 class="page-title">企业端 · 资产管理</h2></section>
+    <section id="corp-6" class="page hidden"><h2 class="page-title">企业端 · 报表中心</h2></section>
+    <section id="corp-7" class="page hidden"><h2 class="page-title">企业端 · 账号设置</h2></section>
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white p-5 rounded-2xl card-shadow">
-                            <p class="text-xs font-bold mb-4">临期政策监控</p>
-                            <div class="border-l-4 border-red-400 pl-3">
-                                <p class="text-xs font-medium">数字化转型奖补</p>
-                                <p class="text-[10px] text-red-500 mt-1">仅剩 2 天</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-5 rounded-2xl card-shadow">
-                            <p class="text-xs font-bold mb-4">效能/数据监控</p>
-                            <div class="flex justify-between items-end">
-                                <div>
-                                    <p class="text-[10px] text-gray-400">工商接口</p>
-                                    <p class="text-xs text-green-500 flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full"></span> 正常</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-[10px] text-gray-400">数据可信度</p>
-                                    <p class="text-sm font-bold text-blue-600">98.2%</p>
-                                </div>
-                            </div>
-                        </div>
-<div class="bg-slate-800 text-white p-5 rounded-2xl card-shadow 
-            flex flex-col items-center justify-center text-center col-span-2">
+  </main>
+</div>
 
-                    </div>
-                </div>
+<!-- ================= 样式抽象 ================= -->
+<style>
+  .menu-btn {
+    width: 100%;
+    text-align: left;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: #020617;
+  }
+  .menu-btn:hover {
+    background: #1e293b;
+  }
+  .page-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .card {
+    height: 180px;
+    background: #020617;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-title {
+    height: 16px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .card-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-desc {
+    height: 22px;
+    font-size: 8px;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    overflow: hidden;
+  }
+</style>
 
-                <div class="bg-white p-6 rounded-2xl card-shadow">
-                    <div class="flex items-center gap-2 mb-6">
-                        <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i>
-                        <h4 class="font-bold text-sm">画像变动实时流</h4>
-                    </div>
-                    <div class="relative pl-6 space-y-8 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-0 before:w-[1px] before:bg-gray-100">
-                        <div class="relative">
-                            <div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full border-2 border-blue-500 bg-white"></div>
-                            <p class="text-[10px] text-gray-400">10:24 AM</p>
-                            <p class="text-xs font-bold mt-1">科创有限公司</p>
-                            <p class="text-[10px] text-gray-500">系统自动补充: <span class="text-blue-500">#专利特区</span></p>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full border-2 border-green-500 bg-white"></div>
-                            <p class="text-[10px] text-gray-400">09:15 AM</p>
-                            <p class="text-xs font-bold mt-1">XX 制造厂</p>
-                            <p class="text-[10px] text-gray-500">复核重新评估: 匹配度 <span class="text-red-400">85% → 92%</span></p>
-                        </div>
-                    </div>
+<!-- ================= JS ================= -->
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+  }
 
-                    <div class="mt-12 bg-slate-900 rounded-xl p-4">
-                        <p class="text-[10px] text-white/40 mb-4">算法注册实时效能</p>
-                        <div class="flex items-end gap-2 h-20">
-                            <div class="flex-1 bg-blue-900 rounded-t h-[40%]"></div>
-                            <div class="flex-1 bg-blue-800 rounded-t h-[60%]"></div>
-                            <div class="flex-1 bg-blue-700 rounded-t h-[85%]"></div>
-                            <div class="flex-1 bg-blue-600 rounded-t h-[100%] shadow-[0_0_15px_rgba(59,130,246,0.5)]"></div>
-                            <div class="flex-1 bg-blue-700 rounded-t h-[70%]"></div>
-                        </div>
-                        <p class="text-[8px] text-white/30 text-center mt-3">基于广东省重点政策扩充模型计算</p>
-                    </div>
-                </div>
-            </div>
+  function switchRole(role) {
+    document.getElementById('gov-menu').classList.toggle('hidden', role !== 'gov');
+    document.getElementById('corp-menu').classList.toggle('hidden', role !== 'corp');
+    showPage(role === 'gov' ? 'gov-1' : 'corp-1');
+  }
+</script>
 
-            <div class="bg-white/50 p-6 rounded-2xl border border-dashed border-gray-200">
-                <div class="flex justify-between mb-4">
-                    <h4 class="font-bold text-sm text-gray-700">高频场景能力分布</h4>
-                    <span class="text-[10px] text-gray-400 cursor-pointer">配置场景模块</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 绿色赋能</span>
-                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 5G 通讯</span>
-                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 工业互联网</span>
-                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 生物医药</span>
-                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># AI</span>
-                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 智能制造</span>
-                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 数字孪生</span>
-                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 智能技术服务</span>
-                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 内资企业</span>
-                </div>
-                <div class="flex flex-wrap gap-2 mt-3">
-                    <span class="px-4 py-1.5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium"># 多模态</span>
-                    <span class="px-4 py-1.5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium"># 大型企业</span>
-                    <span class="px-4 py-1.5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium"># 大模型 (LLM)</span>
-                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 新材料</span>
-                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 集成电路</span>
-                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># AI 创新矩阵</span>
-                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 数据处理服务</span>
-                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 信息技术咨询</span>
-                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 全资子公司</span>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Navigation Simulation Logic
-        const navItems = document.querySelectorAll('.nav-item');
-        const contentArea = document.getElementById('content-area');
-
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Get the file name target from href
-                const targetFile = item.getAttribute('href');
-                
-                // Update UI active state
-                navItems.forEach(i => i.classList.remove('nav-active'));
-                item.classList.add('nav-active');
-
-                // Content Switching Logic
-                if (targetFile === '控制台首页.html') {
-                    location.reload(); // Reload to show the dashboard
-                } else {
-                    renderPlaceholder(targetFile);
-                }
-            });
-        });
-
-        function renderPlaceholder(fileName) {
-            contentArea.innerHTML = `
-                <div class="flex flex-col items-center justify-center h-full text-gray-400 space-y-4">
-                    <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
-                        <i data-lucide="file-code" class="w-8 h-8"></i>
-                    </div>
-                    <div class="text-center">
-                        <h2 class="text-xl font-bold text-gray-700">正在加载: ${fileName}</h2>
-                        <p>此界面已被成功映射到左侧导航逻辑中。</p>
-                    </div>
-                </div>
-            `;
-            lucide.createIcons();
-        }
-    </script>
 </body>
 </html>
