@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>控制台首页</title>
 
   <link rel="stylesheet" href="./reset.css">
@@ -9,63 +9,151 @@
   <link rel="stylesheet" href="./sidebar.css">
   <link rel="stylesheet" href="./dashboard.css">
 </head>
-
 <body>
-  <div class="app">
-    <!-- 左侧导航 -->
-    <aside class="sidebar">
-      <div class="logo">管理控制台</div>
-      <ul class="nav">
-        <li class="active" data-link="控制台首页.html">控制台首页</li>
-        <li data-link="政策导入与管理.html">政策导入与管理</li>
-        <li data-link="企业信息管理.html">企业信息管理</li>
-        <li data-link="企业画像与匹配.html">企业画像与匹配</li>
-        <li data-link="效能配置与对接.html">系统配置</li>
+
+<div class="app">
+  <!-- 左侧导航 -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <div class="logo-text">
+        <strong>智策中台</strong>
+        <span>INTELLIGENT POLICY OS</span>
+      </div>
+    </div>
+
+    <div class="menu">
+      <p class="menu-title">核心业务模块</p>
+      <ul>
+        <li class="active">控制台首页</li>
+        <li>政策导入与管理</li>
+        <li>企业信息管理</li>
+        <li>效能配置与对接</li>
       </ul>
-    </aside>
+    </div>
 
-    <!-- 主体内容 -->
-    <main class="main">
-      <!-- 顶部栏 -->
-      <header class="header">
-        <h1>控制台首页</h1>
-        <div class="user">管理员</div>
-      </header>
+    <div class="menu">
+      <p class="menu-title">数据匹配</p>
+      <ul>
+        <li>企业画像与匹配</li>
+      </ul>
+    </div>
 
-      <!-- 内容区 -->
-      <section class="content">
-        <!-- 指标卡 -->
-        <div class="stats">
-          <div class="card">
-            <p class="label">企业总数</p>
-            <p class="value">1,248</p>
+    <div class="quick-entry">
+      <div class="entry-card">
+        <h4>匹配模拟器</h4>
+        <p>输入条件，实时模拟算法</p>
+      </div>
+      <div class="entry-card">
+        <h4>供需清单拆解</h4>
+        <p>识别企业真实能力</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 主区域 -->
+  <main class="main">
+    <!-- 顶部 -->
+    <header class="topbar">
+      <div class="search">
+        搜索政策原文、企业画像或输入关键词…
+      </div>
+      <div class="top-actions">
+        <span class="status">SSO & API 同步中</span>
+        <div class="avatar">AD</div>
+      </div>
+    </header>
+
+    <!-- 内容 -->
+    <section class="dashboard">
+
+      <!-- 顶部指标卡 -->
+      <div class="metrics">
+        <div class="metric-card">
+          <p class="title">今日匹配成功</p>
+          <p class="value">1,284</p>
+          <p class="trend up">↑ 12.5%</p>
+        </div>
+
+        <div class="metric-card">
+          <p class="title">AI 识别准确率</p>
+          <p class="value">94.2%</p>
+          <div class="progress"><span></span></div>
+        </div>
+
+        <div class="metric-card">
+          <p class="title">数据同步延迟</p>
+          <p class="value">1.2s</p>
+          <p class="desc">API 实时状态良好</p>
+        </div>
+
+        <div class="metric-card highlight">
+          <p class="title">政策覆盖热度</p>
+          <p class="value">489</p>
+          <p class="desc">已向 85% 企业推送</p>
+        </div>
+      </div>
+
+      <!-- 中部内容 -->
+      <div class="middle">
+        <!-- 政策处理流 -->
+        <div class="card large">
+          <div class="card-header">
+            <h3>政策处理流</h3>
+            <a href="#">查看所有 12 条任务</a>
           </div>
-          <div class="card">
-            <p class="label">政策总数</p>
-            <p class="value">356</p>
+
+          <div class="policy-item">
+            <div class="badge blue">政</div>
+            <div class="info">
+              <p class="name">《支持专精特新企业发展若干措施》</p>
+              <p class="meta">2小时前 · AI 生成 12 条标签</p>
+            </div>
+            <button class="btn">去核验</button>
           </div>
-          <div class="card">
-            <p class="label">匹配成功</p>
-            <p class="value">892</p>
-          </div>
-          <div class="card">
-            <p class="label">待处理</p>
-            <p class="value">47</p>
+
+          <div class="policy-item">
+            <div class="badge yellow">控</div>
+            <div class="info">
+              <p class="name">标签冲突预警：ID #4092</p>
+            </div>
+            <button class="btn warn">处理冲突</button>
           </div>
         </div>
 
-        <!-- 占位模块 -->
-        <div class="panel">
-          <h2>政策处理概览</h2>
-          <div class="panel-body">
-            <div class="placeholder">这里后面可以放流程 / 图表</div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+        <!-- 右侧实时流 -->
+        <div class="card">
+          <h3>画像变动实时流</h3>
 
-  <script src="./sidebar.js"></script>
+          <ul class="timeline">
+            <li>
+              <span class="time">10:24</span>
+              <p><strong>科创有限公司</strong></p>
+              <small>系统自动标注：专精特新</small>
+            </li>
+            <li>
+              <span class="time">09:15</span>
+              <p><strong>XX 制造厂</strong></p>
+              <small>匹配率：85% → 92%</small>
+            </li>
+          </ul>
+
+          <div class="chart-placeholder"></div>
+        </div>
+      </div>
+
+      <!-- 底部标签 -->
+      <div class="tags">
+        <span class="tag green"># AI</span>
+        <span class="tag green"># 工业互联网</span>
+        <span class="tag green"># 生物医药</span>
+        <span class="tag orange"># 数据服务</span>
+        <span class="tag orange"># AI 节能降耗</span>
+      </div>
+
+    </section>
+  </main>
+</div>
+
 </body>
 </html>
-
