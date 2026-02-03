@@ -1,1 +1,46 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.card .label {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.card .value {
+  margin-top: 8px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #111827;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.panel h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.placeholder {
+  height: 160px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
 
