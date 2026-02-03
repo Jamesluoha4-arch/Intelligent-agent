@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧政企领航 - 企业服务平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body { font-family: 'Inter', 'Microsoft YaHei', sans-serif; background-color: #f8fafc; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .nav-item.active { background: rgba(59, 130, 246, 0.1); color: #2563eb; border-right: 3px solid #2563eb; }
+        .sidebar { background: #0f172a; transition: all 0.3s ease; }
+        .nav-link { color: #94a3b8; transition: all 0.2s; }
+        .nav-link:hover { color: #f1f5f9; background: rgba(255,255,255,0.05); }
+        .hidden-page { display: none; }
+        .active-page { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .gradient-text { background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="overflow-hidden">
+
+    <div class="flex h-screen">
+        <aside class="sidebar w-64 flex flex-col shrink-0">
+            <div class="p-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <span class="text-white font-bold tracking-tight">数智企业端 <span class="text-[10px] bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded ml-1">V2.6</span></span>
+                </div>
+            </div>
+
+            <nav class="flex-1 mt-4 px-3 space-y-1">
+                <a href="#" onclick="showPage('policy-ask')" id="nav-policy-ask" class="nav-link nav-item active flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+                    <i class="fas fa-comment-dots w-5"></i> 政策问答及推送
+                </a>
+                <a href="#" onclick="showPage('policy-decode')" id="nav-policy-decode" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+                    <i class="fas fa-book-open w-5"></i> 政策解读
+                </a>
+                <a href="#" onclick="showPage('enterprise-portrait')" id="nav-enterprise-portrait" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+                    <i class="fas fa-id-card w-5"></i> 我的企业画像
+                </a>
+                <a href="#" onclick="showPage('match-center')" id="nav-match-center" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+                    <i class="fas fa-hands-helping w-5"></i> 双向匹配中心
+                </a>
+                <a href="#" onclick="showPage('data-analysis')" id="nav-data-analysis" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+                    <i class="fas fa-chart-pie w-5"></i> 数据分析中心
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-800">
+                <div class="flex items-center justify-between text-slate-500 hover:text-slate-300 cursor-default">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center">
+                            <i class="fas fa-user text-xs"></i>
+                        </div>
+                        <span class="text-xs">某机器人科技...</span>
+                    </div>
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col min-w-0 bg-slate-50/50">
+            <header class="h-16 glass-card border-b flex items-center justify-between px-8 z-10">
+                <div class="relative w-96">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="搜索政策原文、企业画像或输入问答关键词..." class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 text-xs focus:ring-2 focus:ring-blue-500 transition-all">
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 text-emerald-600 rounded-full text-[10px] font-bold">
+                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> SSO & API 同步中
+                    </div>
+                    <button class="relative text-slate-400 hover:text-blue-600">
+                        <i class="far fa-bell"></i>
+                        <span class="absolute -top-1 -right-1 w-2 h-2 bg-rose-500 rounded-full border-2 border-white"></span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="flex-1 overflow-y-auto p-8">
+                
+                <section id="policy-ask" class="active-page space-y-6">
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="col-span-2 glass-card rounded-2xl p-6 shadow-sm flex flex-col h-[500px]">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i class="fas fa-robot text-blue-500"></i> AI 政策智能问答
+                                </h3>
+                                <span class="text-[10px] text-slate-400">基于最新政策知识库</span>
+                            </div>
+                            <div class="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
+                                <div class="flex gap-3">
+                                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-robot text-blue-600 text-xs"></i></div>
+                                    <div class="bg-blue-50 p-3 rounded-2xl rounded-tl-none text-xs text-blue-800 leading-relaxed max-w-[80%]">
+                                        您好！我是您的政策数字助手。检测到贵司近期有“新能源电池低温应用”研发计划，需要了解相关的补贴政策吗？
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 flex-row-reverse">
+                                    <div class="w-8 h-8 bg-slate-200 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-user text-slate-600 text-xs"></i></div>
+                                    <div class="bg-white border border-slate-100 p-3 rounded-2xl rounded-tr-none text-xs text-slate-700 shadow-sm max-w-[80%]">
+                                        是的，我想知道具体对研发人员的学历和社保缴纳时间有没有要求？
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <input type="text" placeholder="输入您的政策疑问，支持追问引导..." class="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-4 pr-12 text-sm focus:outline-none focus:border-blue-400">
+                                <button class="absolute right-3 top-1/2 -translate-y-1/2 bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center shadow-lg shadow-blue-200">
+                                    <i class="fas fa-paper-plane text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-span-1 space-y-6">
+                            <div class="glass-card rounded-2xl p-6 shadow-sm border-l-4 border-blue-500">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">“我找政策”精准推送</h4>
+                                    <span class="text-[10px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold">匹配度 TOP1</span>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="p-4 bg-blue-50/50 border border-blue-100 rounded-xl">
+                                        <p class="text-sm font-bold text-slate-800 mb-1">2026年度工业互联网奖补</p>
+                                        <p class="text-[11px] text-slate-500 line-clamp-2">针对通过DCMM三级评估的企业，一次性给予50万资金支持...</p>
+                                        <div class="flex items-center gap-2 mt-3">
+                                            <span class="text-[10px] text-blue-600 font-bold"><i class="fas fa-check-circle"></i> 匹配度 98%</span>
+                                            <button class="ml-auto text-xs font-bold text-blue-600 hover:underline">立即申报</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="glass-card rounded-2xl p-6 shadow-sm">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">政策关联有效标签</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[10px] font-medium border border-slate-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors cursor-pointer"># 智能制造</span>
+                                    <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[10px] font-medium border border-slate-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors cursor-pointer"># 软件著作权</span>
+                                    <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[10px] font-medium border border-slate-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors cursor-pointer"># 专精特新</span>
+                                    <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-[10px] font-medium border border-slate-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-colors cursor-pointer"># 研发投入占比</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="policy-decode" class="hidden-page space-y-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-slate-800">智能政策解读中心</h2>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50">历史解读记录</button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-4 gap-6">
+                        <div class="col-span-1 glass-card rounded-2xl p-4 shadow-sm h-[600px] overflow-y-auto">
+                            <div class="space-y-3">
+                                <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
+                                    <p class="text-xs font-bold text-slate-800">苏州市智改数转专项奖励...</p>
+                                    <p class="text-[10px] text-slate-400 mt-1">发布日期：2026-01-20</p>
+                                </div>
+                                <div class="p-3 bg-white border border-slate-100 rounded-xl opacity-60 hover:opacity-100 cursor-pointer transition-all">
+                                    <p class="text-xs font-bold text-slate-800">关于支持新能源汽车出口的...</p>
+                                    <p class="text-[10px] text-slate-400 mt-1">发布日期：2026-01-15</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-3 space-y-6">
+                            <div class="glass-card rounded-2xl p-8 shadow-sm">
+                                <div class="flex justify-between items-start mb-6">
+                                    <h1 class="text-2xl font-bold text-slate-800 leading-tight">苏州市2026年度“智改数转”项目资助申报指南</h1>
+                                    <div class="flex gap-2">
+                                        <button class="text-xs bg-slate-100 px-3 py-1 rounded text-slate-500 font-bold hover:bg-slate-200">查看原文</button>
+                                        <button class="text-xs bg-blue-600 px-3 py-1 rounded text-white font-bold shadow-lg shadow-blue-200">打印要点</button>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-6 mb-8">
+                                    <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
+                                        <p class="text-[10px] text-emerald-600 font-bold uppercase mb-1">重点支持</p>
+                                        <p class="text-xs text-slate-700 leading-relaxed font-medium">离散型智能制造、流程型智能制造、网络化协同制造</p>
+                                    </div>
+                                    <div class="p-4 bg-amber-50 rounded-2xl border border-amber-100">
+                                        <p class="text-[10px] text-amber-600 font-bold uppercase mb-1">申报门槛</p>
+                                        <p class="text-xs text-slate-700 leading-relaxed font-medium">上年度营收5000万以上，研发人员占比不低于10%</p>
+                                    </div>
+                                    <div class="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+                                        <p class="text-[10px] text-indigo-600 font-bold uppercase mb-1">资助额度</p>
+                                        <p class="text-xs text-slate-700 leading-relaxed font-bold">最高 500 万元 (一次性补贴)</p>
+                                    </div>
+                                </div>
+                                <div class="p-6 bg-slate-900 rounded-3xl relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+                                    <h4 class="text-cyan-400 text-xs font-bold flex items-center gap-2 mb-4 uppercase tracking-widest"><i class="fas fa-magic"></i> AI 个性化诊断报告</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
+                                            <p class="text-xs text-slate-300 leading-relaxed"><span class="text-white font-bold">相关点：</span>贵司符合“离散型智能制造”申报方向，且拥有的24项有效专利完全覆盖支持领域。</p>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-1.5 h-1.5 bg-amber-400 rounded-full mt-1.5"></div>
+                                            <p class="text-xs text-slate-300 leading-relaxed"><span class="text-white font-bold">准备项：</span>需补充2025年度专项财务审计报告，并准备至少3个典型应用场景视频资料。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="enterprise-portrait" class="hidden-page space-y-6">
+                    <div class="glass-card rounded-2xl p-6 shadow-sm">
+                        <div class="flex items-start justify-between mb-8">
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl font-bold">机</div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-slate-800">某机器人科技有限公司 <span class="text-[10px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded ml-2">已认证</span></h2>
+                                    <div class="flex gap-4 mt-2 text-xs text-slate-400 font-mono">
+                                        <span>统一社会信用代码：91440101MAXXXXXX</span>
+                                        <span class="border-l pl-4">所属行业：工业机器人制造</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="px-4 py-2 border border-slate-200 rounded-lg text-xs font-bold text-slate-500"><i class="fas fa-sync-alt mr-2"></i> 触发双边同步</button>
+                        </div>
+                        <div class="grid grid-cols-4 gap-6">
+                            <div class="p-4 bg-slate-50 rounded-xl text-center">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">年度营收 (2025)</p>
+                                <p class="text-lg font-bold text-slate-700">¥ 1.28 亿</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl text-center">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">研发投入占比</p>
+                                <p class="text-lg font-bold text-blue-600">12.5%</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl text-center">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">社保缴纳人数</p>
+                                <p class="text-lg font-bold text-slate-700">142 人</p>
+                            </div>
+                            <div class="p-4 bg-rose-50 border border-rose-100 rounded-xl text-center relative">
+                                <p class="text-[10px] text-rose-400 font-bold uppercase mb-1">数据冲突监测</p>
+                                <p class="text-lg font-bold text-rose-600">3 项存疑</p>
+                                <span class="absolute -top-1 -right-1 w-3 h-3 bg-rose-500 rounded-full animate-ping"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="col-span-1 glass-card rounded-2xl p-6 shadow-sm">
+                            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">能力雷达看板</h3>
+                            <div class="aspect-square bg-slate-50 rounded-full border-4 border-white shadow-inner flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-blue-400/20" style="clip-path: polygon(50% 10%, 90% 40%, 80% 80%, 30% 90%, 10% 40%);"></div>
+                                <span class="text-[10px] font-bold text-slate-300">工商维度</span>
+                                <span class="absolute top-4 left-1/2 -translate-x-1/2 text-[9px] font-bold text-slate-400 uppercase">创新能力</span>
+                            </div>
+                        </div>
+                        <div class="col-span-2 glass-card rounded-2xl p-6 shadow-sm">
+                            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">企业全生命周期档案</h3>
+                            <div class="relative pl-8 space-y-8 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100">
+                                <div class="relative">
+                                    <div class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-blue-100 border-4 border-white flex items-center justify-center text-blue-600 shadow-sm"><i class="fas fa-check text-[10px]"></i></div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase">2026-01-20</p>
+                                    <h4 class="text-sm font-bold text-slate-800 mt-1">获得省级“专精特新”认定</h4>
+                                    <p class="text-xs text-slate-500 mt-1">通过数智平台自动匹配申报，审核周期缩短40%。</p>
+                                </div>
+                                <div class="relative">
+                                    <div class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-slate-200 border-4 border-white flex items-center justify-center text-slate-400 shadow-sm"><i class="fas fa-rocket text-[10px]"></i></div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase">2024-05-12</p>
+                                    <h4 class="text-sm font-bold text-slate-800 mt-1">完成 B 轮融资 5000 万</h4>
+                                    <p class="text-xs text-slate-500 mt-1">估值达到8.5亿人民币，加速伺服电机技术量产。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="match-center" class="hidden-page space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-800">双向匹配算法推荐</h2>
+                            <p class="text-xs text-slate-400 mt-1">基于实时供需清单与企业能力标签深度计算</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-slate-500">权重调节：</span>
+                            <div class="h-1.5 w-32 bg-slate-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-500 w-2/3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="glass-card rounded-2xl p-6 shadow-sm border-l-4 border-blue-500 group hover:shadow-lg transition-all">
+                            <div class="flex justify-between items-start">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-lg font-bold text-slate-800">新能源汽车核心零部件产业补助</h3>
+                                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold">匹配强度：强</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mb-4">
+                                        该项目主要针对拥有自主知识产权且已进入头部主机厂供应链的企业。贵司伺服电机技术高度契合指南第三条规定。
+                                    </p>
+                                    <div class="flex gap-4">
+                                        <div class="bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
+                                            <p class="text-[9px] text-slate-400 font-bold uppercase">命中核心理由</p>
+                                            <p class="text-xs text-blue-600 font-bold mt-1">符合：自主研发+新能源供应链 [标签命中]</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-bold text-blue-600 font-mono">96<span class="text-xs">%</span></p>
+                                    <p class="text-[10px] text-slate-400 uppercase mt-1">综合匹配分</p>
+                                    <button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-blue-200 opacity-0 group-hover:opacity-100 transition-all">查看详情</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="data-analysis" class="hidden-page space-y-6">
+                    <div class="grid grid-cols-4 gap-6">
+                        <div class="col-span-2 glass-card rounded-2xl p-6 shadow-sm">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i class="fas fa-layer-group text-purple-500"></i> 供需清单智能拆解
+                                </h3>
+                                <button class="text-[10px] font-bold text-blue-600">+ 上传原始清单</button>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-dashed border-slate-200 mb-6">
+                                <p class="text-xs text-slate-400 italic text-center">将您的项目计划书或痛点清单拖拽至此，AI将自动转化为能力标签</p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="p-3 bg-white border border-slate-100 rounded-xl shadow-sm flex items-center justify-between">
+                                    <span class="text-xs font-medium text-slate-600">伺服电机低温环境下响应延迟问题</span>
+                                    <i class="fas fa-arrow-right text-slate-300"></i>
+                                    <span class="px-2 py-0.5 bg-purple-50 text-purple-600 rounded text-[10px] font-bold"># 低温算法优化</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-2 glass-card rounded-2xl p-6 shadow-sm bg-slate-900 text-white relative overflow-hidden">
+                            <div class="absolute bottom-0 right-0 opacity-10 text-[100px] -mr-10 -mb-10"><i class="fas fa-chart-line"></i></div>
+                            <h3 class="font-bold text-cyan-400 flex items-center gap-2 mb-8 tracking-widest uppercase">效能监控看板</h3>
+                            <div class="grid grid-cols-2 gap-8 relative z-10">
+                                <div>
+                                    <p class="text-xs text-slate-400">政策热度关注度</p>
+                                    <div class="flex items-end gap-2 mt-2">
+                                        <div class="w-1.5 h-12 bg-blue-500 rounded-full"></div>
+                                        <div class="w-1.5 h-8 bg-blue-500/50 rounded-full"></div>
+                                        <div class="w-1.5 h-16 bg-blue-400 rounded-full"></div>
+                                        <span class="text-2xl font-bold ml-2 font-mono">1,240</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">场景匹配成功率</p>
+                                    <p class="text-3xl font-bold mt-2 font-mono">82.4<span class="text-sm">%</span></p>
+                                    <div class="h-1 bg-slate-800 rounded-full mt-2">
+                                        <div class="h-full bg-emerald-500 w-[82%]"></div>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 flex justify-between pt-4 border-t border-slate-800">
+                                    <div>
+                                        <p class="text-[10px] text-slate-500 uppercase">累计对接成功</p>
+                                        <p class="text-lg font-bold">¥ 2,450 万</p>
+                                    </div>
+                                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-500 transition-colors">导出完整报告</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // 隐藏所有页面
+            const pages = document.querySelectorAll('section');
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+                page.classList.add('hidden-page');
+            });
+
+            // 显示目标页面
+            const target = document.getElementById(pageId);
+            target.classList.remove('hidden-page');
+            target.classList.add('active-page');
+
+            // 导航栏高亮逻辑
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
