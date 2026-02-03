@@ -3,243 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智策中台 - 综合管理系统</title>
+    <title>智策中台 - Intelligent Policy OS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
-        body { font-family: 'Noto Sans SC', sans-serif; background-color: #F4F7FE; color: #1e293b; transition: all 0.3s; }
-        .sidebar-gradient { background: #131B2E; }
-        .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
-        .nav-item { cursor: pointer; transition: all 0.2s; border-radius: 12px; }
-        .nav-item.active { background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%); color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
-        .nav-item:not(.active):hover { color: white; background: rgba(255,255,255,0.05); }
-        .view-section { display: none; animation: fadeIn 0.4s ease-out forwards; }
-        .view-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-        .drop-zone { border: 2px dashed #e2e8f0; }
-        .tag-pill { border: 1px solid #e2e8f0; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', "Microsoft YaHei", sans-serif; background-color: #F0F4F8; }
+        .sidebar-gradient { background: linear-gradient(180deg, #0D1B3E 0%, #162447 100%); }
+        .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .nav-active { background: #3B82F6; color: white !important; border-radius: 8px; }
+        .status-pill { background: rgba(59, 130, 246, 0.1); color: #3B82F6; }
     </style>
 </head>
-<body class="h-screen flex overflow-hidden">
+<body class="flex h-screen overflow-hidden">
 
-    <aside class="sidebar w-64 sidebar-gradient flex flex-col p-6 shrink-0 z-50">
-        <div class="flex items-center gap-3 mb-10 px-2">
-            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg"><i class="fas fa-layer-group"></i></div>
+    <aside class="w-64 sidebar-gradient text-gray-400 flex flex-col p-4 shrink-0">
+        <div class="flex items-center gap-2 mb-10 px-2">
+            <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
             <div>
-                <h1 class="text-white font-black text-lg tracking-tight">智策中台</h1>
-                <p class="text-[8px] text-slate-500 uppercase tracking-widest leading-none">Intelligent Policy OS</p>
+                <h1 class="text-white font-bold text-sm leading-tight">智策中台</h1>
+                <p class="text-[10px] opacity-50 uppercase">Intelligent Policy OS</p>
             </div>
         </div>
 
-        <nav id="main-nav" class="flex flex-col gap-1 text-slate-400">
-            <p class="text-[10px] font-black uppercase tracking-widest mb-4 px-2 opacity-40">核心业务模块</p>
-            <div data-target="dashboard" class="nav-item active flex items-center gap-4 py-3 px-4">
-                <i class="fas fa-th-large w-5"></i><span class="text-sm font-bold italic">控制台首页</span>
-            </div>
-            <div data-target="policy-import" class="nav-item flex items-center gap-4 py-3 px-4">
-                <i class="fas fa-file-import w-5"></i><span class="text-sm font-bold italic">政策导入与管理</span>
-            </div>
-            
-            <p class="text-[10px] font-black uppercase tracking-widest mt-8 mb-4 px-2 opacity-40">数据与匹配</p>
-            <div data-target="enterprise-db" class="nav-item flex items-center gap-4 py-3 px-4">
-                <i class="fas fa-id-badge w-5"></i><span class="text-sm font-bold italic">企业信息管理</span>
-            </div>
-            <div data-target="performance-config" class="nav-item flex items-center gap-4 py-3 px-4">
-                <i class="fas fa-project-diagram w-5"></i><span class="text-sm font-bold italic">效能配置与对接</span>
-            </div>
+        <nav class="flex-1 space-y-1 text-sm">
+            <p class="text-[10px] px-2 mb-2 uppercase opacity-40">核心业务模块</p>
+            <a href="控制台首页.html" class="nav-item nav-active flex items-center gap-3 p-3 transition-all hover:text-white">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i> 控制台首页
+            </a>
+            <a href="政策导入与管理.html" class="nav-item flex items-center gap-3 p-3 transition-all hover:text-white">
+                <i data-lucide="file-text" class="w-4 h-4"></i> 政策导入与管理
+            </a>
+
+            <p class="text-[10px] px-2 mt-6 mb-2 uppercase opacity-40">数据与匹配</p>
+            <a href="企业信息管理.html" class="nav-item flex items-center gap-3 p-3 transition-all hover:text-white">
+                <i data-lucide="database" class="w-4 h-4"></i> 企业信息管理
+            </a>
+            <a href="效能配置与对接.html" class="nav-item flex items-center gap-3 p-3 transition-all hover:text-white">
+                <i data-lucide="bar-chart-3" class="w-4 h-4"></i> 效能配置与对接
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 opacity-50 cursor-not-allowed">
+                <i data-lucide="settings" class="w-4 h-4"></i> 设置
+            </a>
         </nav>
 
-        <div class="mt-auto space-y-4 pt-10">
-            <div class="bg-white/5 rounded-2xl p-4 border border-white/5">
-                <div class="flex items-center gap-3 mb-2 text-white"><i class="fas fa-calculator text-blue-400"></i><span class="text-xs font-bold">匹配模拟器</span></div>
-                <p class="text-[10px] text-slate-500">实时算法输出政策结果</p>
+        <div class="mt-auto space-y-3">
+            <div class="bg-white/5 rounded-xl p-4 text-xs">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="calculator" class="w-4 h-4 text-blue-400"></i>
+                    <span class="text-white">匹配模拟器</span>
+                </div>
+                <p class="opacity-50 scale-90 origin-left">输入仿真参数，系统模拟算法输出匹配度结果。</p>
             </div>
-            <div class="bg-white text-slate-900 rounded-2xl p-4 text-center cursor-pointer hover:bg-slate-100 transition shadow-lg">
-                <span class="text-xs font-black uppercase tracking-widest">进入企业端</span>
+            <div class="bg-white/5 rounded-xl p-4 text-xs">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="file-digit" class="w-4 h-4 text-green-400"></i>
+                    <span class="text-white">供需清单拆解</span>
+                </div>
+                <p class="opacity-50 scale-90 origin-left">将企业能力转化为系统可识别的标准能力标签。</p>
             </div>
+            <button class="w-full bg-white text-blue-900 font-bold py-2 rounded-lg text-sm">企业端</button>
         </div>
     </aside>
 
-    <main class="flex-1 flex flex-col overflow-hidden">
-        <header class="h-20 bg-white border-b border-slate-100 flex items-center justify-between px-8 shrink-0 z-40">
-            <div class="relative w-96">
-                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-300"></i>
-                <input type="text" id="global-search" placeholder="搜索政策、企业画像..." class="w-full bg-slate-50 border border-slate-100 rounded-full py-2.5 pl-12 pr-4 text-xs font-bold outline-none focus:ring-2 ring-blue-100 transition">
+    <main class="flex-1 flex flex-col overflow-y-auto">
+        <header class="h-16 bg-white border-b flex items-center justify-between px-8 shrink-0">
+            <div class="relative w-1/3">
+                <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="搜索政策原文、企业画像或输入业务关键词..." class="w-full bg-gray-100 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none">
             </div>
             <div class="flex items-center gap-6">
-                <div class="hidden lg:flex items-center gap-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
-                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                    <span class="text-[10px] font-black text-emerald-600 uppercase italic">SSO & API 同步中</span>
+                <div class="flex items-center gap-2 bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs border border-green-100">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> SSO & API 同步中
                 </div>
-                <div class="relative text-slate-400 cursor-pointer"><i class="far fa-bell text-lg"></i><span class="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 text-white text-[8px] flex items-center justify-center rounded-full border-2 border-white">5</span></div>
-                <div class="flex items-center gap-3 border-l border-slate-100 pl-6">
-                    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-black">AD</div>
-                    <div class="text-left"><p class="text-xs font-black text-slate-800">管理员</p><p class="text-[9px] text-slate-400 font-bold uppercase italic tracking-widest">Admin Mode</p></div>
+                <i data-lucide="bell" class="w-5 h-5 text-gray-500 relative">
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full border-2 border-white">3</span>
+                </i>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xs">AD</div>
+                    <div class="text-xs">
+                        <p class="font-bold">名字</p>
+                        <p class="text-gray-400 scale-90 origin-left uppercase">Name</p>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <div id="content-viewport" class="flex-1 overflow-y-auto p-8 custom-scrollbar">
-            
-            <section id="dashboard" class="view-section active space-y-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-6 rounded-[2rem] card-shadow flex justify-between items-center"><div class="space-y-1"><p class="text-[10px] font-black text-slate-400 uppercase italic">今日匹配成功</p><h2 class="text-2xl font-black italic">1,284</h2><p class="text-[10px] text-emerald-500 font-bold">+12.5%</p></div><i class="fas fa-handshake text-blue-100 text-3xl"></i></div>
-                    <div class="bg-white p-6 rounded-[2rem] card-shadow"><p class="text-[10px] font-black text-slate-400 uppercase italic">AI 拆解准确率</p><h2 class="text-2xl font-black italic">94.2%</h2><div class="w-full bg-slate-100 h-1.5 rounded-full mt-4"><div class="h-full bg-purple-500 w-[94%] rounded-full"></div></div></div>
-                    <div class="bg-white p-6 rounded-[2rem] card-shadow"><p class="text-[10px] font-black text-slate-400 uppercase italic">数据同步延迟</p><h2 class="text-2xl font-black italic">1.2s</h2><p class="text-[10px] text-orange-500 font-bold uppercase">API 正常</p></div>
-                    <div class="bg-indigo-600 p-6 rounded-[2rem] shadow-xl text-white"><p class="text-[10px] font-black opacity-60 uppercase italic">政策覆盖力度</p><h2 class="text-2xl font-black italic">489</h2><p class="text-[10px] opacity-80 mt-2">覆盖 85% 企业</p></div>
+        <div id="content-area" class="p-8 space-y-6">
+            <div class="grid grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl card-shadow flex justify-between">
+                    <div>
+                        <p class="text-xs text-gray-400 mb-1">今日匹配成功</p>
+                        <h3 class="text-2xl font-bold">1,284</h3>
+                        <p class="text-xs text-green-500 mt-2">↑ 12.5% <span class="text-gray-400">较昨日</span></p>
+                    </div>
+                    <i data-lucide="handshake" class="text-blue-500 w-8 h-8 opacity-20"></i>
                 </div>
-                <div class="grid grid-cols-12 gap-8">
-                    <div class="col-span-8 bg-white rounded-[2.5rem] p-8 card-shadow space-y-6">
-                        <h3 class="text-sm font-black italic uppercase">政策处理流 / 实时对标</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center justify-between p-5 bg-slate-50 rounded-3xl border border-slate-100 group hover:border-blue-200 transition">
-                                <div class="flex items-center gap-5"><div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-black">政</div><div><h4 class="text-xs font-black italic">《专精特新支持措施》</h4><p class="text-[9px] text-slate-400 font-bold">2小时前 • AI 生成 12 个标签</p></div></div>
-                                <button class="px-6 py-2 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest">去核准</button>
+                <div class="bg-white p-6 rounded-2xl card-shadow flex justify-between">
+                    <div>
+                        <p class="text-xs text-gray-400 mb-1">AI 拆解准确率</p>
+                        <h3 class="text-2xl font-bold">94.2%</h3>
+                        <div class="w-32 h-1.5 bg-gray-100 rounded-full mt-4 overflow-hidden">
+                            <div class="bg-purple-500 h-full w-[94.2%]"></div>
+                        </div>
+                    </div>
+                    <i data-lucide="brain-circuit" class="text-purple-500 w-8 h-8 opacity-20"></i>
+                </div>
+                <div class="bg-white p-6 rounded-2xl card-shadow flex justify-between">
+                    <div>
+                        <p class="text-xs text-gray-400 mb-1">数据同步延迟</p>
+                        <h3 class="text-2xl font-bold">1.2s</h3>
+                        <p class="text-xs text-orange-500 mt-2">API 实时状态良好</p>
+                    </div>
+                    <i data-lucide="database" class="text-orange-500 w-8 h-8 opacity-20"></i>
+                </div>
+                <div class="bg-white p-6 rounded-2xl card-shadow text-white relative overflow-hidden" style="background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);">
+                    <div class="relative z-10">
+                        <p class="text-xs opacity-70 mb-1">政策覆盖热度</p>
+                        <h3 class="text-3xl font-bold">489</h3>
+                        <p class="text-[10px] mt-2 opacity-80">已向 85% 合规企业推送</p>
+                    </div>
+                    <i data-lucide="flame" class="absolute -right-2 -bottom-2 w-20 h-20 opacity-20"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6">
+                <div class="col-span-2 space-y-6">
+                    <div class="bg-white p-6 rounded-2xl card-shadow">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="font-bold text-sm">政策处理流</h4>
+                            <a href="#" class="text-blue-500 text-xs flex items-center">查看所有 12 条任务 <i data-lucide="chevron-right" class="w-3 h-3 ml-1"></i></a>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+                                <div class="flex items-center gap-4">
+                                    <span class="bg-blue-100 text-blue-600 w-8 h-8 flex items-center justify-center rounded font-bold text-xs">政</span>
+                                    <div>
+                                        <p class="text-sm font-medium">《支持专精特新企业发展若干措施》</p>
+                                        <p class="text-[10px] text-gray-400 mt-1">🕒 2 小时前 · <span class="text-purple-500">AI 生成 12 对映射</span></p>
+                                    </div>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-xs shadow-lg shadow-blue-200">去核准</button>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-orange-50/50 rounded-xl border border-orange-100">
+                                <div class="flex items-center gap-4">
+                                    <span class="bg-orange-100 text-orange-600 w-8 h-8 flex items-center justify-center rounded font-bold text-xs">结</span>
+                                    <div>
+                                        <p class="text-sm font-medium">标签冲突预警: ID #4092</p>
+                                    </div>
+                                </div>
+                                <button class="bg-orange-400 text-white px-4 py-1.5 rounded-lg text-xs">处理冲突</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-4 bg-white rounded-[2.5rem] p-8 card-shadow">
-                        <h3 class="text-sm font-black italic uppercase mb-6">画像变动实时流</h3>
-                        <div class="relative space-y-8 border-l border-slate-100 ml-2 pl-6 pb-6 text-xs">
-                            <div class="relative"><span class="absolute -left-8 top-0 w-3 h-3 bg-blue-600 rounded-full border-2 border-white"></span><p class="text-slate-400 italic">10:24 AM</p><p class="font-black mt-1 italic">科创有限公司</p><p class="text-blue-500">标注: # 专精特新</p></div>
-                            <div class="relative"><span class="absolute -left-8 top-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white"></span><p class="text-slate-400 italic">09:15 AM</p><p class="font-black mt-1 italic">XX 制造厂</p><p class="text-emerald-500">匹配度: 92%</p></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <section id="policy-import" class="view-section space-y-8">
-                <div class="bg-white rounded-[2.5rem] p-10 card-shadow space-y-8">
-                    <div class="drop-zone rounded-[2rem] p-12 text-center group hover:bg-slate-50 transition">
-                        <i class="fas fa-cloud-upload-alt text-4xl text-indigo-600 mb-4"></i>
-                        <h3 class="text-sm font-black italic uppercase">点击或拖拽文件至此处上传源政策原文</h3>
-                        <p class="text-[10px] text-slate-400 mt-2">支持 PDF / WORD / PNG / URL</p>
-                    </div>
-                    <div class="grid grid-cols-3 gap-6">
-                        <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase italic">政策效力层级</label><select class="w-full bg-slate-50 border rounded-xl px-4 py-3 text-xs font-bold"><option>市级政策 (苏州)</option><option>省级政策</option></select></div>
-                        <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase italic">责任委办局</label><select class="w-full bg-slate-50 border rounded-xl px-4 py-3 text-xs font-bold"><option>市工信局</option><option>市发改委</option></select></div>
-                        <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase italic">体裁分类</label><div class="flex gap-2"><button class="flex-1 py-3 bg-indigo-600 text-white rounded-xl text-[10px] font-black">申报指南</button><button class="flex-1 py-3 bg-white border rounded-xl text-[10px] font-black text-slate-400">实施细则</button></div></div>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">最近导入资产池 / Asset Pool</h3>
-                    <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 space-y-6">
-                        <div class="flex justify-between items-start">
-                            <div class="flex gap-4"><div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 text-xl"><i class="far fa-file-pdf"></i></div><div><h4 class="text-sm font-black italic uppercase tracking-tight">苏工信规〔2026〕2号文件.pdf</h4><p class="text-[10px] text-slate-400 mt-1 uppercase font-bold">12条匹配项 • 已提取硬性门槛 4 条</p></div></div>
-                            <button class="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase">审核标签并发布</button>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-2xl card-shadow">
+                            <p class="text-xs font-bold mb-4">临期政策监控</p>
+                            <div class="border-l-4 border-red-400 pl-3">
+                                <p class="text-xs font-medium">数字化转型奖补</p>
+                                <p class="text-[10px] text-red-500 mt-1">仅剩 2 天</p>
+                            </div>
                         </div>
-                        <div class="pt-4 border-t flex flex-wrap gap-2">
-                            <span class="tag-pill px-3 py-1 bg-slate-50 rounded-lg text-[9px] font-bold text-slate-500"># 智能制造 <i class="fas fa-times ml-1"></i></span>
-                            <span class="tag-pill px-3 py-1 bg-slate-50 rounded-lg text-[9px] font-bold text-slate-500"># 资金补贴 <i class="fas fa-times ml-1"></i></span>
-                            <span class="px-3 py-1 border border-dashed rounded-lg text-[9px] font-bold text-indigo-400">AI 提取置信度: 0.98</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="enterprise-db" class="view-section space-y-8">
-                <div class="grid grid-cols-4 gap-6">
-                    <div class="bg-white p-6 rounded-[2rem] border border-slate-100"><p class="text-[10px] font-black text-slate-400 uppercase italic">库内企业总数</p><h2 class="text-2xl font-black italic">4,285</h2></div>
-                    <div class="bg-white p-6 rounded-[2rem] border border-slate-100"><p class="text-[10px] font-black text-slate-400 uppercase italic">高新技术企业</p><h2 class="text-2xl font-black italic text-indigo-600">812</h2></div>
-                    <div class="bg-white p-6 rounded-[2rem] border border-slate-100"><p class="text-[10px] font-black text-slate-400 uppercase italic">画像更新频率</p><h2 class="text-2xl font-black italic text-emerald-500">实时</h2></div>
-                    <div class="bg-slate-900 p-6 rounded-[2rem] text-white"><p class="text-[10px] font-black text-indigo-400 uppercase italic">异常画像预警</p><h2 class="text-2xl font-black italic">03</h2></div>
-                </div>
-                <div class="bg-white rounded-[2.5rem] border overflow-hidden shadow-sm">
-                    <table class="w-full text-left text-xs">
-                        <thead class="bg-slate-50 border-b text-slate-400 font-black uppercase italic tracking-widest"><tr class="px-8"><th class="px-8 py-5">企业名称</th><th class="px-8 py-5">画像标签</th><th class="px-8 py-5">能力分</th><th class="px-8 py-5">操作</th></tr></thead>
-                        <tbody class="divide-y">
-                            <tr class="hover:bg-slate-50 transition"><td class="px-8 py-5"><p class="font-black italic">苏州某机器人科技有限公司</p><p class="text-[9px] text-slate-400">91320500MA1XXXXXXX</p></td><td class="px-8 py-5"><div class="flex gap-2"><span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[9px] font-black uppercase"># 高新</span><span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded text-[9px] font-black uppercase"># 专精特新</span></div></td><td class="px-8 py-5 font-black italic text-indigo-600">88.5</td><td class="px-8 py-5"><button class="text-blue-600 font-black uppercase">深度画像</button></td></tr>
-                            <tr class="bg-amber-50/20"><td class="px-8 py-5"><p class="font-black italic">新维度生物能源苏州有限公司</p><p class="text-[9px] text-slate-400">91320500MA2XXXXXXX</p></td><td class="px-8 py-5"><span class="px-2 py-0.5 bg-amber-100 text-amber-600 rounded text-[9px] font-black uppercase"># 瞪羚计划潜力</span></td><td class="px-8 py-5 font-black italic text-slate-400">72.0</td><td class="px-8 py-5"><button class="bg-slate-900 text-white px-4 py-1.5 rounded-lg text-[9px] font-black uppercase">下达提醒</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section id="performance-config" class="view-section space-y-8">
-                <div class="grid grid-cols-12 gap-8">
-                    <div class="col-span-4 bg-white rounded-[2.5rem] p-8 card-shadow space-y-6">
-                        <h3 class="text-sm font-black italic uppercase">算法规则配置</h3>
-                        <div class="space-y-4">
-                            <div class="p-4 bg-slate-50 rounded-2xl">
-                                <p class="text-[10px] font-black text-slate-400 uppercase italic mb-2">匹配权重优先级</p>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between text-xs font-bold"><span>技术指标</span><span class="text-indigo-600">45%</span></div>
-                                    <div class="w-full bg-slate-200 h-1 rounded-full"><div class="bg-indigo-600 h-full w-[45%]"></div></div>
-                                    <div class="flex justify-between text-xs font-bold"><span>财务营收</span><span class="text-indigo-600">30%</span></div>
-                                    <div class="w-full bg-slate-200 h-1 rounded-full"><div class="bg-indigo-600 h-full w-[30%]"></div></div>
+                        <div class="bg-white p-5 rounded-2xl card-shadow">
+                            <p class="text-xs font-bold mb-4">效能/数据监控</p>
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <p class="text-[10px] text-gray-400">工商接口</p>
+                                    <p class="text-xs text-green-500 flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full"></span> 正常</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] text-gray-400">数据可信度</p>
+                                    <p class="text-sm font-bold text-blue-600">98.2%</p>
                                 </div>
                             </div>
-                            <button class="w-full py-4 bg-slate-900 text-white rounded-2xl text-xs font-black uppercase tracking-widest">保存算法修改</button>
                         </div>
-                    </div>
-                    <div class="col-span-8 bg-slate-900 rounded-[2.5rem] p-10 text-white relative overflow-hidden shadow-2xl">
-                        <div class="relative z-10 space-y-8">
-                            <div><h3 class="text-lg font-black italic uppercase text-indigo-400">全区产业匹配效能分析</h3><p class="text-xs opacity-60 mt-2">基于 AI 模拟引擎，当前政策对本区产业的拉动效应预估为 +14.2%</p></div>
-                            <div class="flex gap-10">
-                                <div class="text-center">
-                                    <p class="text-[10px] font-black opacity-40 uppercase tracking-widest">预估触达企业</p>
-                                    <p class="text-4xl font-black italic mt-2">152 <span class="text-sm not-italic opacity-30">家</span></p>
-                                </div>
-                                <div class="text-center border-l border-white/10 pl-10">
-                                    <p class="text-[10px] font-black opacity-40 uppercase tracking-widest">预估资金流转</p>
-                                    <p class="text-4xl font-black italic mt-2">¥75M</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4"><button class="px-8 py-3 bg-white text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest">导出仿真报告</button><button class="px-8 py-3 bg-indigo-600 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-indigo-900/50">运行全量压力测试</button></div>
+                        <div class="bg-white p-5 rounded-2xl card-shadow flex flex-col items-center justify-center text-center bg-slate-800 text-white">
+                            <i data-lucide="file-check" class="w-6 h-6 mb-2 opacity-50"></i>
+                            <p class="text-xs font-bold">批量分发匹配报告</p>
+                            <p class="text-[10px] opacity-60 mt-1">(28 份待分发)</p>
                         </div>
-                        <div class="absolute right-0 bottom-0 text-[12rem] opacity-5 -mr-10 -mb-10 rotate-12"><i class="fas fa-chart-line"></i></div>
                     </div>
                 </div>
-            </section>
 
+                <div class="bg-white p-6 rounded-2xl card-shadow">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="activity" class="w-4 h-4 text-blue-500"></i>
+                        <h4 class="font-bold text-sm">画像变动实时流</h4>
+                    </div>
+                    <div class="relative pl-6 space-y-8 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-0 before:w-[1px] before:bg-gray-100">
+                        <div class="relative">
+                            <div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full border-2 border-blue-500 bg-white"></div>
+                            <p class="text-[10px] text-gray-400">10:24 AM</p>
+                            <p class="text-xs font-bold mt-1">科创有限公司</p>
+                            <p class="text-[10px] text-gray-500">系统自动补充: <span class="text-blue-500">#专利特区</span></p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full border-2 border-green-500 bg-white"></div>
+                            <p class="text-[10px] text-gray-400">09:15 AM</p>
+                            <p class="text-xs font-bold mt-1">XX 制造厂</p>
+                            <p class="text-[10px] text-gray-500">复核重新评估: 匹配度 <span class="text-red-400">85% → 92%</span></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 bg-slate-900 rounded-xl p-4">
+                        <p class="text-[10px] text-white/40 mb-4">算法注册实时效能</p>
+                        <div class="flex items-end gap-2 h-20">
+                            <div class="flex-1 bg-blue-900 rounded-t h-[40%]"></div>
+                            <div class="flex-1 bg-blue-800 rounded-t h-[60%]"></div>
+                            <div class="flex-1 bg-blue-700 rounded-t h-[85%]"></div>
+                            <div class="flex-1 bg-blue-600 rounded-t h-[100%] shadow-[0_0_15px_rgba(59,130,246,0.5)]"></div>
+                            <div class="flex-1 bg-blue-700 rounded-t h-[70%]"></div>
+                        </div>
+                        <p class="text-[8px] text-white/30 text-center mt-3">基于广东省重点政策扩充模型计算</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/50 p-6 rounded-2xl border border-dashed border-gray-200">
+                <div class="flex justify-between mb-4">
+                    <h4 class="font-bold text-sm text-gray-700">高频场景能力分布</h4>
+                    <span class="text-[10px] text-gray-400 cursor-pointer">配置场景模块</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 绿色赋能</span>
+                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 5G 通讯</span>
+                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 工业互联网</span>
+                    <span class="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium border border-emerald-200"># 生物医药</span>
+                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># AI</span>
+                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 智能制造</span>
+                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 数字孪生</span>
+                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 智能技术服务</span>
+                    <span class="px-4 py-1.5 rounded-full bg-teal-100 text-teal-700 text-xs font-medium border border-teal-200"># 内资企业</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="px-4 py-1.5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium"># 多模态</span>
+                    <span class="px-4 py-1.5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium"># 大型企业</span>
+                    <span class="px-4 py-1.5 rounded-full bg-gray-200 text-gray-600 text-xs font-medium"># 大模型 (LLM)</span>
+                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 新材料</span>
+                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 集成电路</span>
+                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># AI 创新矩阵</span>
+                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 数据处理服务</span>
+                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 信息技术咨询</span>
+                    <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-medium border border-orange-200"># 全资子公司</span>
+                </div>
+            </div>
         </div>
     </main>
 
-    <div class="fixed bottom-10 right-10 z-50">
-        <button id="ai-trigger" class="w-14 h-14 bg-slate-900 text-white rounded-full shadow-2xl flex items-center justify-center text-xl hover:bg-blue-600 transition group border-4 border-white">
-            <i class="fas fa-magic"></i>
-            <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white"></span>
-        </button>
-    </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navItems = document.querySelectorAll('.nav-item');
-            const sections = document.querySelectorAll('.view-section');
+        // Initialize Icons
+        lucide.createIcons();
 
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const targetId = item.getAttribute('data-target');
+        // Navigation Simulation Logic
+        const navItems = document.querySelectorAll('.nav-item');
+        const contentArea = document.getElementById('content-area');
 
-                    // 1. 更新菜单激活状态
-                    navItems.forEach(nav => nav.classList.remove('active'));
-                    item.classList.add('active');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get the file name target from href
+                const targetFile = item.getAttribute('href');
+                
+                // Update UI active state
+                navItems.forEach(i => i.classList.remove('nav-active'));
+                item.classList.add('nav-active');
 
-                    // 2. 切换内容区域
-                    sections.forEach(section => {
-                        section.classList.remove('active');
-                        if (section.id === targetId) {
-                            section.classList.add('active');
-                        }
-                    });
-
-                    // 3. 模拟页面加载效果
-                    console.log(`已切换至界面: ${targetId}`);
-                });
-            });
-
-            // 搜索框模拟逻辑
-            const searchInput = document.getElementById('global-search');
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    alert('正在全库搜索: ' + searchInput.value);
+                // Content Switching Logic
+                if (targetFile === '控制台首页.html') {
+                    location.reload(); // Reload to show the dashboard
+                } else {
+                    renderPlaceholder(targetFile);
                 }
             });
         });
-    </script>
 
+        function renderPlaceholder(fileName) {
+            contentArea.innerHTML = `
+                <div class="flex flex-col items-center justify-center h-full text-gray-400 space-y-4">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
+                        <i data-lucide="file-code" class="w-8 h-8"></i>
+                    </div>
+                    <div class="text-center">
+                        <h2 class="text-xl font-bold text-gray-700">正在加载: ${fileName}</h2>
+                        <p>此界面已被成功映射到左侧导航逻辑中。</p>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+    </script>
 </body>
 </html>
