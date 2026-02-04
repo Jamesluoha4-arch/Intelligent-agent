@@ -639,45 +639,45 @@
     </div>
 
     <script>
-//         function showDeepAnalysis() {
-//         // 隐藏主解读页面
-//         document.getElementById('policy-decode').classList.add('hidden');
-//         // 显示深度解读页面
-//         const deepPage = document.getElementById('deep-analysis-page');
-//         deepPage.classList.remove('hidden');
-//         // 平滑滚动到顶部
-//         window.scrollTo({ top: 0, behavior: 'smooth' });
-//     }
+        function showDeepAnalysis() {
+        // 隐藏主解读页面
+        document.getElementById('policy-decode').classList.add('hidden');
+        // 显示深度解读页面
+        const deepPage = document.getElementById('deep-analysis-page');
+        deepPage.classList.remove('hidden');
+        // 平滑滚动到顶部
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-//     // 返回主页面
-//     function hideDeepAnalysis() {
-//         document.getElementById('policy-decode').classList.remove('hidden');
-//         document.getElementById('deep-analysis-page').classList.add('hidden');
-//     }
+    // 返回主页面
+    function hideDeepAnalysis() {
+        document.getElementById('policy-decode').classList.remove('hidden');
+        document.getElementById('deep-analysis-page').classList.add('hidden');
+    }
         
-//         function showPage(pageId) {
-//             // 隐藏所有页面
-//             const pages = document.querySelectorAll('section');
-//             pages.forEach(page => {
-//                 page.classList.remove('active-page');
-//                 page.classList.add('hidden-page');
-//             });
+        function showPage(pageId) {
+            // 隐藏所有页面
+            const pages = document.querySelectorAll('section');
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+                page.classList.add('hidden-page');
+            });
 
-//             // 显示目标页面
-//             const target = document.getElementById(pageId);
-//             target.classList.remove('hidden-page');
-//             target.classList.add('active-page');
+            // 显示目标页面
+            const target = document.getElementById(pageId);
+            target.classList.remove('hidden-page');
+            target.classList.add('active-page');
 
-//             // 导航栏高亮逻辑
-// // 导航栏高亮逻辑
-// const navLinks = document.querySelectorAll('.nav-link');
-// navLinks.forEach(link => {
-//     link.classList.remove('active', 'nav-item'); // 同时移除 active 和 nav-item
-// });
+            // 导航栏高亮逻辑
+// 导航栏高亮逻辑
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.classList.remove('active', 'nav-item'); // 同时移除 active 和 nav-item
+});
 
-// const activeNav = document.getElementById('nav-' + pageId);
-// activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
-//         }
+const activeNav = document.getElementById('nav-' + pageId);
+activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
+        }
 
         const policyData = {
     "hangzhou-digital": {
