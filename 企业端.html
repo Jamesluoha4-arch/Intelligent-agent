@@ -11,7 +11,11 @@
         
         body { font-family: 'Inter', 'Microsoft YaHei', sans-serif; background-color: #f8fafc; }
         .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .nav-item.active { background: rgba(59, 130, 246, 0.1); color: #2563eb; border-right: 3px solid #2563eb; }
+        .nav-link.active { 
+    background: rgba(59, 130, 246, 0.1); 
+    color: #2563eb; 
+    border-right: 3px solid #2563eb; 
+}
         .sidebar { background: #0f172a; transition: all 0.3s ease; }
         .nav-link { color: #94a3b8; transition: all 0.2s; }
         .nav-link:hover { color: #f1f5f9; background: rgba(255,255,255,0.05); }
@@ -445,9 +449,14 @@
             target.classList.add('active-page');
 
             // 导航栏高亮逻辑
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => link.classList.remove('active'));
-            document.getElementById('nav-' + pageId).classList.add('active');
+// 导航栏高亮逻辑
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.classList.remove('active', 'nav-item'); // 同时移除 active 和 nav-item
+});
+
+const activeNav = document.getElementById('nav-' + pageId);
+activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
         }
     </script>
 </body>
