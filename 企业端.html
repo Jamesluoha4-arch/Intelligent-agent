@@ -562,6 +562,59 @@ navLinks.forEach(link => {
 const activeNav = document.getElementById('nav-' + pageId);
 activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
         }
+
+        const policyData = {
+    "hangzhou-digital": {
+        title: "杭州市2026年度“智改数转”项目资助申报指南",
+        publishDate: "2026-01-20",
+        tags: ["智改数转", "专项奖励", "工业互联网"],
+        mainHighlights: {
+            support: "离散型智能制造、流程型智能制造、网络化协同制造",
+            threshold: "上年度营收5000万以上，研发人员占比不低于10%",
+            amount: "最高 500 万元 (一次性补贴)"
+        },
+        aiDiagnosis: {
+            matching: "贵司符合“离散型智能制造”申报方向，且拥有的24项有效专利完全覆盖支持领域。",
+            preparation: "需补充2025年度专项财务审计报告，并准备至少3个典型应用场景视频资料。"
+        },
+        deepContent: {
+            issue: "一、关于“智改数转”专项奖励的申报条件和支持标准是什么？",
+            articleUrl: "http://www.lzpat.com/m/view.php?aid=12584",
+            summary: "本政策核心旨在通过财政补助引导企业进行数字化转型。2026年度特别加大了对软硬件集成的补助力度，属于“先建后补”类项目。",
+            fullText: "答：（一）资助标准。对经认定的省级“未来工厂”、国家级智能制造示范项目，分别给予最高不超过500万元、1000万元的一次性奖励...（此处可动态抓取链接内容）"
+        }
+    }
+    // 你可以在这里添加更多政策数据
+};
+
+        let currentPolicyId = "hangzhou-digital";
+
+function showDeepAnalysis() {
+    const data = policyData[currentPolicyId];
+    if (!data) return;
+
+    // 1. 动态填充二级界面的标题和标签
+    const deepPage = document.getElementById('deep-analysis-page');
+    deepPage.querySelector('h1').innerText = data.title;
+    
+    // 2. 动态生成 AI 标签 (参考图2风格)
+    const tagContainer = deepPage.querySelector('.flex.justify-center.gap-3');
+    tagContainer.innerHTML = `<span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>` + 
+        data.tags.map(tag => `<span class="px-2 py-0.5 border border-red-200 rounded">${tag}</span>`).join('');
+
+    // 3. 填充深度解读的正文标题和内容
+    deepPage.querySelector('h3').innerText = data.deepContent.issue;
+    deepPage.querySelector('.prose p.indent-8').innerHTML = `
+        ${data.deepContent.fullText} 
+        <br><br>
+        <a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline text-[10px]">阅读原文：${data.deepContent.articleUrl}</a>
+    `;
+
+    // 执行切换动画
+    document.getElementById('policy-decode').classList.add('hidden');
+    deepPage.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
     </script>
 </body>
 </html>
