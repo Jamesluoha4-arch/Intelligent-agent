@@ -211,67 +211,155 @@
     </div>
 </section>
 
-                <section id="policy-decode" class="hidden-page space-y-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-slate-800">智能政策解读中心</h2>
-                        <div class="flex gap-2">
-                            <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50">历史解读记录</button>
+                <section id="policy-decode" class="space-y-6">
+    <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-4">
+            <h2 class="text-xl font-bold text-slate-800">智能政策解读中心</h2>
+            <span class="px-2 py-0.5 bg-orange-100 text-orange-600 text-[10px] rounded-full font-bold">🔥 申报热度高</span>
+            <span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] rounded-full font-bold">发文单位：杭州市经信局</span>
+        </div>
+        <div class="flex gap-2">
+            <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50">历史解读记录</button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-6">
+        <div class="col-span-1 glass-card rounded-2xl p-4 shadow-sm h-[750px] overflow-y-auto bg-white/50">
+            <div class="space-y-3">
+                <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
+                    <p class="text-xs font-bold text-slate-800">杭州市智改数转专项奖励...</p>
+                    <p class="text-[10px] text-slate-400 mt-1">发布日期：2026-01-20</p>
+                </div>
+                <div class="p-3 bg-white border border-slate-100 rounded-xl opacity-60 hover:opacity-100 cursor-pointer transition-all">
+                    <p class="text-xs font-bold text-slate-800">关于支持新能源汽车出口的...</p>
+                    <p class="text-[10px] text-slate-400 mt-1">发布日期：2026-01-15</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-3 space-y-6">
+            <div class="glass-card rounded-2xl p-8 shadow-sm bg-white">
+                <div class="flex justify-between items-start mb-6">
+                    <h1 class="text-2xl font-bold text-slate-800 leading-tight">杭州市2026年度“智改数转”项目资助申报指南</h1>
+                    <div class="flex gap-2">
+                        <button class="text-xs bg-slate-100 px-3 py-1 rounded text-slate-500 font-bold hover:bg-slate-200">查看原文</button>
+                        <button class="text-xs bg-blue-600 px-3 py-1 rounded text-white font-bold shadow-lg shadow-blue-200">打印要点</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6 mb-8">
+                    <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
+                        <p class="text-[10px] text-emerald-600 font-bold uppercase mb-1">重点支持</p>
+                        <p class="text-xs text-slate-700 leading-relaxed font-medium">离散型智能制造、流程型智能制造</p>
+                    </div>
+                    <div class="p-4 bg-amber-50 rounded-2xl border border-amber-100">
+                        <p class="text-[10px] text-amber-600 font-bold uppercase mb-1">申报门槛</p>
+                        <p class="text-xs text-slate-700 leading-relaxed font-medium">营收5000万以上，研发占比≥10%</p>
+                    </div>
+                    <div class="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+                        <p class="text-[10px] text-indigo-600 font-bold uppercase mb-1">资助额度</p>
+                        <p class="text-xs text-slate-700 leading-relaxed font-bold">最高 500 万元</p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-slate-900 rounded-3xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+                    
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-cyan-400 text-xs font-bold flex items-center gap-2 uppercase tracking-widest">
+                            <i class="fas fa-magic"></i> AI 个性化诊断报告
+                        </h4>
+                        <button onclick="showDeepAnalysis()" class="px-4 py-1.5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 text-xs font-bold rounded-full transition-all shadow-lg shadow-cyan-500/20">
+                            进入 AI 深度解读 <i class="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
+                            <p class="text-xs text-slate-300 leading-relaxed"><span class="text-white font-bold">相关点：</span>贵司符合“离散型智能制造”申报方向...</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-1.5 h-1.5 bg-amber-400 rounded-full mt-1.5"></div>
+                            <p class="text-xs text-slate-300 leading-relaxed"><span class="text-white font-bold">准备项：</span>需补充2025年度专项财务审计报告...</p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-4 gap-6">
-                        <div class="col-span-1 glass-card rounded-2xl p-4 shadow-sm h-[600px] overflow-y-auto">
-                            <div class="space-y-3">
-                                <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
-                                    <p class="text-xs font-bold text-slate-800">杭州市智改数转专项奖励...</p>
-                                    <p class="text-[10px] text-slate-400 mt-1">发布日期：2026-01-20</p>
-                                </div>
-                                <div class="p-3 bg-white border border-slate-100 rounded-xl opacity-60 hover:opacity-100 cursor-pointer transition-all">
-                                    <p class="text-xs font-bold text-slate-800">关于支持新能源汽车出口的...</p>
-                                    <p class="text-[10px] text-slate-400 mt-1">发布日期：2026-01-15</p>
-                                </div>
-                            </div>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 shadow-sm bg-white border-t-4 border-blue-500">
+                <h4 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-robot text-blue-500"></i> AI 整体解读分析
+                </h4>
+                <div class="bg-slate-50 rounded-xl p-4">
+                    <p class="text-xs text-slate-600 leading-loose">
+                        本政策核心旨在通过**财政补助**引导企业进行数字化转型。相较于往年，2026年度加大了对**软硬件集成**的补助力度。
+                        关键结论：该政策属于“先建后补”类，建议企业在1-3月完成立项，以确保审计通过率。
+                    </p>
+                    <div class="mt-3 flex gap-4 border-t border-slate-200 pt-3">
+                        <div class="text-center">
+                            <p class="text-[10px] text-slate-400">政策复杂度</p>
+                            <p class="text-xs font-bold text-slate-700">中等</p>
                         </div>
-                        <div class="col-span-3 space-y-6">
-                            <div class="glass-card rounded-2xl p-8 shadow-sm">
-                                <div class="flex justify-between items-start mb-6">
-                                    <h1 class="text-2xl font-bold text-slate-800 leading-tight">杭州市2026年度“智改数转”项目资助申报指南</h1>
-                                    <div class="flex gap-2">
-                                        <button class="text-xs bg-slate-100 px-3 py-1 rounded text-slate-500 font-bold hover:bg-slate-200">查看原文</button>
-                                        <button class="text-xs bg-blue-600 px-3 py-1 rounded text-white font-bold shadow-lg shadow-blue-200">打印要点</button>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-6 mb-8">
-                                    <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
-                                        <p class="text-[10px] text-emerald-600 font-bold uppercase mb-1">重点支持</p>
-                                        <p class="text-xs text-slate-700 leading-relaxed font-medium">离散型智能制造、流程型智能制造、网络化协同制造</p>
-                                    </div>
-                                    <div class="p-4 bg-amber-50 rounded-2xl border border-amber-100">
-                                        <p class="text-[10px] text-amber-600 font-bold uppercase mb-1">申报门槛</p>
-                                        <p class="text-xs text-slate-700 leading-relaxed font-medium">上年度营收5000万以上，研发人员占比不低于10%</p>
-                                    </div>
-                                    <div class="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
-                                        <p class="text-[10px] text-indigo-600 font-bold uppercase mb-1">资助额度</p>
-                                        <p class="text-xs text-slate-700 leading-relaxed font-bold">最高 500 万元 (一次性补贴)</p>
-                                    </div>
-                                </div>
-                                <div class="p-6 bg-slate-900 rounded-3xl relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full -mr-16 -mt-16 blur-3xl"></div>
-                                    <h4 class="text-cyan-400 text-xs font-bold flex items-center gap-2 mb-4 uppercase tracking-widest"><i class="fas fa-magic"></i> AI 个性化诊断报告</h4>
-                                    <div class="space-y-4">
-                                        <div class="flex items-start gap-3">
-                                            <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
-                                            <p class="text-xs text-slate-300 leading-relaxed"><span class="text-white font-bold">相关点：</span>贵司符合“离散型智能制造”申报方向，且拥有的24项有效专利完全覆盖支持领域。</p>
-                                        </div>
-                                        <div class="flex items-start gap-3">
-                                            <div class="w-1.5 h-1.5 bg-amber-400 rounded-full mt-1.5"></div>
-                                            <p class="text-xs text-slate-300 leading-relaxed"><span class="text-white font-bold">准备项：</span>需补充2025年度专项财务审计报告，并准备至少3个典型应用场景视频资料。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="text-center">
+                            <p class="text-[10px] text-slate-400">建议申报指数</p>
+                            <p class="text-xs font-bold text-emerald-500">★★★★★</p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+                <section id="deep-analysis-page" class="hidden space-y-0">
+    <div class="w-full bg-blue-600 p-3 flex items-center justify-between text-white rounded-t-xl">
+        <div class="flex items-center gap-4">
+            <button onclick="hideDeepAnalysis()" class="hover:bg-blue-700 p-1 rounded transition-colors">
+                <i class="fas fa-chevron-left"></i> 返回
+            </button>
+            <h2 class="text-sm font-bold tracking-wide">2026年第12期（总第240期）AI深度分析模式</h2>
+        </div>
+        <button class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-xs">
+            <i class="fas fa-home"></i> 首页
+        </button>
+    </div>
+
+    <div class="bg-white border-x border-b border-slate-200 p-8 min-h-[800px]">
+        <div class="text-center mb-10">
+            <h1 class="text-3xl font-serif font-bold text-slate-900 mb-4">杭州市新一轮就业创业政策解读（二）</h1>
+            <div class="flex justify-center gap-3 text-red-500 text-xs font-bold">
+                <span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>
+                <span class="px-2 py-0.5 border border-red-200 rounded">贷款政策</span>
+                <span class="px-2 py-0.5 border border-red-200 rounded">文创产业</span>
+                <span class="px-2 py-0.5 border border-red-200 rounded">创业补贴</span>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative">
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <h3 class="text-lg font-bold text-slate-800">一、新一轮就业创业政策对登记失业人员主要有哪些就业援助政策？</h3>
+                <button class="px-3 py-1 border border-orange-400 text-orange-500 text-xs rounded hover:bg-orange-50">常见问答</button>
+            </div>
+
+            <div class="prose prose-slate max-w-none text-slate-700 leading-[2.2] space-y-6">
+                <p class="indent-8">
+                    答：（一）创业担保贷款及贴息。在市区创办企业、个体工商户（含经认定的网络创业）或民办非企业单位等经营实体的，可申请不超过30万元贷款...
+                    <span class="bg-yellow-100 font-bold border-b-2 border-yellow-400">（此处由AI深度标注：最高贴息金额50万元，最长期限3年）</span>。
+                </p>
+                <p class="indent-8 text-slate-500 italic">
+                    (内容引自：http://www.lzpat.com/m/view.php?aid=12584)
+                </p>
+            </div>
+
+            <div class="fixed right-10 bottom-20">
+                <button class="w-12 h-12 bg-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-robot text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 
                 <section id="enterprise-portrait" class="hidden-page space-y-6">
                     <div class="glass-card rounded-2xl p-6 shadow-sm">
@@ -435,6 +523,22 @@
     </div>
 
     <script>
+        function showDeepAnalysis() {
+        // 隐藏主解读页面
+        document.getElementById('policy-decode').classList.add('hidden');
+        // 显示深度解读页面
+        const deepPage = document.getElementById('deep-analysis-page');
+        deepPage.classList.remove('hidden');
+        // 平滑滚动到顶部
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 返回主页面
+    function hideDeepAnalysis() {
+        document.getElementById('policy-decode').classList.remove('hidden');
+        document.getElementById('deep-analysis-page').classList.add('hidden');
+    }
+        
         function showPage(pageId) {
             // 隐藏所有页面
             const pages = document.querySelectorAll('section');
