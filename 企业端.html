@@ -312,168 +312,52 @@
     </div>
 </section>
 
-                <section id="deep-analysis-page" class="hidden-page space-y-0 bg-slate-50">
-    <div class="w-full bg-blue-600 p-3 flex items-center justify-between text-white shadow-lg sticky top-0 z-50">
+                <section id="deep-analysis-page" class="hidden space-y-0">
+    <div class="w-full bg-blue-600 p-3 flex items-center justify-between text-white rounded-t-xl">
         <div class="flex items-center gap-4">
-            <button onclick="hideDeepAnalysis()" class="hover:bg-blue-700 p-2 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium">
-                <i class="fas fa-arrow-left"></i> 返回解读中心
+            <button onclick="hideDeepAnalysis()" class="hover:bg-blue-700 p-1 rounded transition-colors">
+                <i class="fas fa-chevron-left"></i> 返回
             </button>
-            <div class="h-4 w-[1px] bg-white/30"></div>
-            <h2 class="text-sm font-bold tracking-wide flex items-center gap-2">
-                <i class="fas fa-microchip"></i> 2026年第12期 AI深度分析模式
-            </h2>
+            <h2 class="text-sm font-bold tracking-wide">2026年第12期（总第240期）AI深度分析模式</h2>
         </div>
-        <div class="flex gap-2">
-            <button class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg text-xs transition-all border border-white/20">
-                <i class="fas fa-share-alt mr-1"></i> 导出报告
-            </button>
-            <button onclick="window.location.reload()" class="bg-white text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm">
-                <i class="fas fa-home"></i> 首页
-            </button>
-        </div>
-    </div>
-
-    <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-6 p-6">
-        
-        <div class="col-span-8 space-y-6">
-            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-[0.03]">
-                    <i class="fas fa-file-contract text-9xl"></i>
-                </div>
-
-                <div class="text-center mb-8">
-                    <div class="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
-                        Policy Deep Analysis
-                    </div>
-                    <h1 id="deep-title" class="text-3xl font-bold text-slate-900 mb-6">杭州市新一轮就业创业政策解读（二）</h1>
-                    
-                    <div id="ai-tags-container" class="flex justify-center flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>失业援助</span>
-                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>全额贴息</span>
-                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>最高50万</span>
-                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>小微支持</span>
-                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>3年期限</span>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-                        <h3 id="deep-question" class="text-xl font-bold text-slate-800 flex items-start gap-3">
-                            <span class="flex-shrink-0 w-7 h-7 bg-blue-600 text-white rounded flex items-center justify-center text-sm italic">Q</span>
-                            新一轮就业创业政策对登记失业人员主要有哪些就业援助政策？
-                        </h3>
-                        <button class="flex-shrink-0 px-4 py-2 bg-orange-50 text-orange-600 text-xs font-bold rounded-lg border border-orange-100 hover:bg-orange-100 transition-colors">
-                            <i class="far fa-question-circle mr-1"></i> 常见问答
-                        </button>
-                    </div>
-
-                    <div id="deep-content-body" class="prose prose-slate max-w-none text-slate-700 leading-[2.2] space-y-6">
-                        <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-blue-500 italic text-sm text-slate-600 mb-6">
-                            <strong>AI 政策导读：</strong> 本项政策重点通过“金融杠杆”降低失业人员的创办成本。相较于往期，显著上调了贷款额度上限，并针对科创与文创项目提供了差异化的贴息支持。
-                        </div>
-                        
-                        <p class="indent-8 text-lg">
-                            答：（一）创业担保贷款及贴息。在市区创办企业、个体工商户（含经认定的网络创业）或民办非企业单位等经营实体的，可申请不超过30万元贷款...
-                            <mark class="bg-yellow-200 px-1 font-bold rounded">（AI深度标注：最高贴息金额50万元，最长期限3年）</mark>。
-                            对科创成果转化、研发或文化创意类项目，实行精准化金融扶持，重点审核项目的创新属性。
-                        </p>
-
-                        <div class="p-4 bg-blue-50/50 rounded-lg border border-dashed border-blue-200">
-                            <h4 class="text-sm font-bold text-blue-800 mb-2"><i class="fas fa-info-circle mr-2"></i>申请地点与流程提示：</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed">
-                                资格认定需向营业执照注册所在的社区（行政村）人力社保室、街道（乡镇）人力社保站提出申请。AI建议提前准备好《就业创业证》及营业执照副本扫描件。
-                            </p>
-                        </div>
-
-                        <p class="text-xs text-slate-400 border-t pt-4">
-                            数据来源：<a href="http://www.lzpat.com/m/view.php?aid=12584" class="text-blue-500 hover:underline hover:text-blue-600">杭州市人力资源和社会保障局官方通告</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-span-4 space-y-6">
-            <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden">
-                <div class="absolute top-[-20px] right-[-20px] w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
-                <h4 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                    <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span> 关键数据摘要
-                </h4>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
-                        <p class="text-[10px] text-slate-400">最高贷款额度</p>
-                        <p class="text-xl font-bold text-blue-400">¥ 300,000</p>
-                    </div>
-                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
-                        <p class="text-[10px] text-slate-400">最长扶持期限</p>
-                        <p class="text-xl font-bold text-emerald-400">36 个月</p>
-                    </div>
-                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
-                        <p class="text-[10px] text-slate-400">贴息本金最高</p>
-                        <p class="text-xl font-bold text-orange-400">¥ 500,000</p>
-                    </div>
-                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
-                        <p class="text-[10px] text-slate-400">补贴频次上限</p>
-                        <p class="text-xl font-bold text-purple-400">3 次</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                <h4 class="text-sm font-bold text-slate-800 mb-6 flex items-center justify-between">
-                    <span>申报流程建议</span>
-                    <span class="text-[10px] bg-slate-100 px-2 py-1 rounded text-slate-500">耗时约15个工作日</span>
-                </h4>
-                <div class="relative space-y-6 pl-4 before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100">
-                    <div class="relative flex gap-4">
-                        <div class="absolute -left-[14px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-sm"></div>
-                        <div>
-                            <p class="text-xs font-bold text-slate-800">资格认定</p>
-                            <p class="text-[10px] text-slate-500">社区/街道社保站初步审核失业登记状态</p>
-                        </div>
-                    </div>
-                    <div class="relative flex gap-4">
-                        <div class="absolute -left-[14px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
-                        <div>
-                            <p class="text-xs font-bold text-slate-800">银行放贷</p>
-                            <p class="text-[10px] text-slate-500">向合作经办银行申请贷款拨付</p>
-                        </div>
-                    </div>
-                    <div class="relative flex gap-4">
-                        <div class="absolute -left-[14px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
-                        <div>
-                            <p class="text-xs font-bold text-slate-800">贴息申请</p>
-                            <p class="text-[10px] text-slate-500">按时还本付息后向人社部门申请利息返还</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-blue-600 rounded-2xl p-6 shadow-lg shadow-blue-200 text-white">
-                <h4 class="text-sm font-bold mb-4 flex items-center gap-2">
-                    <i class="fas fa-lightbulb"></i> 智能关联推荐
-                </h4>
-                <ul class="space-y-4">
-                    <li class="group cursor-pointer">
-                        <p class="text-xs font-bold group-hover:underline underline-offset-4">杭州市小微企业社保补贴政策 (2026)</p>
-                        <p class="text-[10px] text-blue-100 mt-1 opacity-80">匹配度：98% | 建议同步申报</p>
-                    </li>
-                    <li class="group cursor-pointer">
-                        <p class="text-xs font-bold group-hover:underline underline-offset-4">文创产业专项引导资金管理办法</p>
-                        <p class="text-[10px] text-blue-100 mt-1 opacity-80">匹配度：85% | 针对文创类项目</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="fixed right-10 bottom-10">
-        <button class="w-14 h-14 bg-gradient-to-tr from-pink-500 to-rose-400 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group relative">
-            <i class="fas fa-robot text-2xl"></i>
-            <span class="absolute -top-12 right-0 bg-slate-800 text-white text-[10px] px-3 py-1 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-                有什么不懂的，尽管问我！
-            </span>
+        <button class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-xs">
+            <i class="fas fa-home"></i> 首页
         </button>
+    </div>
+
+    <div class="bg-white border-x border-b border-slate-200 p-8 min-h-[800px]">
+        <div class="text-center mb-10">
+            <h1 class="text-3xl font-serif font-bold text-slate-900 mb-4">杭州市新一轮就业创业政策解读（二）</h1>
+            <div class="flex justify-center gap-3 text-red-500 text-xs font-bold">
+                <span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>
+                <span class="px-2 py-0.5 border border-red-200 rounded">贷款政策</span>
+                <span class="px-2 py-0.5 border border-red-200 rounded">文创产业</span>
+                <span class="px-2 py-0.5 border border-red-200 rounded">创业补贴</span>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative">
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <h3 class="text-lg font-bold text-slate-800">一、新一轮就业创业政策对登记失业人员主要有哪些就业援助政策？</h3>
+                <button class="px-3 py-1 border border-orange-400 text-orange-500 text-xs rounded hover:bg-orange-50">常见问答</button>
+            </div>
+
+            <div class="prose prose-slate max-w-none text-slate-700 leading-[2.2] space-y-6">
+                <p class="indent-8">
+                    答：（一）创业担保贷款及贴息。在市区创办企业、个体工商户（含经认定的网络创业）或民办非企业单位等经营实体的，可申请不超过30万元贷款...
+                    <span class="bg-yellow-100 font-bold border-b-2 border-yellow-400">（此处由AI深度标注：最高贴息金额50万元，最长期限3年）</span>。
+                </p>
+                <p class="indent-8 text-slate-500 italic">
+                    (内容引自：http://www.lzpat.com/m/view.php?aid=12584)
+                </p>
+            </div>
+
+            <div class="fixed right-10 bottom-20">
+                <button class="w-12 h-12 bg-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform">
+                    <i class="fas fa-robot text-xl"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -639,136 +523,98 @@
     </div>
 
     <script>
-<script>
-// 1. 政策数据配置
-const policyData = {
+        function showDeepAnalysis() {
+        // 隐藏主解读页面
+        document.getElementById('policy-decode').classList.add('hidden');
+        // 显示深度解读页面
+        const deepPage = document.getElementById('deep-analysis-page');
+        deepPage.classList.remove('hidden');
+        // 平滑滚动到顶部
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 返回主页面
+    function hideDeepAnalysis() {
+        document.getElementById('policy-decode').classList.remove('hidden');
+        document.getElementById('deep-analysis-page').classList.add('hidden');
+    }
+        
+        function showPage(pageId) {
+            // 隐藏所有页面
+            const pages = document.querySelectorAll('section');
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+                page.classList.add('hidden-page');
+            });
+
+            // 显示目标页面
+            const target = document.getElementById(pageId);
+            target.classList.remove('hidden-page');
+            target.classList.add('active-page');
+
+            // 导航栏高亮逻辑
+// 导航栏高亮逻辑
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.classList.remove('active', 'nav-item'); // 同时移除 active 和 nav-item
+});
+
+const activeNav = document.getElementById('nav-' + pageId);
+activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
+        }
+
+        const policyData = {
     "hangzhou-digital": {
         title: "杭州市2026年度“智改数转”项目资助申报指南",
         publishDate: "2026-01-20",
         tags: ["智改数转", "专项奖励", "工业互联网"],
+        mainHighlights: {
+            support: "离散型智能制造、流程型智能制造、网络化协同制造",
+            threshold: "上年度营收5000万以上，研发人员占比不低于10%",
+            amount: "最高 500 万元 (一次性补贴)"
+        },
+        aiDiagnosis: {
+            matching: "贵司符合“离散型智能制造”申报方向，且拥有的24项有效专利完全覆盖支持领域。",
+            preparation: "需补充2025年度专项财务审计报告，并准备至少3个典型应用场景视频资料。"
+        },
         deepContent: {
             issue: "一、关于“智改数转”专项奖励的申报条件和支持标准是什么？",
             articleUrl: "http://www.lzpat.com/m/view.php?aid=12584",
-            fullText: "答：（一）资助标准。对经认定的省级“未来工厂”、国家级智能制造制造示范项目，分别给予最高不超过500万元、1000万元的一次性奖励。通过AI深度标注：最高贴息金额50万元，最长期限3年。"
+            summary: "本政策核心旨在通过财政补助引导企业进行数字化转型。2026年度特别加大了对软硬件集成的补助力度，属于“先建后补”类项目。",
+            fullText: "答：（一）资助标准。对经认定的省级“未来工厂”、国家级智能制造示范项目，分别给予最高不超过500万元、1000万元的一次性奖励...（此处可动态抓取链接内容）"
         }
     }
-    // 如果有更多政策，在此处添加键值对
+    // 你可以在这里添加更多政策数据
 };
 
-// 当前选中的政策ID（默认为杭州数字政策）
-let currentPolicyId = "hangzhou-digital";
+        let currentPolicyId = "hangzhou-digital";
 
-/**
- * 核心函数：进入深度解读模式
- */
 function showDeepAnalysis() {
     const data = policyData[currentPolicyId];
+    if (!data) return;
+
+    // 1. 动态填充二级界面的标题和标签
     const deepPage = document.getElementById('deep-analysis-page');
-
-    if (!data || !deepPage) {
-        console.error("未找到对应数据或页面容器");
-        return;
-    }
-
-    // --- A. 填充数据 (精准匹配你的 HTML ID) ---
+    deepPage.querySelector('h1').innerText = data.title;
     
-    // 填充标题
-    const titleElem = document.getElementById('deep-title');
-    if (titleElem) titleElem.innerText = data.title;
+    // 2. 动态生成 AI 标签 (参考图2风格)
+    const tagContainer = deepPage.querySelector('.flex.justify-center.gap-3');
+    tagContainer.innerHTML = `<span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>` + 
+        data.tags.map(tag => `<span class="px-2 py-0.5 border border-red-200 rounded">${tag}</span>`).join('');
 
-    // 填充标签
-    const tagContainer = document.getElementById('ai-tags-container');
-    if (tagContainer) {
-        tagContainer.innerHTML = data.tags.map(tag => `
-            <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold">
-                <i class="fas fa-tag mr-1"></i>${tag}
-            </span>
-        `).join('');
-    }
+    // 3. 填充深度解读的正文标题和内容
+    deepPage.querySelector('h3').innerText = data.deepContent.issue;
+    deepPage.querySelector('.prose p.indent-8').innerHTML = `
+        ${data.deepContent.fullText} 
+        <br><br>
+        <a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline text-[10px]">阅读原文：${data.deepContent.articleUrl}</a>
+    `;
 
-    // 填充问题标题
-    const questionElem = document.getElementById('deep-question');
-    if (questionElem) {
-        questionElem.innerHTML = `
-            <span class="flex-shrink-0 w-7 h-7 bg-blue-600 text-white rounded flex items-center justify-center text-sm italic">Q</span>
-            ${data.deepContent.issue}
-        `;
-    }
-
-    // 填充内容正文
-    const contentBody = document.getElementById('deep-content-body');
-    if (contentBody) {
-        // 我们只改写里面的文本部分，保留原本的导读和样式
-        const p = contentBody.querySelector('p.indent-8');
-        if (p) {
-            p.innerHTML = `${data.deepContent.fullText} <br><br> <a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline text-xs">阅读原文</a>`;
-        }
-    }
-
-    // --- B. 页面切换逻辑 ---
-    
-    // 1. 隐藏所有 section，防止内容堆叠
-    const allSections = document.querySelectorAll('section');
-    allSections.forEach(s => {
-        s.classList.remove('active-page');
-        s.classList.add('hidden-page');
-    });
-
-    // 2. 显示详情页，并清理所有可能存在的隐藏类
-    deepPage.classList.remove('hidden-page', 'hidden');
-    deepPage.classList.add('active-page');
-
-    // --- C. 滚动处理 ---
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    const mainArea = document.querySelector('main');
-    if (mainArea) mainArea.scrollTop = 0;
+    // 执行切换动画
+    document.getElementById('policy-decode').classList.add('hidden');
+    deepPage.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-/**
- * 返回主列表页面
- */
-function hideDeepAnalysis() {
-    // 复用 showPage 函数回到政策解读主页面
-    showPage('policy-decode');
-}
-
-/**
- * 通用的页面切换函数（侧边栏点击使用）
- */
-function showPage(pageId) {
-    // 1. 隐藏所有页面
-    const sections = document.querySelectorAll('section');
-    sections.forEach(s => {
-        s.classList.remove('active-page');
-        s.classList.add('hidden-page');
-    });
-
-    // 2. 显示目标页面
-    const target = document.getElementById(pageId);
-    if (target) {
-        target.classList.remove('hidden-page', 'hidden');
-        target.classList.add('active-page');
-    }
-
-    // 3. 导航高亮处理
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.classList.remove('active', 'nav-item');
-        // 如果导航ID匹配 nav-policy-decode 这种格式
-        if (link.id === 'nav-' + pageId) {
-            link.classList.add('active', 'nav-item');
-        }
-    });
-
-    // 4. 切换后重置滚动条
-    window.scrollTo(0, 0);
-}
-
-// 页面加载完成后初始化
-window.onload = function() {
-    // 默认展示政策解读列表
-    showPage('policy-decode');
-};
-</script>
+    </script>
 </body>
 </html>
