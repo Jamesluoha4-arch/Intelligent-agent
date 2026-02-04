@@ -639,47 +639,9 @@
     </div>
 
     <script>
-        function showDeepAnalysis() {
-        // 隐藏主解读页面
-        document.getElementById('policy-decode').classList.add('hidden');
-        // 显示深度解读页面
-        const deepPage = document.getElementById('deep-analysis-page');
-        deepPage.classList.remove('hidden');
-        // 平滑滚动到顶部
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 返回主页面
-    function hideDeepAnalysis() {
-        document.getElementById('policy-decode').classList.remove('hidden');
-        document.getElementById('deep-analysis-page').classList.add('hidden');
-    }
-        
-        function showPage(pageId) {
-            // 隐藏所有页面
-            const pages = document.querySelectorAll('section');
-            pages.forEach(page => {
-                page.classList.remove('active-page');
-                page.classList.add('hidden-page');
-            });
-
-            // 显示目标页面
-            const target = document.getElementById(pageId);
-            target.classList.remove('hidden-page');
-            target.classList.add('active-page');
-
-            // 导航栏高亮逻辑
-// 导航栏高亮逻辑
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.classList.remove('active', 'nav-item'); // 同时移除 active 和 nav-item
-});
-
-const activeNav = document.getElementById('nav-' + pageId);
-activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
-        }
-
-        const policyData = {
+<script>
+// 1. 政策数据配置
+const policyData = {
     "hangzhou-digital": {
         title: "杭州市2026年度“智改数转”项目资助申报指南",
         publishDate: "2026-01-20",
@@ -687,78 +649,126 @@ activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-it
         deepContent: {
             issue: "一、关于“智改数转”专项奖励的申报条件和支持标准是什么？",
             articleUrl: "http://www.lzpat.com/m/view.php?aid=12584",
-            fullText: "答：（一）资助标准。对经认定的省级“未来工厂”、国家级智能制造示范项目，分别给予最高不超过500万元、1000万元的一次性奖励。通过AI深度标注：最高贴息金额50万元，最长期限3年。"
+            fullText: "答：（一）资助标准。对经认定的省级“未来工厂”、国家级智能制造制造示范项目，分别给予最高不超过500万元、1000万元的一次性奖励。通过AI深度标注：最高贴息金额50万元，最长期限3年。"
         }
     }
+    // 如果有更多政策，在此处添加键值对
 };
 
+// 当前选中的政策ID（默认为杭州数字政策）
 let currentPolicyId = "hangzhou-digital";
 
-// 核心：显示深度解读
+/**
+ * 核心函数：进入深度解读模式
+ */
 function showDeepAnalysis() {
     const data = policyData[currentPolicyId];
-    const mainPage = document.getElementById('policy-decode');
     const deepPage = document.getElementById('deep-analysis-page');
 
-    if (!data || !deepPage) return;
+    if (!data || !deepPage) {
+        console.error("未找到对应数据或页面容器");
+        return;
+    }
 
-    // 1. 动态填充内容
-    deepPage.querySelector('h1').innerText = data.title;
-    const tagContainer = deepPage.querySelector('.flex.justify-center.gap-3');
-    tagContainer.innerHTML = `<span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>` + 
-        data.tags.map(tag => `<span class="px-2 py-0.5 border border-red-200 rounded">${tag}</span>`).join('');
+    // --- A. 填充数据 (精准匹配你的 HTML ID) ---
     
-    deepPage.querySelector('h3').innerText = data.deepContent.issue;
-    deepPage.querySelector('.prose p.indent-8').innerHTML = `
-        ${data.deepContent.fullText} 
-        <br><br>
-        <a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline text-[10px]">阅读原文：${data.deepContent.articleUrl}</a>
-    `;
+    // 填充标题
+    const titleElem = document.getElementById('deep-title');
+    if (titleElem) titleElem.innerText = data.title;
 
-    // 2. 彻底移除所有可能的隐藏类 (核心修复)
-    mainPage.classList.add('hidden-page');
-    mainPage.classList.remove('active-page');
+    // 填充标签
+    const tagContainer = document.getElementById('ai-tags-container');
+    if (tagContainer) {
+        tagContainer.innerHTML = data.tags.map(tag => `
+            <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold">
+                <i class="fas fa-tag mr-1"></i>${tag}
+            </span>
+        `).join('');
+    }
+
+    // 填充问题标题
+    const questionElem = document.getElementById('deep-question');
+    if (questionElem) {
+        questionElem.innerHTML = `
+            <span class="flex-shrink-0 w-7 h-7 bg-blue-600 text-white rounded flex items-center justify-center text-sm italic">Q</span>
+            ${data.deepContent.issue}
+        `;
+    }
+
+    // 填充内容正文
+    const contentBody = document.getElementById('deep-content-body');
+    if (contentBody) {
+        // 我们只改写里面的文本部分，保留原本的导读和样式
+        const p = contentBody.querySelector('p.indent-8');
+        if (p) {
+            p.innerHTML = `${data.deepContent.fullText} <br><br> <a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline text-xs">阅读原文</a>`;
+        }
+    }
+
+    // --- B. 页面切换逻辑 ---
     
-    deepPage.classList.remove('hidden-page', 'hidden'); // 同时移除两种隐藏类
-    deepPage.classList.add('active-page');
-
-    // 3. 强制滚动 main 区域（因为 body 是 overflow-hidden）
-    document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// 返回主页面
-function hideDeepAnalysis() {
-    const mainPage = document.getElementById('policy-decode');
-    const deepPage = document.getElementById('deep-analysis-page');
-
-    deepPage.classList.add('hidden-page');
-    deepPage.classList.remove('active-page');
-    
-    mainPage.classList.remove('hidden-page');
-    mainPage.classList.add('active-page');
-}
-
-// 侧边栏切换逻辑
-function showPage(pageId) {
-    // 隐藏包括深度解读在内的所有 section
+    // 1. 隐藏所有 section，防止内容堆叠
     const allSections = document.querySelectorAll('section');
     allSections.forEach(s => {
-        s.classList.add('hidden-page');
         s.classList.remove('active-page');
+        s.classList.add('hidden-page');
     });
 
-    // 显示目标页面
+    // 2. 显示详情页，并清理所有可能存在的隐藏类
+    deepPage.classList.remove('hidden-page', 'hidden');
+    deepPage.classList.add('active-page');
+
+    // --- C. 滚动处理 ---
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    const mainArea = document.querySelector('main');
+    if (mainArea) mainArea.scrollTop = 0;
+}
+
+/**
+ * 返回主列表页面
+ */
+function hideDeepAnalysis() {
+    // 复用 showPage 函数回到政策解读主页面
+    showPage('policy-decode');
+}
+
+/**
+ * 通用的页面切换函数（侧边栏点击使用）
+ */
+function showPage(pageId) {
+    // 1. 隐藏所有页面
+    const sections = document.querySelectorAll('section');
+    sections.forEach(s => {
+        s.classList.remove('active-page');
+        s.classList.add('hidden-page');
+    });
+
+    // 2. 显示目标页面
     const target = document.getElementById(pageId);
     if (target) {
-        target.classList.remove('hidden-page');
+        target.classList.remove('hidden-page', 'hidden');
         target.classList.add('active-page');
     }
 
-    // 导航高亮
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-    const activeNav = document.getElementById('nav-' + pageId);
-    if (activeNav) activeNav.classList.add('active');
+    // 3. 导航高亮处理
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active', 'nav-item');
+        // 如果导航ID匹配 nav-policy-decode 这种格式
+        if (link.id === 'nav-' + pageId) {
+            link.classList.add('active', 'nav-item');
+        }
+    });
+
+    // 4. 切换后重置滚动条
+    window.scrollTo(0, 0);
 }
-    </script>
+
+// 页面加载完成后初始化
+window.onload = function() {
+    // 默认展示政策解读列表
+    showPage('policy-decode');
+};
+</script>
 </body>
 </html>
