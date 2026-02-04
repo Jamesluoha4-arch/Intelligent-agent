@@ -220,7 +220,6 @@
                     <div class="flex justify-between items-center mb-6">
                         <h4 class="font-bold flex items-center gap-2"><i class="fas fa-tags text-teal-500"></i> 高频场景能力分布</h4>
                         <div onclick="switchToTagManager()" class="cursor-pointer hover:bg-blue-50 ...">
-  <span>标签体系管理</span>
 </div>
                     </div>
                     <div class="flex flex-wrap gap-3">
@@ -235,266 +234,6 @@
                     </div>
                 </div>
             </section>
-
-            <section id="tag-management-page" class="hidden min-h-screen bg-[#F4F7FC] p-6 animate-in fade-in duration-300">
-    
-    <div class="flex items-center justify-between mb-6 bg-white p-4 rounded-xl shadow-sm">
-        <div class="flex items-center gap-4">
-            <button onclick="backToHome()" class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 transition-all border border-slate-200">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <div>
-                <h2 class="text-xl font-bold text-slate-800">政策标签体系管理</h2>
-                <p class="text-xs text-slate-400">管理全区政策匹配维度、权重比例及标签生命周期</p>
-            </div>
-        </div>
-        <div class="flex gap-3">
-            <div class="relative">
-                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                <input type="text" placeholder="搜索标签或分类..." class="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none w-64">
-            </div>
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 shadow-lg shadow-blue-100 transition">
-                + 新增标准标签
-            </button>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-4 gap-4 mb-6">
-        <div class="bg-blue-50 border border-blue-100 p-3 rounded-lg flex items-start gap-3">
-            <i class="fas fa-info-circle text-blue-500 mt-1"></i>
-            <div>
-                <div class="text-sm font-bold text-blue-800">命名统一</div>
-                <p class="text-[11px] text-blue-600/80">固定写法如: MaaS, LLM, RAG</p>
-            </div>
-        </div>
-        <div class="bg-purple-50 border border-purple-100 p-3 rounded-lg flex items-start gap-3">
-            <i class="fas fa-layer-group text-purple-500 mt-1"></i>
-            <div>
-                <div class="text-sm font-bold text-purple-800">层级结构</div>
-                <p class="text-[11px] text-purple-600/80">一级“分类”+ 二级“具体标签”</p>
-            </div>
-        </div>
-        <div class="bg-amber-50 border border-amber-100 p-3 rounded-lg flex items-start gap-3">
-            <i class="fas fa-balance-scale text-amber-500 mt-1"></i>
-            <div>
-                <div class="text-sm font-bold text-amber-800">权重逻辑</div>
-                <p class="text-[11px] text-amber-600/80">技术能力类权重更高</p>
-            </div>
-        </div>
-        <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-lg flex items-start gap-3">
-            <i class="fas fa-shield-alt text-emerald-500 mt-1"></i>
-            <div>
-                <div class="text-sm font-bold text-emerald-800">数商专有池</div>
-                <p class="text-[11px] text-emerald-600/80">专有标签分类独立管理</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-12 gap-6">
-        <div class="col-span-3 space-y-2">
-            <div class="bg-white rounded-xl shadow-sm p-4">
-                <p class="text-xs font-bold text-slate-400 mb-4 uppercase tracking-wider">标签大类</p>
-                <nav class="space-y-1">
-                    <a href="#" class="flex items-center justify-between p-3 rounded-lg bg-blue-50 text-blue-600 font-bold group">
-                        <span>AI 技术方向</span>
-                        <span class="text-xs bg-blue-200 px-2 py-0.5 rounded-full">14</span>
-                    </a>
-                    <a href="#" class="flex items-center justify-between p-3 rounded-lg text-slate-600 hover:bg-slate-50 transition">
-                        <span>工商属性</span>
-                        <span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full">7</span>
-                    </a>
-                    <a href="#" class="flex items-center justify-between p-3 rounded-lg text-orange-600 font-medium hover:bg-orange-50 transition">
-                        <span>数商专有标签</span>
-                        <span class="text-xs bg-orange-100 px-2 py-0.5 rounded-full">9</span>
-                    </a>
-                    <a href="#" class="flex items-center justify-between p-3 rounded-lg text-slate-600 hover:bg-slate-50 transition">
-                        <span>行业与赛道</span>
-                        <span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full">9</span>
-                    </a>
-                </nav>
-            </div>
-        </div>
-
-        <div class="col-span-9 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
-            <table class="w-full text-left">
-                <thead class="bg-slate-50 border-b border-slate-100">
-                    <tr class="text-[11px] text-slate-500 uppercase tracking-widest">
-                        <th class="px-6 py-4 font-bold">标签名称</th>
-                        <th class="px-6 py-4 font-bold">权重比例</th>
-                        <th class="px-6 py-4 font-bold">添加时间</th>
-                        <th class="px-6 py-4 font-bold">有效时间</th>
-                        <th class="px-6 py-4 font-bold text-center">当前状态</th>
-                        <th class="px-6 py-4 font-bold text-right">操作管理</th>
-                    </tr>
-                </thead>
-                <tbody id="tag-table-body" class="divide-y divide-slate-50 text-sm text-slate-700">
-    <tr class="hover:bg-slate-50/50 transition">
-        <td class="px-6 py-4 font-medium text-blue-600">大模型 (LLM)</td>
-        <td class="px-6 py-4">
-            <input type="number" value="0.98" step="0.01" class="w-16 bg-blue-50/50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700">
-        </td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
-        <td class="px-6 py-4 text-center">
-            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
-                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
-            </span>
-        </td>
-        <td class="px-6 py-4 text-right space-x-3">
-            <button class="text-blue-500 hover:underline text-xs">延时</button>
-            <button class="text-red-400 hover:underline text-xs">失效</button>
-        </td>
-    </tr>
-
-                        <tr class="hover:bg-slate-50/50 transition">
-        <td class="px-6 py-4 font-medium text-blue-600">RAG 机制/应用</td>
-        <td class="px-6 py-4">
-            <input type="number" value="0.95" step="0.01" class="w-16 bg-blue-50/50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700">
-        </td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
-        <td class="px-6 py-4 text-center">
-            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
-                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
-            </span>
-        </td>
-        <td class="px-6 py-4 text-right space-x-3">
-            <button class="text-blue-500 hover:underline text-xs">延时</button>
-            <button class="text-red-400 hover:underline text-xs">失效</button>
-        </td>
-    </tr>
-                        <tr class="hover:bg-slate-50/50 transition">
-        <td class="px-6 py-4 font-medium text-blue-600">AIGC (生成式AI)</td>
-        <td class="px-6 py-4">
-            <input type="number" value="0.92" step="0.01" class="w-16 bg-blue-50/50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700">
-        </td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
-        <td class="px-6 py-4 text-center">
-            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
-                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
-            </span>
-        </td>
-        <td class="px-6 py-4 text-right space-x-3">
-            <button class="text-blue-500 hover:underline text-xs">延时</button>
-            <button class="text-red-400 hover:underline text-xs">失效</button>
-        </td>
-    </tr>
-
-                                            <tr class="hover:bg-slate-50/50 transition">
-        <td class="px-6 py-4 font-medium text-blue-600">多模态模型部署</td>
-        <td class="px-6 py-4">
-            <input type="number" value="0.90" step="0.01" class="w-16 bg-blue-50/50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700">
-        </td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
-        <td class="px-6 py-4 text-center">
-            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
-                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
-            </span>
-        </td>
-        <td class="px-6 py-4 text-right space-x-3">
-            <button class="text-blue-500 hover:underline text-xs">延时</button>
-            <button class="text-red-400 hover:underline text-xs">失效</button>
-        </td>
-    </tr>
-
-                                                                <tr class="hover:bg-slate-50/50 transition">
-        <td class="px-6 py-4 font-medium text-blue-600">预训练模型</td>
-        <td class="px-6 py-4">
-            <input type="number" value="0.90" step="0.01" class="w-16 bg-blue-50/50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700">
-        </td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
-        <td class="px-6 py-4 text-center">
-            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
-                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
-            </span>
-        </td>
-        <td class="px-6 py-4 text-right space-x-3">
-            <button class="text-blue-500 hover:underline text-xs">延时</button>
-            <button class="text-red-400 hover:underline text-xs">失效</button>
-        </td>
-    </tr>
-
-                                                                                    <tr class="hover:bg-slate-50/50 transition">
-        <td class="px-6 py-4 font-medium text-blue-600">数字孪生</td>
-        <td class="px-6 py-4">
-            <input type="number" value="0.89" step="0.01" class="w-16 bg-blue-50/50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700">
-        </td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2026-02-03</td>
-        <td class="px-6 py-4 text-slate-400 text-xs">2027-02-03</td>
-        <td class="px-6 py-4 text-center">
-            <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
-                <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
-            </span>
-        </td>
-        <td class="px-6 py-4 text-right space-x-3">
-            <button class="text-blue-500 hover:underline text-xs">延时</button>
-            <button class="text-red-400 hover:underline text-xs">失效</button>
-        </td>
-    </tr>
-                  
-                    
-   
-
-    
-    <tr class="bg-slate-50/50">
-        <td class="px-6 py-4 font-medium text-slate-400">认知智能</td>
-        <td class="px-6 py-4 text-slate-300">0.85</td>
-        <td class="px-6 py-4 text-slate-300 text-xs">2025-01-01</td>
-        <td class="px-6 py-4 text-red-400 text-xs font-bold">2026-01-01 (已失效)</td>
-        <td class="px-6 py-4 text-center">
-            <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
-        </td>
-        <td class="px-6 py-4 text-right">
-            <button class="text-blue-500 font-bold text-xs">重新生效</button>
-        </td>
-    </tr>
-
-                    <tr class="bg-slate-50/50">
-        <td class="px-6 py-4 font-medium text-slate-400">AI 节能降耗</td>
-        <td class="px-6 py-4 text-slate-300">0.83</td>
-        <td class="px-6 py-4 text-slate-300 text-xs">2025-01-01</td>
-        <td class="px-6 py-4 text-red-400 text-xs font-bold">2026-01-01 (已失效)</td>
-        <td class="px-6 py-4 text-center">
-            <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
-        </td>
-        <td class="px-6 py-4 text-right">
-            <button class="text-blue-500 font-bold text-xs">重新生效</button>
-        </td>
-    </tr>
-
-                                        <tr class="bg-slate-50/50">
-        <td class="px-6 py-4 font-medium text-slate-400">人工智能软件开发</td>
-        <td class="px-6 py-4 text-slate-300">0.80</td>
-        <td class="px-6 py-4 text-slate-300 text-xs">2025-01-01</td>
-        <td class="px-6 py-4 text-red-400 text-xs font-bold">2026-01-01 (已失效)</td>
-        <td class="px-6 py-4 text-center">
-            <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
-        </td>
-        <td class="px-6 py-4 text-right">
-            <button class="text-blue-500 font-bold text-xs">重新生效</button>
-        </td>
-    </tr>
-
-                                                            <tr class="bg-slate-50/50">
-        <td class="px-6 py-4 font-medium text-slate-400">人工智能应用</td>
-        <td class="px-6 py-4 text-slate-300">0.75</td>
-        <td class="px-6 py-4 text-slate-300 text-xs">2025-01-01</td>
-        <td class="px-6 py-4 text-red-400 text-xs font-bold">2026-01-01 (已失效)</td>
-        <td class="px-6 py-4 text-center">
-            <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
-        </td>
-        <td class="px-6 py-4 text-right">
-            <button class="text-blue-500 font-bold text-xs">重新生效</button>
-        </td>
-    </tr>
-</tbody>
-            </table>
-        </div>
-    </div>
-</section>
 
             <section id="page-policy" class="hidden-page">
                 <div class="flex justify-between items-center mb-8">
@@ -1041,6 +780,263 @@
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-2xl font-bold">系统配置与对接中心</h2>
                 </div>
+
+                明白，我的疏忽。在右侧表格中，我为你重新补全了**“添加时间”**这一列，并调整了各列的宽度比例，确保在嵌入模式下依然整齐美观。
+
+以下是包含“添加时间”的**最终完整版**代码：
+
+```html
+<div class="mb-10 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden animate-in fade-in duration-500">
+    
+    <div class="flex items-center justify-between px-6 py-4 bg-slate-50 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-100">
+                <i class="fas fa-tags text-sm"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-slate-800">政策标签体系管理</h3>
+                <p class="text-[11px] text-slate-400">管理全区政策匹配维度、权重比例及标签生命周期</p>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="relative">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input type="text" placeholder="搜索标签或分类..." class="pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-500 w-56 transition-all">
+            </div>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-700 shadow-md shadow-blue-100 transition">
+                + 新增标准标签
+            </button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-4 p-4 bg-slate-50/30 border-b border-slate-100">
+        <div class="bg-blue-50/50 border border-blue-100 p-2.5 rounded-lg flex items-start gap-2.5">
+            <i class="fas fa-info-circle text-blue-500 mt-0.5 text-xs"></i>
+            <div>
+                <div class="text-xs font-bold text-blue-800">命名统一</div>
+                <p class="text-[10px] text-blue-600/70 text-nowrap">固定写法: MaaS, LLM, RAG</p>
+            </div>
+        </div>
+        <div class="bg-purple-50/50 border border-purple-100 p-2.5 rounded-lg flex items-start gap-2.5">
+            <i class="fas fa-layer-group text-purple-500 mt-0.5 text-xs"></i>
+            <div>
+                <div class="text-xs font-bold text-purple-800">层级结构</div>
+                <p class="text-[10px] text-purple-600/70 text-nowrap">一级“分类”+ 二级“具体”</p>
+            </div>
+        </div>
+        <div class="bg-amber-50/50 border border-amber-100 p-2.5 rounded-lg flex items-start gap-2.5">
+            <i class="fas fa-balance-scale text-amber-500 mt-0.5 text-xs"></i>
+            <div>
+                <div class="text-xs font-bold text-amber-800">权重逻辑</div>
+                <p class="text-[10px] text-amber-600/70 text-nowrap">技术能力类权重更高</p>
+            </div>
+        </div>
+        <div class="bg-emerald-50/50 border border-emerald-100 p-2.5 rounded-lg flex items-start gap-2.5">
+            <i class="fas fa-shield-alt text-emerald-500 mt-0.5 text-xs"></i>
+            <div>
+                <div class="text-xs font-bold text-emerald-800">数商专有池</div>
+                <p class="text-[10px] text-emerald-600/70 text-nowrap">专有标签分类独立管理</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-12 overflow-hidden">
+        <div class="col-span-3 border-r border-slate-100 p-4 bg-slate-50/20">
+            <p class="text-[10px] font-bold text-slate-400 mb-4 uppercase tracking-widest">标签大类</p>
+            <nav class="space-y-1.5">
+                <a href="#" class="flex items-center justify-between p-2.5 rounded-lg bg-blue-50 text-blue-600 font-bold text-xs group transition">
+                    <span>AI 技术方向</span>
+                    <span class="text-[10px] bg-blue-200 px-1.5 py-0.5 rounded-full text-blue-700">14</span>
+                </a>
+                <a href="#" class="flex items-center justify-between p-2.5 rounded-lg text-slate-600 hover:bg-white hover:shadow-sm transition text-xs">
+                    <span>工商属性</span>
+                    <span class="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded-full text-slate-500">7</span>
+                </a>
+                <a href="#" class="flex items-center justify-between p-2.5 rounded-lg text-orange-600 font-medium hover:bg-orange-50 transition text-xs">
+                    <span>数商专有标签</span>
+                    <span class="text-[10px] bg-orange-100 px-1.5 py-0.5 rounded-full">9</span>
+                </a>
+                <a href="#" class="flex items-center justify-between p-2.5 rounded-lg text-slate-600 hover:bg-white hover:shadow-sm transition text-xs">
+                    <span>行业与赛道</span>
+                    <span class="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded-full text-slate-500">9</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="col-span-9 relative">
+            <div class="max-h-[450px] overflow-y-auto overflow-x-hidden custom-scrollbar">
+                <table class="w-full text-left border-collapse">
+                    <thead class="sticky top-0 bg-white shadow-[0_1px_0_0_rgba(241,245,249,1)] z-10">
+                        <tr class="text-[10px] text-slate-400 uppercase tracking-widest">
+                            <th class="px-6 py-4 font-bold">标签名称</th>
+                            <th class="px-6 py-4 font-bold">权重比例</th>
+                            <th class="px-6 py-4 font-bold">添加时间</th>
+                            <th class="px-6 py-4 font-bold">有效时间</th>
+                            <th class="px-6 py-4 font-bold text-center">当前状态</th>
+                            <th class="px-6 py-4 font-bold text-right">操作管理</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tag-table-body" class="divide-y divide-slate-50 text-sm text-slate-700">
+                        
+                        <tr class="hover:bg-blue-50/30 transition group">
+                            <td class="px-6 py-4 font-medium text-blue-600">大模型 (LLM)</td>
+                            <td class="px-6 py-4">
+                                <input type="number" value="0.98" step="0.01" class="w-16 bg-blue-50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700 focus:ring-1 focus:ring-blue-400 transition-all outline-none">
+                            </td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2026-02-03</td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2027-02-03</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">
+                                    <span class="w-1 h-1 bg-green-500 rounded-full animate-pulse"></span> 有效
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3 opacity-0 group-hover:opacity-100 transition">
+                                <button class="text-blue-500 hover:underline text-xs">延时</button>
+                                <button class="text-red-400 hover:underline text-xs">失效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-blue-50/30 transition group">
+                            <td class="px-6 py-4 font-medium text-blue-600">RAG 机制/应用</td>
+                            <td class="px-6 py-4">
+                                <input type="number" value="0.95" step="0.01" class="w-16 bg-blue-50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700 outline-none">
+                            </td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2026-02-03</td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2027-02-03</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">有效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3 opacity-0 group-hover:opacity-100 transition">
+                                <button class="text-blue-500 hover:underline text-xs">延时</button>
+                                <button class="text-red-400 hover:underline text-xs">失效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-blue-50/30 transition group">
+                            <td class="px-6 py-4 font-medium text-blue-600">AIGC (生成式AI)</td>
+                            <td class="px-6 py-4">
+                                <input type="number" value="0.92" step="0.01" class="w-16 bg-blue-50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700 outline-none">
+                            </td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2026-02-03</td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2027-02-03</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">有效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3 opacity-0 group-hover:opacity-100 transition">
+                                <button class="text-blue-500 hover:underline text-xs">延时</button>
+                                <button class="text-red-400 hover:underline text-xs">失效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-blue-50/30 transition group">
+                            <td class="px-6 py-4 font-medium text-blue-600">多模态模型部署</td>
+                            <td class="px-6 py-4">
+                                <input type="number" value="0.90" step="0.01" class="w-16 bg-blue-50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700 outline-none">
+                            </td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2026-02-03</td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2027-02-03</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">有效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3 opacity-0 group-hover:opacity-100 transition">
+                                <button class="text-blue-500 hover:underline text-xs">延时</button>
+                                <button class="text-red-400 hover:underline text-xs">失效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-blue-50/30 transition group">
+                            <td class="px-6 py-4 font-medium text-blue-600">预训练模型</td>
+                            <td class="px-6 py-4">
+                                <input type="number" value="0.90" step="0.01" class="w-16 bg-blue-50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700 outline-none">
+                            </td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2026-02-03</td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2027-02-03</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">有效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3 opacity-0 group-hover:opacity-100 transition">
+                                <button class="text-blue-500 hover:underline text-xs">延时</button>
+                                <button class="text-red-400 hover:underline text-xs">失效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-blue-50/30 transition group">
+                            <td class="px-6 py-4 font-medium text-blue-600">数字孪生</td>
+                            <td class="px-6 py-4">
+                                <input type="number" value="0.89" step="0.01" class="w-16 bg-blue-50 px-2 py-1 rounded border-none font-mono font-bold text-blue-700 outline-none">
+                            </td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2026-02-03</td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px]">2027-02-03</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="inline-flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full text-[10px] font-bold">有效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3 opacity-0 group-hover:opacity-100 transition">
+                                <button class="text-blue-500 hover:underline text-xs">延时</button>
+                                <button class="text-red-400 hover:underline text-xs">失效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="bg-slate-50/80 transition group">
+                            <td class="px-6 py-4 font-medium text-slate-400 italic">认知智能</td>
+                            <td class="px-6 py-4 text-slate-300 font-mono">0.85</td>
+                            <td class="px-6 py-4 text-slate-300 text-[11px]">2025-01-01</td>
+                            <td class="px-6 py-4 text-red-400 text-[10px] font-bold">2026-01-01 (已失效)</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-blue-500 font-bold text-xs hover:underline">重新生效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="bg-slate-50/80 transition group">
+                            <td class="px-6 py-4 font-medium text-slate-400 italic">AI 节能降耗</td>
+                            <td class="px-6 py-4 text-slate-300 font-mono">0.83</td>
+                            <td class="px-6 py-4 text-slate-300 text-[11px]">2025-01-01</td>
+                            <td class="px-6 py-4 text-red-400 text-[10px] font-bold">2026-01-01 (已失效)</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-blue-500 font-bold text-xs hover:underline">重新生效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="bg-slate-50/80 transition group">
+                            <td class="px-6 py-4 font-medium text-slate-400 italic text-nowrap">人工智能软件开发</td>
+                            <td class="px-6 py-4 text-slate-300 font-mono">0.80</td>
+                            <td class="px-6 py-4 text-slate-300 text-[11px]">2025-01-01</td>
+                            <td class="px-6 py-4 text-red-400 text-[10px] font-bold">2026-01-01 (已失效)</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-blue-500 font-bold text-xs hover:underline">重新生效</button>
+                            </td>
+                        </tr>
+
+                        <tr class="bg-slate-50/80 border-b-0 transition group">
+                            <td class="px-6 py-4 font-medium text-slate-400 italic">人工智能应用</td>
+                            <td class="px-6 py-4 text-slate-300 font-mono">0.75</td>
+                            <td class="px-6 py-4 text-slate-300 text-[11px]">2025-01-01</td>
+                            <td class="px-6 py-4 text-red-400 text-[10px] font-bold">2026-01-01 (已失效)</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]">失效</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-blue-500 font-bold text-xs hover:underline">重新生效</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="px-6 py-2 bg-white border-t border-slate-50 flex justify-between items-center text-[10px] text-slate-400">
+                <span>显示 “AI 技术方向” 下的 10 条标签数据</span>
+                <span class="flex items-center gap-1"><i class="fas fa-sync-alt animate-spin-slow text-[8px]"></i> 实时权重已生效</span>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <div class="grid grid-cols-4 gap-8">
                     <div class="col-span-1 space-y-6">
