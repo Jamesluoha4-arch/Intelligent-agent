@@ -639,46 +639,6 @@
     </div>
 
     <script>
-        function showDeepAnalysis() {
-        // 隐藏主解读页面
-        document.getElementById('policy-decode').classList.add('hidden');
-        // 显示深度解读页面
-        const deepPage = document.getElementById('deep-analysis-page');
-        deepPage.classList.remove('hidden');
-        // 平滑滚动到顶部
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 返回主页面
-    function hideDeepAnalysis() {
-        document.getElementById('policy-decode').classList.remove('hidden');
-        document.getElementById('deep-analysis-page').classList.add('hidden');
-    }
-        
-        function showPage(pageId) {
-            // 隐藏所有页面
-            const pages = document.querySelectorAll('section');
-            pages.forEach(page => {
-                page.classList.remove('active-page');
-                page.classList.add('hidden-page');
-            });
-
-            // 显示目标页面
-            const target = document.getElementById(pageId);
-            target.classList.remove('hidden-page');
-            target.classList.add('active-page');
-
-            // 导航栏高亮逻辑
-// 导航栏高亮逻辑
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.classList.remove('active', 'nav-item'); // 同时移除 active 和 nav-item
-});
-
-const activeNav = document.getElementById('nav-' + pageId);
-activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
-        }
-
         const policyData = {
     "hangzhou-digital": {
         title: "杭州市2026年度“智改数转”项目资助申报指南",
@@ -702,28 +662,52 @@ function showDeepAnalysis() {
 
     if (!data || !deepPage) return;
 
-    // 1. 动态填充内容
-    deepPage.querySelector('h1').innerText = data.title;
-    const tagContainer = deepPage.querySelector('.flex.justify-center.gap-3');
-    tagContainer.innerHTML = `<span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>` + 
-        data.tags.map(tag => `<span class="px-2 py-0.5 border border-red-200 rounded">${tag}</span>`).join('');
-    
-    deepPage.querySelector('h3').innerText = data.deepContent.issue;
-    deepPage.querySelector('.prose p.indent-8').innerHTML = `
-        ${data.deepContent.fullText} 
-        <br><br>
-        <a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline text-[10px]">阅读原文：${data.deepContent.articleUrl}</a>
-    `;
+    // 1. 填充标题
+    const titleElem = document.getElementById('deep-title');
+    if (titleElem) titleElem.innerText = data.title;
 
-    // 2. 彻底移除所有可能的隐藏类 (核心修复)
+    // 2. 填充标签 (适配 id="ai-tags-container")
+    const tagContainer = document.getElementById('ai-tags-container');
+    if (tagContainer) {
+        tagContainer.innerHTML = data.tags.map(tag => `
+            <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold">
+                <i class="fas fa-tag mr-1"></i>${tag}
+            </span>
+        `).join('');
+    }
+
+    // 3. 填充问题
+    const questionElem = document.getElementById('deep-question');
+    if (questionElem) {
+        questionElem.innerHTML = `
+            <span class="flex-shrink-0 w-7 h-7 bg-blue-600 text-white rounded flex items-center justify-center text-sm italic">Q</span>
+            ${data.deepContent.issue}
+        `;
+    }
+
+    // 4. 填充正文 (适配 id="deep-content-body")
+    const contentBody = document.getElementById('deep-content-body');
+    if (contentBody) {
+        // 保留原有的 AI 导读样式，仅替换内容文字
+        contentBody.innerHTML = `
+            <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-blue-500 italic text-sm text-slate-600 mb-6">
+                <strong>AI 政策导读：</strong> 深度匹配您的企业画像，该政策属于“全额贴息”范畴，建议重点关注申报期限。
+            </div>
+            <p class="indent-8 text-lg">
+                ${data.deepContent.fullText}
+            </p>
+            <p class="text-xs text-slate-400 border-t pt-4">
+                数据来源：<a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 hover:underline">官方原件链接</a>
+            </p>
+        `;
+    }
+
+    // 5. 切换显示
     mainPage.classList.add('hidden-page');
-    mainPage.classList.remove('active-page');
+    deepPage.classList.remove('hidden-page');
     
-    deepPage.classList.remove('hidden-page', 'hidden'); // 同时移除两种隐藏类
-    deepPage.classList.add('active-page');
-
-    // 3. 强制滚动 main 区域（因为 body 是 overflow-hidden）
-    document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+    // 强制滚动到顶部
+    window.scrollTo(0, 0);
 }
 
 // 返回主页面
