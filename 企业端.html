@@ -583,45 +583,132 @@
 </section>
 
                 <section id="match-center" class="hidden-page space-y-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h2 class="text-xl font-bold text-slate-800">双向匹配算法推荐</h2>
-                            <p class="text-xs text-slate-400 mt-1">基于实时供需清单与企业能力标签深度计算</p>
+    <div class="flex items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+        <div>
+            <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                <i class="fas fa-microchip text-blue-500"></i> 双向匹配算法推荐
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">系统已根据 142 项企业画像特征完成深度计算，当前计算新鮮度：实时</p>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="text-right">
+                <p class="text-[10px] text-slate-400 uppercase font-bold">算法精准度</p>
+                <p class="text-sm font-bold text-green-500">98.2%</p>
+            </div>
+            <div class="h-8 w-[1px] bg-slate-100"></div>
+            <div class="flex items-center gap-3">
+                <span class="text-xs text-slate-500">匹配权重调节：</span>
+                <div class="group relative">
+                    <div class="h-2 w-32 bg-slate-100 rounded-full overflow-hidden cursor-pointer">
+                        <div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 w-2/3"></div>
+                    </div>
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                        偏向技术指标
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="space-y-4">
+        
+        <div class="glass-card rounded-2xl p-6 shadow-sm border-l-4 border-blue-500 group hover:shadow-xl hover:-translate-y-1 transition-all bg-white">
+            <div class="flex justify-between items-start">
+                <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="px-2 py-0.5 bg-blue-600 text-white rounded text-[9px] font-bold uppercase">国家级</span>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">新能源汽车核心零部件产业专项补助</h3>
+                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold">匹配强度：极强</span>
+                        <span class="px-2 py-0.5 bg-rose-50 text-rose-500 rounded text-[10px] font-bold"><i class="far fa-clock mr-1"></i>剩 12 天</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mb-4">
+                        该项目主要针对拥有自主知识产权且已进入头部主机厂供应链的企业。贵司<span class="text-blue-600 font-bold italic">伺服电机技术</span>高度契合指南第三条规定，建议立即启动申报。
+                    </p>
+                    <div class="flex gap-3">
+                        <div class="bg-blue-50/50 px-3 py-2 rounded-xl border border-blue-100">
+                            <p class="text-[9px] text-blue-400 font-bold uppercase tracking-wider">命中核心理由</p>
+                            <p class="text-xs text-blue-700 font-bold mt-1">符合：自主研发+新能源供应链 [标签命中]</p>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-xs text-slate-500">权重调节：</span>
-                            <div class="h-1.5 w-32 bg-slate-200 rounded-full overflow-hidden">
-                                <div class="h-full bg-blue-500 w-2/3"></div>
-                            </div>
+                        <div class="bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">预计资助额度</p>
+                            <p class="text-xs text-slate-700 font-bold mt-1">¥ 200万 - 500万</p>
                         </div>
                     </div>
-                    <div class="space-y-4">
-                        <div class="glass-card rounded-2xl p-6 shadow-sm border-l-4 border-blue-500 group hover:shadow-lg transition-all">
-                            <div class="flex justify-between items-start">
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-3 mb-2">
-                                        <h3 class="text-lg font-bold text-slate-800">新能源汽车核心零部件产业补助</h3>
-                                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold">匹配强度：强</span>
-                                    </div>
-                                    <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mb-4">
-                                        该项目主要针对拥有自主知识产权且已进入头部主机厂供应链的企业。贵司伺服电机技术高度契合指南第三条规定。
-                                    </p>
-                                    <div class="flex gap-4">
-                                        <div class="bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
-                                            <p class="text-[9px] text-slate-400 font-bold uppercase">命中核心理由</p>
-                                            <p class="text-xs text-blue-600 font-bold mt-1">符合：自主研发+新能源供应链 [标签命中]</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-2xl font-bold text-blue-600 font-mono">96<span class="text-xs">%</span></p>
-                                    <p class="text-[10px] text-slate-400 uppercase mt-1">综合匹配分</p>
-                                    <button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-blue-200 opacity-0 group-hover:opacity-100 transition-all">查看详情</button>
-                                </div>
-                            </div>
+                </div>
+                <div class="text-right flex flex-col items-end">
+                    <div class="relative w-16 h-16 flex items-center justify-center">
+                        <svg class="w-full h-full -rotate-90">
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent" class="text-slate-100" />
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent" stroke-dasharray="175.9" stroke-dashoffset="7" class="text-blue-600" />
+                        </svg>
+                        <span class="absolute text-lg font-bold text-blue-600 font-mono">96<span class="text-[10px]">%</span></span>
+                    </div>
+                    <p class="text-[10px] text-slate-400 uppercase mt-2 font-bold">综合匹配分</p>
+                    <button onclick="showDeepAnalysis()" class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-blue-200 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">AI 深度解读</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 shadow-sm border-l-4 border-purple-500 group hover:shadow-xl transition-all bg-white">
+            <div class="flex justify-between items-start">
+                <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="px-2 py-0.5 bg-purple-600 text-white rounded text-[9px] font-bold uppercase">省级</span>
+                        <h3 class="text-lg font-bold text-slate-800">2026年度“专精特新”中小企业培育入库</h3>
+                        <span class="px-2 py-0.5 bg-purple-50 text-purple-600 rounded text-[10px] font-bold">匹配强度：高</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mb-4">
+                        基于贵司上年度研发投入占比（12.5%）及发明专利储备。目前唯一的<span class="text-rose-500 font-bold underline">潜在风险点</span>为：主营业务收入占总收入比例证据链尚需完善。
+                    </p>
+                    <div class="flex gap-3">
+                        <div class="bg-amber-50 px-3 py-2 rounded-xl border border-amber-100">
+                            <p class="text-[9px] text-amber-500 font-bold uppercase tracking-wider">AI 治理建议</p>
+                            <p class="text-xs text-amber-700 font-bold mt-1">需补齐：2025年度审计报告明细</p>
                         </div>
                     </div>
-                </section>
+                </div>
+                <div class="text-right flex flex-col items-end">
+                    <p class="text-2xl font-bold text-purple-600 font-mono italic">88<span class="text-xs">%</span></p>
+                    <p class="text-[10px] text-slate-400 uppercase mt-1">综合匹配分</p>
+                    <button class="mt-8 px-6 py-2 bg-purple-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-purple-200 opacity-0 group-hover:opacity-100 transition-all">预审诊断</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 shadow-sm border-l-4 border-emerald-500 group hover:shadow-xl transition-all bg-white">
+            <div class="flex justify-between items-start">
+                <div class="flex-1">
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white rounded text-[9px] font-bold uppercase">市级</span>
+                        <h3 class="text-lg font-bold text-slate-800">高层次人才创业团队“滨江计划”</h3>
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[10px] font-bold">匹配强度：中</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mb-4">
+                        贵司CTO拥有海外博士学位及15年行业经验，符合领军人才认定标准。该政策可提供最高<span class="text-emerald-600 font-bold font-mono">1000万</span>股权投资与场地免租支持。
+                    </p>
+                    <div class="flex gap-3 text-[10px] font-bold">
+                        <span class="text-slate-400">核心标签：</span>
+                        <span class="text-emerald-500">#海外高层次人才</span>
+                        <span class="text-emerald-500">#初创团队</span>
+                        <span class="text-emerald-500">#股权直投</span>
+                    </div>
+                </div>
+                <div class="text-right flex flex-col items-end">
+                    <p class="text-2xl font-bold text-emerald-600 font-mono">75<span class="text-xs">%</span></p>
+                    <p class="text-[10px] text-slate-400 uppercase mt-1">综合匹配分</p>
+                    <button class="mt-8 px-6 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-emerald-200 opacity-0 group-hover:opacity-100 transition-all">团队画像</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="text-center py-4">
+        <button class="text-xs text-slate-400 hover:text-blue-500 transition-colors">
+            没有找到心仪的政策？尝试 <span class="font-bold underline">上传更多企业资质材料</span> 以刷新算法
+        </button>
+    </div>
+</section>
 
                 <section id="data-analysis" class="hidden-page space-y-6">
                     <div class="grid grid-cols-4 gap-6">
