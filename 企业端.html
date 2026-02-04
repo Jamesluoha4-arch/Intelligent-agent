@@ -312,50 +312,78 @@
     </div>
 </section>
 
-                <section id="deep-analysis-page" class="hidden-page space-y-0 bg-white">
-    <div class="w-full bg-blue-600 p-3 flex items-center justify-between text-white rounded-t-xl">
+                <section id="deep-analysis-page" class="hidden-page space-y-0 bg-slate-50 min-h-screen">
+    <div class="w-full bg-blue-600 p-3 flex items-center justify-between text-white rounded-t-xl sticky top-0 z-50 shadow-md">
         <div class="flex items-center gap-4">
-            <button onclick="hideDeepAnalysis()" class="hover:bg-blue-700 p-1 rounded transition-colors">
+            <button onclick="hideDeepAnalysis()" class="hover:bg-blue-700 px-2 py-1 rounded transition-colors flex items-center gap-1">
                 <i class="fas fa-chevron-left"></i> 返回
             </button>
-            <h2 class="text-sm font-bold tracking-wide">2026年第12期（总第240期）AI深度分析模式</h2>
+            <div class="h-4 w-[1px] bg-white/30"></div>
+            <h2 class="text-sm font-bold tracking-wide">2026年第12期 AI深度分析模式</h2>
         </div>
-        <button class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-xs">
+        <button onclick="showPage('policy-decode')" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-xs">
             <i class="fas fa-home"></i> 首页
         </button>
     </div>
 
-    <div class="bg-white border-x border-b border-slate-200 p-8 min-h-[800px]">
-        <div class="text-center mb-10">
-            <h1 class="text-3xl font-serif font-bold text-slate-900 mb-4">杭州市新一轮就业创业政策解读（二）</h1>
-            <div class="flex justify-center gap-3 text-red-500 text-xs font-bold">
-                <span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>
-                <span class="px-2 py-0.5 border border-red-200 rounded">贷款政策</span>
-                <span class="px-2 py-0.5 border border-red-200 rounded">文创产业</span>
-                <span class="px-2 py-0.5 border border-red-200 rounded">创业补贴</span>
+    <div class="max-w-[1600px] mx-auto grid grid-cols-12 gap-6 p-6">
+        
+        <div class="col-span-3 space-y-6">
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
+                <h4 class="text-slate-800 font-bold text-sm mb-3 flex items-center gap-2">
+                    <i class="fas fa-eye text-blue-500"></i> 正文原文预览
+                </h4>
+                <div id="original-preview-box" class="text-[11px] text-slate-500 leading-relaxed bg-slate-50 p-3 rounded-lg border border-slate-100 max-h-[250px] overflow-y-auto">
+                    </div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
+                <h4 class="text-slate-800 font-bold text-sm mb-3 flex items-center gap-2">
+                    <i class="fas fa-list-check text-green-500"></i> AI要素提取
+                </h4>
+                <div id="ai-factors-box" class="space-y-2">
+                    </div>
             </div>
         </div>
 
-        <div class="max-w-4xl mx-auto relative">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h3 class="text-lg font-bold text-slate-800">一、新一轮就业创业政策对登记失业人员主要有哪些就业援助政策？</h3>
-                <button class="px-3 py-1 border border-orange-400 text-orange-500 text-xs rounded hover:bg-orange-50">常见问答</button>
+        <div class="col-span-6 bg-white border border-slate-200 rounded-xl p-8 shadow-sm">
+            <div class="text-center mb-10">
+                <h1 id="deep-title" class="text-2xl font-bold text-slate-900 mb-6"></h1>
+                <div id="deep-tags-container" class="flex flex-wrap justify-center gap-2">
+                    </div>
             </div>
 
-            <div class="prose prose-slate max-w-none text-slate-700 leading-[2.2] space-y-6">
-                <p class="indent-8">
-                    答：（一）创业担保贷款及贴息。在市区创办企业、个体工商户（含经认定的网络创业）或民办非企业单位等经营实体的，可申请不超过30万元贷款...
-                    <span class="bg-yellow-100 font-bold border-b-2 border-yellow-400">（此处由AI深度标注：最高贴息金额50万元，最长期限3年）</span>。
-                </p>
-                <p class="indent-8 text-slate-500 italic">
-                    (内容引自：http://www.lzpat.com/m/view.php?aid=12584)
-                </p>
-            </div>
+            <div class="max-w-3xl mx-auto relative">
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <h3 id="deep-question" class="text-lg font-bold text-slate-800 leading-snug"></h3>
+                    <button class="flex-shrink-0 px-3 py-1 border border-orange-400 text-orange-500 text-xs rounded hover:bg-orange-50">常见问答</button>
+                </div>
 
-            <div class="fixed right-10 bottom-20">
-                <button class="w-12 h-12 bg-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform">
-                    <i class="fas fa-robot text-xl"></i>
-                </button>
+                <div id="deep-content-body" class="prose prose-slate max-w-none text-slate-700 leading-[2.2] space-y-6">
+                    <p class="indent-8"></p>
+                    <p class="text-xs text-slate-400 border-t pt-4 italic"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-3">
+            <div class="bg-white rounded-xl shadow-lg border border-slate-200 flex flex-col h-[600px] sticky top-20">
+                <div class="p-4 border-b bg-slate-50 rounded-t-xl font-bold text-sm flex items-center gap-2 text-slate-700">
+                    <i class="fas fa-robot text-blue-600"></i> AI 政策助手
+                </div>
+                <div id="ai-chat-history" class="flex-1 p-4 overflow-y-auto space-y-4 text-[12px]">
+                    <div class="bg-blue-50 p-3 rounded-lg text-blue-800">
+                        您可以问我：<br>
+                        • 申请的具体截止日期？<br>
+                        • 我司是否符合申报条件？
+                    </div>
+                </div>
+                <div class="p-4 border-t">
+                    <div class="relative flex items-center">
+                        <input type="text" placeholder="输入您的问题..." class="w-full border rounded-full pl-4 pr-10 py-2 text-xs focus:outline-none focus:border-blue-500 shadow-inner">
+                        <button class="absolute right-3 text-blue-600 hover:scale-110 transition-transform"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -523,55 +551,25 @@
     </div>
 
     <script>
-//         function showDeepAnalysis() {
-//         // 隐藏主解读页面
-//         document.getElementById('policy-decode').classList.add('hidden');
-//         // 显示深度解读页面
-//         const deepPage = document.getElementById('deep-analysis-page');
-//         deepPage.classList.remove('hidden');
-//         // 平滑滚动到顶部
-//         window.scrollTo({ top: 0, behavior: 'smooth' });
-//     }
-
-//     // 返回主页面
-//     function hideDeepAnalysis() {
-//         document.getElementById('policy-decode').classList.remove('hidden');
-//         document.getElementById('deep-analysis-page').classList.add('hidden');
-//     }
-        
-//         function showPage(pageId) {
-//             // 隐藏所有页面
-//             const pages = document.querySelectorAll('section');
-//             pages.forEach(page => {
-//                 page.classList.remove('active-page');
-//                 page.classList.add('hidden-page');
-//             });
-
-//             // 显示目标页面
-//             const target = document.getElementById(pageId);
-//             target.classList.remove('hidden-page');
-//             target.classList.add('active-page');
-
-//             // 导航栏高亮逻辑
-// // 导航栏高亮逻辑
-// const navLinks = document.querySelectorAll('.nav-link');
-// navLinks.forEach(link => {
-//     link.classList.remove('active', 'nav-item'); // 同时移除 active 和 nav-item
-// });
-
-// const activeNav = document.getElementById('nav-' + pageId);
-// activeNav.classList.add('active', 'nav-item'); // 同时添加 active 和 nav-item
-//         }
-
-        const policyData = {
+const policyData = {
     "hangzhou-digital": {
         title: "杭州市2026年度“智改数转”项目资助申报指南",
         publishDate: "2026-01-20",
-        tags: ["智改数转", "专项奖励", "工业互联网"],
+        // 增加到10个标签
+        tags: ["智改数转", "专项奖励", "工业互联网", "数字化转型", "制造业", "技改补贴", "中小企业", "杭州政策", "2026申报", "AI推荐"],
+        // 新增：原文预览
+        preview: "本政策旨在加快制造业数字化转型，对符合条件的工业互联网平台、未来工厂给予最高1000万元奖励。针对中小企业技改项目，提供全额利息补贴，支持期限最长3年。申报单位需为在杭注册企业，且项目已于2025年完成备案...",
+        // 新增：要素提取
+        factors: [
+            { key: "补贴上限", val: "1000万元" },
+            { key: "贴息力度", val: "100% 全额" },
+            { key: "支持对象", val: "工业/技改企业" },
+            { key: "申报门槛", val: "上年度营收 >2000万" }
+        ],
         deepContent: {
             issue: "一、关于“智改数转”专项奖励的申报条件和支持标准是什么？",
             articleUrl: "http://www.lzpat.com/m/view.php?aid=12584",
-            fullText: "答：（一）资助标准。对经认定的省级“未来工厂”、国家级智能制造示范项目，分别给予最高不超过500万元、1000万元的一次性奖励。通过AI深度标注：最高贴息金额50万元，最长期限3年。"
+            fullText: "答：（一）资助标准。对经认定的省级“未来工厂”、国家级智能制造示范项目，分别给予最高不超过500万元、1000万元的一次性奖励。通过AI深度标注：该项资金针对纯软件投入亦可覆盖，但硬件比例不低于30%。"
         }
     }
 };
@@ -587,62 +585,73 @@ function showDeepAnalysis() {
     if (!data || !deepPage) return;
 
     // 1. 动态填充内容
+    // 标题与标签 (10个标签逻辑)
     deepPage.querySelector('h1').innerText = data.title;
-    const tagContainer = deepPage.querySelector('.flex.justify-center.gap-3');
-    tagContainer.innerHTML = `<span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>` + 
-        data.tags.map(tag => `<span class="px-2 py-0.5 border border-red-200 rounded">${tag}</span>`).join('');
+    const tagContainer = document.getElementById('deep-tags-container');
+    tagContainer.innerHTML = data.tags.map(tag => 
+        `<span class="px-2 py-0.5 border border-red-200 text-red-500 rounded text-[10px] font-bold shadow-sm bg-red-50/30">${tag}</span>`
+    ).join('');
+
+    // 左侧：原文预览填充
+    document.getElementById('original-preview-box').innerText = data.preview;
+
+    // 左侧：要素提取填充
+    document.getElementById('ai-factors-box').innerHTML = data.factors.map(f => `
+        <div class="flex justify-between items-center p-2 bg-blue-50/50 rounded-lg border border-blue-100">
+            <span class="text-[10px] text-slate-500">${f.key}</span>
+            <span class="text-[11px] font-bold text-blue-600">${f.val}</span>
+        </div>
+    `).join('');
     
+    // 正文问题与长文
     deepPage.querySelector('h3').innerText = data.deepContent.issue;
-    deepPage.querySelector('.prose p.indent-8').innerHTML = `
+    const contentP = deepPage.querySelector('.prose p.indent-8');
+    contentP.innerHTML = `
         ${data.deepContent.fullText} 
         <br><br>
-        <a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline text-[10px]">阅读原文：${data.deepContent.articleUrl}</a>
+        <span class="bg-yellow-100 font-bold border-b-2 border-yellow-400">（AI深度标注：最高贴息金额50万元，最长期限3年）</span>
     `;
-
-    // 2. 彻底移除所有可能的隐藏类 (核心修复)
-    mainPage.classList.add('hidden-page');
-    mainPage.classList.remove('active-page');
     
-    deepPage.classList.remove('hidden-page', 'hidden'); // 同时移除两种隐藏类
+    const sourceLink = deepPage.querySelector('.prose p.italic');
+    sourceLink.innerHTML = `内容引自：<a href="${data.deepContent.articleUrl}" target="_blank" class="text-blue-500 underline">${data.deepContent.articleUrl}</a>`;
+
+    // 2. 彻底移除所有可能的隐藏类
+    if(mainPage) {
+        mainPage.classList.add('hidden-page');
+        mainPage.classList.remove('active-page');
+    }
+    
+    deepPage.classList.remove('hidden-page', 'hidden');
     deepPage.classList.add('active-page');
 
-    // 3. 强制滚动 main 区域（因为 body 是 overflow-hidden）
+    // 3. 强制滚动
     document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 返回主页面
+// 返回主页面 (复用原有逻辑)
 function hideDeepAnalysis() {
-    const mainPage = document.getElementById('policy-decode');
-    const deepPage = document.getElementById('deep-analysis-page');
-
-    deepPage.classList.add('hidden-page');
-    deepPage.classList.remove('active-page');
-    
-    mainPage.classList.remove('hidden-page');
-    mainPage.classList.add('active-page');
+    showPage('policy-decode');
 }
 
-// 侧边栏切换逻辑
+// 侧边栏切换逻辑 (保持不变但增强健壮性)
 function showPage(pageId) {
-    // 隐藏包括深度解读在内的所有 section
     const allSections = document.querySelectorAll('section');
     allSections.forEach(s => {
         s.classList.add('hidden-page');
         s.classList.remove('active-page');
     });
 
-    // 显示目标页面
     const target = document.getElementById(pageId);
     if (target) {
-        target.classList.remove('hidden-page');
+        target.classList.remove('hidden-page', 'hidden');
         target.classList.add('active-page');
     }
 
-    // 导航高亮
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => link.classList.remove('active'));
     const activeNav = document.getElementById('nav-' + pageId);
     if (activeNav) activeNav.classList.add('active');
 }
-    </script>
+</script>
 </body>
 </html>
