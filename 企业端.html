@@ -312,52 +312,168 @@
     </div>
 </section>
 
-                <section id="deep-analysis-page" class="hidden-page space-y-0 bg-white">
-    <div class="w-full bg-blue-600 p-3 flex items-center justify-between text-white rounded-t-xl">
+                <section id="deep-analysis-page" class="hidden-page space-y-0 bg-slate-50">
+    <div class="w-full bg-blue-600 p-3 flex items-center justify-between text-white shadow-lg sticky top-0 z-50">
         <div class="flex items-center gap-4">
-            <button onclick="hideDeepAnalysis()" class="hover:bg-blue-700 p-1 rounded transition-colors">
-                <i class="fas fa-chevron-left"></i> 返回
+            <button onclick="hideDeepAnalysis()" class="hover:bg-blue-700 p-2 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium">
+                <i class="fas fa-arrow-left"></i> 返回解读中心
             </button>
-            <h2 class="text-sm font-bold tracking-wide">2026年第12期（总第240期）AI深度分析模式</h2>
+            <div class="h-4 w-[1px] bg-white/30"></div>
+            <h2 class="text-sm font-bold tracking-wide flex items-center gap-2">
+                <i class="fas fa-microchip"></i> 2026年第12期 AI深度分析模式
+            </h2>
         </div>
-        <button class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-xs">
-            <i class="fas fa-home"></i> 首页
-        </button>
+        <div class="flex gap-2">
+            <button class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg text-xs transition-all border border-white/20">
+                <i class="fas fa-share-alt mr-1"></i> 导出报告
+            </button>
+            <button onclick="window.location.reload()" class="bg-white text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm">
+                <i class="fas fa-home"></i> 首页
+            </button>
+        </div>
     </div>
 
-    <div class="bg-white border-x border-b border-slate-200 p-8 min-h-[800px]">
-        <div class="text-center mb-10">
-            <h1 class="text-3xl font-serif font-bold text-slate-900 mb-4">杭州市新一轮就业创业政策解读（二）</h1>
-            <div class="flex justify-center gap-3 text-red-500 text-xs font-bold">
-                <span class="px-2 py-0.5 border border-red-200 rounded">增加AI生成标签</span>
-                <span class="px-2 py-0.5 border border-red-200 rounded">贷款政策</span>
-                <span class="px-2 py-0.5 border border-red-200 rounded">文创产业</span>
-                <span class="px-2 py-0.5 border border-red-200 rounded">创业补贴</span>
+    <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-6 p-6">
+        
+        <div class="col-span-8 space-y-6">
+            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-[0.03]">
+                    <i class="fas fa-file-contract text-9xl"></i>
+                </div>
+
+                <div class="text-center mb-8">
+                    <div class="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                        Policy Deep Analysis
+                    </div>
+                    <h1 id="deep-title" class="text-3xl font-bold text-slate-900 mb-6">杭州市新一轮就业创业政策解读（二）</h1>
+                    
+                    <div id="ai-tags-container" class="flex justify-center flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>失业援助</span>
+                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>全额贴息</span>
+                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>最高50万</span>
+                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>小微支持</span>
+                        <span class="px-3 py-1 bg-red-50 text-red-600 border border-red-100 rounded-md text-xs font-bold"><i class="fas fa-tag mr-1"></i>3年期限</span>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+                        <h3 id="deep-question" class="text-xl font-bold text-slate-800 flex items-start gap-3">
+                            <span class="flex-shrink-0 w-7 h-7 bg-blue-600 text-white rounded flex items-center justify-center text-sm italic">Q</span>
+                            新一轮就业创业政策对登记失业人员主要有哪些就业援助政策？
+                        </h3>
+                        <button class="flex-shrink-0 px-4 py-2 bg-orange-50 text-orange-600 text-xs font-bold rounded-lg border border-orange-100 hover:bg-orange-100 transition-colors">
+                            <i class="far fa-question-circle mr-1"></i> 常见问答
+                        </button>
+                    </div>
+
+                    <div id="deep-content-body" class="prose prose-slate max-w-none text-slate-700 leading-[2.2] space-y-6">
+                        <div class="bg-slate-50 p-6 rounded-xl border-l-4 border-blue-500 italic text-sm text-slate-600 mb-6">
+                            <strong>AI 政策导读：</strong> 本项政策重点通过“金融杠杆”降低失业人员的创办成本。相较于往期，显著上调了贷款额度上限，并针对科创与文创项目提供了差异化的贴息支持。
+                        </div>
+                        
+                        <p class="indent-8 text-lg">
+                            答：（一）创业担保贷款及贴息。在市区创办企业、个体工商户（含经认定的网络创业）或民办非企业单位等经营实体的，可申请不超过30万元贷款...
+                            <mark class="bg-yellow-200 px-1 font-bold rounded">（AI深度标注：最高贴息金额50万元，最长期限3年）</mark>。
+                            对科创成果转化、研发或文化创意类项目，实行精准化金融扶持，重点审核项目的创新属性。
+                        </p>
+
+                        <div class="p-4 bg-blue-50/50 rounded-lg border border-dashed border-blue-200">
+                            <h4 class="text-sm font-bold text-blue-800 mb-2"><i class="fas fa-info-circle mr-2"></i>申请地点与流程提示：</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                资格认定需向营业执照注册所在的社区（行政村）人力社保室、街道（乡镇）人力社保站提出申请。AI建议提前准备好《就业创业证》及营业执照副本扫描件。
+                            </p>
+                        </div>
+
+                        <p class="text-xs text-slate-400 border-t pt-4">
+                            数据来源：<a href="http://www.lzpat.com/m/view.php?aid=12584" class="text-blue-500 hover:underline hover:text-blue-600">杭州市人力资源和社会保障局官方通告</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="max-w-4xl mx-auto relative">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h3 class="text-lg font-bold text-slate-800">一、新一轮就业创业政策对登记失业人员主要有哪些就业援助政策？</h3>
-                <button class="px-3 py-1 border border-orange-400 text-orange-500 text-xs rounded hover:bg-orange-50">常见问答</button>
+        <div class="col-span-4 space-y-6">
+            <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                <div class="absolute top-[-20px] right-[-20px] w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+                <h4 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span> 关键数据摘要
+                </h4>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                        <p class="text-[10px] text-slate-400">最高贷款额度</p>
+                        <p class="text-xl font-bold text-blue-400">¥ 300,000</p>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                        <p class="text-[10px] text-slate-400">最长扶持期限</p>
+                        <p class="text-xl font-bold text-emerald-400">36 个月</p>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                        <p class="text-[10px] text-slate-400">贴息本金最高</p>
+                        <p class="text-xl font-bold text-orange-400">¥ 500,000</p>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                        <p class="text-[10px] text-slate-400">补贴频次上限</p>
+                        <p class="text-xl font-bold text-purple-400">3 次</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="prose prose-slate max-w-none text-slate-700 leading-[2.2] space-y-6">
-                <p class="indent-8">
-                    答：（一）创业担保贷款及贴息。在市区创办企业、个体工商户（含经认定的网络创业）或民办非企业单位等经营实体的，可申请不超过30万元贷款...
-                    <span class="bg-yellow-100 font-bold border-b-2 border-yellow-400">（此处由AI深度标注：最高贴息金额50万元，最长期限3年）</span>。
-                </p>
-                <p class="indent-8 text-slate-500 italic">
-                    (内容引自：http://www.lzpat.com/m/view.php?aid=12584)
-                </p>
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h4 class="text-sm font-bold text-slate-800 mb-6 flex items-center justify-between">
+                    <span>申报流程建议</span>
+                    <span class="text-[10px] bg-slate-100 px-2 py-1 rounded text-slate-500">耗时约15个工作日</span>
+                </h4>
+                <div class="relative space-y-6 pl-4 before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100">
+                    <div class="relative flex gap-4">
+                        <div class="absolute -left-[14px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-sm"></div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">资格认定</p>
+                            <p class="text-[10px] text-slate-500">社区/街道社保站初步审核失业登记状态</p>
+                        </div>
+                    </div>
+                    <div class="relative flex gap-4">
+                        <div class="absolute -left-[14px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">银行放贷</p>
+                            <p class="text-[10px] text-slate-500">向合作经办银行申请贷款拨付</p>
+                        </div>
+                    </div>
+                    <div class="relative flex gap-4">
+                        <div class="absolute -left-[14px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">贴息申请</p>
+                            <p class="text-[10px] text-slate-500">按时还本付息后向人社部门申请利息返还</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="fixed right-10 bottom-20">
-                <button class="w-12 h-12 bg-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform">
-                    <i class="fas fa-robot text-xl"></i>
-                </button>
+            <div class="bg-blue-600 rounded-2xl p-6 shadow-lg shadow-blue-200 text-white">
+                <h4 class="text-sm font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-lightbulb"></i> 智能关联推荐
+                </h4>
+                <ul class="space-y-4">
+                    <li class="group cursor-pointer">
+                        <p class="text-xs font-bold group-hover:underline underline-offset-4">杭州市小微企业社保补贴政策 (2026)</p>
+                        <p class="text-[10px] text-blue-100 mt-1 opacity-80">匹配度：98% | 建议同步申报</p>
+                    </li>
+                    <li class="group cursor-pointer">
+                        <p class="text-xs font-bold group-hover:underline underline-offset-4">文创产业专项引导资金管理办法</p>
+                        <p class="text-[10px] text-blue-100 mt-1 opacity-80">匹配度：85% | 针对文创类项目</p>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
+
+    <div class="fixed right-10 bottom-10">
+        <button class="w-14 h-14 bg-gradient-to-tr from-pink-500 to-rose-400 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group relative">
+            <i class="fas fa-robot text-2xl"></i>
+            <span class="absolute -top-12 right-0 bg-slate-800 text-white text-[10px] px-3 py-1 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                有什么不懂的，尽管问我！
+            </span>
+        </button>
     </div>
 </section>
 
